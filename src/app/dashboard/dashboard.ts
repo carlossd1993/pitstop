@@ -1,53 +1,59 @@
-import { Component, OnInit, NgZone, signal } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { Router } from '@angular/router';
-
-// Definimos la estructura de los datos que esperamos
-export interface Bicicleta {
-  id: string;
-  clienteId: string;
-  clienteNombre: string;
-  marca: string;
-  modelo: string;
-  tipo: string;
-  esElectrica: boolean;
-  mtbTipo: string | null;
-}
+import { NavbarComponent } from '../navbar/navbar';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.scss']
+  imports: [CommonModule, NavbarComponent],
+  templateUrl: './dashboard.html'
 })
 export class DashboardComponent implements OnInit {
-// Inicializamos la señal con un array vacío
-bicicletas = signal<any[]>([]);  constructor(private router: Router, private zone: NgZone) { }
+  // 1. Señal con la lista original de bicicletas
+  bicicletas = signal<any[]>([]);
+
+  // 2. Señal que guarda lo que el usuario teclea en el buscador
+  terminoBusqueda = signal('');
+
+  // 3. Señal computada que filtra la lista automáticamente
+  bicicletasFiltradas = computed(() => {
+    const termino = this.terminoBusqueda().toLowerCase();
+    const lista = this.bicicletas();
+
+    if (!termino) return lista;
+
+    return lista.filter(bici =>
+      bici.clienteNombre?.toLowerCase().includes(termino) ||
+      bici.marca?.toLowerCase().includes(termino) ||
+      bici.modelo?.toLowerCase().includes(termino)
+    );
+  });
+
+  constructor(private location: Location) { }
+
   ngOnInit() {
     this.cargarBicicletas();
   }
 
   async cargarBicicletas() {
-  try {
-    const respuesta = await fetch('data/bicicletas.json');
-    const datos = await respuesta.json();
+    try {
+      const url = this.location.prepareExternalUrl('/data/bicicletas.json');
+      const respuesta = await fetch(url);
+      const datos = await respuesta.json();
 
-    // Extraemos el array (por si tu JSON empieza por { "bicicletas": [...] })
-    const arrayBicis = Array.isArray(datos) ? datos : datos.bicicletas || [];
+      const arrayBicis = Array.isArray(datos) ? datos : datos.bicicletas || [];
+      this.bicicletas.set(arrayBicis);
 
-    // .set() dispara la orden directa e irrevocable de actualizar el HTML
-    this.bicicletas.set(arrayBicis); 
-
-    console.log('Comprobación de datos:', this.bicicletas());
-  } catch (error) {
-    console.error('Error del fetch:', error);
+    } catch (error) {
+      console.error('Error cargando el JSON:', error);
+    }
   }
-}
 
-  // Función que llama el botón de la barra de navegación
-  onLogout() {
-    // En el futuro aquí limpiaremos el token de Firebase Auth
-    this.router.navigate(['/login']);
+  // 4. Función para actualizar la señal del buscador en tiempo real
+  alEscribir(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.terminoBusqueda.set(input.value);
   }
+
+
 }
