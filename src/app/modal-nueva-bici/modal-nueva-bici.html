@@ -14,6 +14,7 @@
         <div class="mb-3">
           <label for="clienteInput" class="form-label fw-semibold">Cliente</label>
           <input
+            #txtCliente
             type="text"
             id="clienteInput"
             class="form-control"
@@ -25,6 +26,30 @@
               <option [value]="cliente"></option>
             }
           </datalist>
+        </div>
+
+        <!-- 1.5. Marca y Modelo -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="marcaInput" class="form-label fw-semibold">Marca</label>
+            <input 
+              #txtMarca
+              type="text" 
+              id="marcaInput" 
+              class="form-control" 
+              placeholder="Ej: Orbea, Trek..." 
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="modeloInput" class="form-label fw-semibold">Modelo</label>
+            <input 
+              #txtModelo
+              type="text" 
+              id="modeloInput" 
+              class="form-control" 
+              placeholder="Ej: Oiz, Émonda..." 
+            />
+          </div>
         </div>
 
         <!-- 2. Selector E-Bike (Chip / Botón con btn-check) -->
@@ -153,6 +178,7 @@
         <div class="mb-3">
           <label for="observaciones" class="form-label fw-semibold">Observaciones</label>
           <textarea
+            #txtObs
             class="form-control"
             id="observaciones"
             rows="3"
@@ -166,7 +192,12 @@
         <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
           <i class="bi bi-x-lg me-1"></i> Cancelar
         </button>
-        <button type="button" class="btn btn-success fw-semibold">
+        
+        <button 
+          type="button" 
+          class="btn btn-success fw-semibold"
+          data-bs-dismiss="modal"
+          (click)="guardar(txtCliente.value, txtMarca.value, txtModelo.value, txtObs.value)">
           <i class="bi bi-floppy me-1"></i> Guardar
         </button>
       </div>

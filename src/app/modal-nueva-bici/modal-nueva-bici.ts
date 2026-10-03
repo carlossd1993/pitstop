@@ -1,35 +1,42 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modal-nueva-bici',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './modal-nueva-bici.html',
-  styleUrl: './modal-nueva-bici.scss',
+  templateUrl: './modal-nueva-bici.html'
 })
 export class ModalNuevaBiciComponent {
-  // Estado principal del tipo de bicicleta ('carretera' | 'montana' | 'gravel')
-  tipoBicicleta = signal<'carretera' | 'montana' | 'gravel'>('carretera');
+  // Señales de estado para los botones del modal
+  esElectrica = signal(false);
+  tipoBicicleta = signal('carretera');
+  subtipoMontana = signal('doble');
+  subtipoGravel = signal('con_suspension');
 
-  // Subtipos condicionales
-  subtipoMontana = signal<'doble' | 'rigida'>('doble');
-  subtipoGravel = signal<'con_suspension' | 'sin_suspension'>('sin_suspension');
+  // Lista de prueba para el buscador del cliente
+  clientes = signal(['Juan Pérez', 'María Gómez', 'Laura Torres']);
 
-  // Estado del chip E-Bike
-  esElectrica = signal<boolean>(false);
+  // Función que recibe los textos del HTML y monta el objeto 
+  //TODO CONEXIÓN CON LA BASE DE DATOS
+  guardar(clienteTxt: string, marcaTxt: string, modeloTxt: string, obsTxt: string) {
 
-  // Lista de ejemplo para el datalist de clientes
-  clientes = signal<string[]>([
-    'Carlos',
-    'Robe Iniesta',
-    'Kutxi Romero',
-    'Enric Mas',
-    'Txus di Fellatio',
-    'Alejandro Valverde',
-    'Aragorn',
-    'Gandalf'
-  ]);
+    // Leemos el mecánico directamente de la sesión
+    const mecanico = localStorage.getItem('mecanicoSesion') || 'Desconocido';
+
+    // Montamos el objeto final cruzando los textos con las señales de los botones
+    const nuevaBici = {
+      clienteNombre: clienteTxt,
+      marca: marcaTxt,
+      modelo: modeloTxt,
+      tipo: this.tipoBicicleta(),
+      esElectrica: this.esElectrica(),
+      // Guardamos el subtipo de suspensión solo si corresponde a su categoría
+      mtbTipo: this.tipoBicicleta() === 'montana' ? this.subtipoMontana() : undefined,
+      suspension: this.tipoBicicleta() === 'gravel' ? this.subtipoGravel() : undefined,
+      observaciones: obsTxt,
+      mecanico: mecanico
+    };
+
+    // Imprimimos el resultado en la consola para verificar que todo se captura bien
+    console.log('🚲 Datos capturados desde el modal:', nuevaBici);
+  }
 }
-
-export { ModalNuevaBiciComponent as ModalNuevaBici };
