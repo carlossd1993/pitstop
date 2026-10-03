@@ -1,62 +1,68 @@
-<!-- Barra de navegación superior -->
+<!-- Barra de navegación -->
 <nav class="navbar navbar-expand bg-primary shadow-sm mb-4">
   <div class="container">
-    <span class="navbar-brand text-white fw-bold fs-4 mb-0">Pitstop</span>
+    <span class="navbar-brand text-white fw-bold fs-4 mb-0">TallerTracker</span>
     <button class="btn btn-outline-light btn-sm fw-semibold px-3" (click)="onLogout()">
       Cerrar sesión
     </button>
   </div>
 </nav>
 
-<!-- Contenedor central -->
-<main class="container pb-5">
-  <!-- Fila con buscador amplio y botón de acento -->
-  <div class="row g-3 align-items-center mb-4">
-    <div class="col">
-      <input
-        type="text"
-        class="form-control form-control-lg bg-white shadow-sm"
-        placeholder="Buscar por cliente, marca o modelo..."
-        aria-label="Buscar bicicletas"
-      />
+<div class="container pb-5">
+  <!-- Fila con buscador y botón de nueva bici -->
+  <div class="row mb-4">
+    <div class="col-md-9">
+      <input type="text" class="form-control form-control-lg shadow-sm"
+        placeholder="Buscar por cliente, marca o modelo...">
     </div>
-    <div class="col-auto">
-      <button class="btn btn-secondary btn-lg fw-semibold shadow-sm text-nowrap">
-        + Nueva Bici
-      </button>
+    <div class="col-md-3">
+      <button class="btn btn-secondary btn-lg w-100 shadow-sm fw-bold">+ Nueva Bici</button>
     </div>
   </div>
 
-  <!-- Grid de Bootstrap -->
+  <!-- Grid donde Angular pintará las 50 tarjetas -->
   <div class="row g-4">
-    <!-- Tarjeta de ejemplo estática -->
+    @for (bici of bicicletas; track bici.id) {
     <div class="col-md-4">
-      <div class="card bg-white rounded shadow-sm border-0 h-100">
-        <div class="card-body p-4">
-          <div class="d-flex justify-content-between align-items-start mb-3">
-            <div>
-              <h5 class="card-title fw-bold text-primary mb-1">Carlos Ruiz</h5>
-              <span class="text-muted small">Cliente habitual</span>
-            </div>
-            <span class="badge bg-secondary text-dark rounded-pill px-3 py-2 fw-semibold">
-              MTB
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title text-primary fw-bold">{{ bici.clienteNombre }}</h5>
+          <h6 class="card-subtitle mb-3 text-muted">{{ bici.marca }} {{ bici.modelo }}</h6>
+
+          <!-- Etiquetas dinámicas -->
+          <div>
+            <!-- Color dinámico según el tipo de disciplina -->
+            <span class="badge me-1" [ngClass]="{
+          'text-bg-primary': bici.tipo === 'carretera',
+          'text-bg-dark': bici.tipo === 'mtb',
+          'text-bg-gravel': bici.tipo === 'gravel'
+        }">
+              {{ bici.tipo | uppercase }}
             </span>
-          </div>
 
-          <hr class="text-muted opacity-25 my-3" />
+            <!-- Usamos tu color dorado (secondary) para diferenciar si es rígida o doble -->
+            @if (bici.mtbTipo) {
+            <span class="badge text-bg-secondary me-1">{{ bici.mtbTipo | uppercase }}</span>
+            }
 
-          <div class="d-flex flex-column gap-2">
-            <div class="d-flex justify-content-between">
-              <span class="text-muted small">Marca:</span>
-              <span class="fw-semibold text-dark">Specialized</span>
-            </div>
-            <div class="d-flex justify-content-between">
-              <span class="text-muted small">Modelo:</span>
-              <span class="fw-semibold text-dark">Epic Expert Carbon</span>
-            </div>
+            <!-- Un color rojo (danger) para que las E-BIKE destaquen rápidamente en el taller -->
+            @if (bici.esElectrica) {
+            <span class="badge text-bg-danger fw-bold">E-BIKE</span>
+            }
           </div>
+        </div>
+        <div class="card-footer bg-transparent border-0 text-end pb-3 pe-3">
+          <button class="btn btn-sm btn-outline-primary">Ver historial</button>
         </div>
       </div>
     </div>
+    } @empty {
+    <div class="col-12 text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="text-muted mt-3">Cargando bicicletas del taller...</p>
+    </div>
+    }
   </div>
-</main>
+</div>
