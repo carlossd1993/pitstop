@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   async cargarBicicletas() {
     try {
       // Llamada simulada a la base de datos usando el JSON local
-      const respuesta = await fetch('/data/bicicletas.json');
+      const respuesta = await fetch('data/bicicletas.json');
       this.bicicletas = await respuesta.json();
     } catch (error) {
       console.error('Error cargando el JSON de prueba:', error);
