@@ -1,0 +1,27 @@
+@if (componente) {
+  <div class="p-2">
+    <div class="row g-3 align-items-center mb-3">
+      <div class="col-sm-6">
+        <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Pieza / Componente</span>
+        <span class="fw-bold fs-6 text-dark d-flex align-items-center">
+          <i class="bi bi-tools text-primary me-2"></i> {{ componente.nombre }}
+        </span>
+      </div>
+      <div class="col-sm-6 text-sm-end">
+        <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Última Revisión</span>
+        <span class="badge bg-secondary text-dark fs-6 fw-bold px-3 py-2 shadow-sm">
+          <i class="bi bi-speedometer2 me-1"></i> {{ componente.ultimaRevisionKm | number }} km
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <span class="text-muted small fw-semibold text-uppercase d-block mb-2">Observaciones del Componente</span>
+      <div class="p-3 bg-white rounded-3 border">
+        <p class="mb-0 text-secondary fs-6">
+          <i class="bi bi-chat-left-text text-primary me-2"></i>{{ componente.observaciones }}
+        </p>
+      </div>
+    </div>
+  </div>
+}

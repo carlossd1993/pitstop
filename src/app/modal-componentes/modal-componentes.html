@@ -1,0 +1,85 @@
+<!-- Modal Bootstrap 5 para añadir un nuevo componente a la bicicleta -->
+<div class="modal fade" id="modalNuevoComponente" tabindex="-1" aria-labelledby="modalNuevoComponenteLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <!-- Cabecera del modal -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold" id="modalNuevoComponenteLabel">
+          <i class="bi bi-gear-wide-connected text-secondary me-2"></i>Añadir Componente
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <!-- Cuerpo del modal -->
+      <div class="modal-body p-4">
+        <!-- 1. Nombre del Componente con Datalist de sugerencias -->
+        <div class="mb-3">
+          <label for="nombreComponenteInput" class="form-label fw-semibold">Nombre del Componente</label>
+          <input
+            #txtNombre
+            type="text"
+            id="nombreComponenteInput"
+            class="form-control"
+            list="componentesSugeridos"
+            placeholder="Ej: Cadena Shimano XT, Pastillas Galfer, Horquilla Fox..."
+          />
+          <datalist id="componentesSugeridos">
+            <option value="Cadena"></option>
+            <option value="Pastillas de freno"></option>
+            <option value="Discos de freno"></option>
+            <option value="Horquilla de suspensión"></option>
+            <option value="Amortiguador trasero"></option>
+            <option value="Cubierta delantera"></option>
+            <option value="Cubierta trasera"></option>
+            <option value="Cassette de piñones"></option>
+            <option value="Pedalier"></option>
+            <option value="Motor / Batería"></option>
+          </datalist>
+        </div>
+
+        <!-- 2. Kilómetros en la última revisión -->
+        <div class="mb-3">
+          <label for="kmComponenteInput" class="form-label fw-semibold">Última Revisión (en km)</label>
+          <div class="input-group">
+            <input
+              #txtKm
+              type="number"
+              id="kmComponenteInput"
+              class="form-control"
+              placeholder="Ej: 1200"
+              min="0"
+            />
+            <span class="input-group-text bg-light text-muted fw-semibold">km</span>
+          </div>
+        </div>
+
+        <!-- 3. Observaciones del Componente -->
+        <div class="mb-3">
+          <label for="obsComponenteInput" class="form-label fw-semibold">Observaciones</label>
+          <textarea
+            #txtObs
+            id="obsComponenteInput"
+            class="form-control"
+            rows="3"
+            placeholder="Añadir notas técnicas sobre estado, desgaste, presión o mantenimiento..."
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Pie del modal con botones Cancelar y Guardar -->
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg me-1"></i> Cancelar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-success fw-semibold"
+          data-bs-dismiss="modal"
+          (click)="guardar(txtNombre.value, txtKm.value, txtObs.value)">
+          <i class="bi bi-floppy me-1"></i> Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

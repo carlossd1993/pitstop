@@ -8,7 +8,22 @@
     "esElectrica": true,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3250,
     "observaciones": "Revisión general y cambio de pastillas de freno.",
+    "revisiones": [
+      {
+        "fecha": "2024-01-10",
+        "km": 1500,
+        "mecanico": "Carlos",
+        "descripcion": "Revisión inicial, actualización de software del motor Bosch y purgado de frenos."
+      },
+      {
+        "fecha": "2024-03-22",
+        "km": 3250,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento de 50h de horquilla Fox 38 y sustitución de pastillas traseras cerámicas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Deore",
@@ -45,7 +60,22 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Carlos",
+    "kmTotales": 5400,
     "observaciones": "Ajuste de cambios electrónicos.",
+    "revisiones": [
+      {
+        "fecha": "2023-11-15",
+        "km": 3300,
+        "mecanico": "Carlos",
+        "descripcion": "Cambio de cubiertas Continental GP5000 y ajuste de zapatas."
+      },
+      {
+        "fecha": "2024-02-28",
+        "km": 5400,
+        "mecanico": "Carlos",
+        "descripcion": "Calibración fina de cambios electrónicos Di2 y engrase de pedalier."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Ultegra 12v",
@@ -78,7 +108,16 @@
     "esElectrica": false,
     "suspension": "con suspensión",
     "mecanico": "Elena",
+    "kmTotales": 3100,
     "observaciones": "Tubelizar ruedas.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-14",
+        "km": 3100,
+        "mecanico": "Elena",
+        "descripcion": "Tubelización de ambas ruedas con líquido sellante y revisión de Future Shock."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM Rival Flattop",
@@ -111,7 +150,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Carlos",
+    "kmTotales": 4200,
     "observaciones": "Crujido en el pedalier.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-05",
+        "km": 4200,
+        "mecanico": "Carlos",
+        "descripcion": "Desmontaje de pedalier PressFit, limpieza y engrase con pasta de montaje antiblindaje."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano GRX 11v",
@@ -144,7 +192,22 @@
     "esElectrica": false,
     "mtbTipo": "rígida",
     "mecanico": "Carlos",
+    "kmTotales": 2150,
     "observaciones": "Mantenimiento de la horquilla.",
+    "revisiones": [
+      {
+        "fecha": "2024-01-20",
+        "km": 1200,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento básico de horquilla SID, cambio de retenes SKF y aceite."
+      },
+      {
+        "fecha": "2024-03-12",
+        "km": 2150,
+        "mecanico": "Carlos",
+        "descripcion": "Ajuste de presiones, engrase de dirección y lubricación de transmisión."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM GX Eagle 12v",
@@ -176,7 +239,22 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Mario",
+    "kmTotales": 6800,
     "observaciones": "Cambio de cinta de manillar.",
+    "revisiones": [
+      {
+        "fecha": "2023-09-18",
+        "km": 3600,
+        "mecanico": "Mario",
+        "descripcion": "Cambio de cadena Shimano 105 y zapatas de freno."
+      },
+      {
+        "fecha": "2024-02-10",
+        "km": 6800,
+        "mecanico": "Mario",
+        "descripcion": "Instalación de nueva cinta de manillar Supacaz y centrado de ruedas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano 105 11v",
@@ -209,7 +287,16 @@
     "esElectrica": true,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3900,
     "observaciones": "Actualización de software del motor.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-01",
+        "km": 3900,
+        "mecanico": "Carlos",
+        "descripcion": "Actualización de firmware motor Shimano EP8 a versión 4.2.0 y purga de frenos de 4 pistones."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena KMC e12 Turbo",
@@ -247,7 +334,16 @@
     "esElectrica": true,
     "suspension": "sin suspensión",
     "mecanico": "Elena",
+    "kmTotales": 1850,
     "observaciones": "Revisión de batería y conexiones.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-18",
+        "km": 1850,
+        "mecanico": "Elena",
+        "descripcion": "Test de batería BH (100% de capacidad) e inspección de sellado de conectores."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano HG-601",
@@ -280,7 +376,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 2700,
     "observaciones": "Ajuste de presiones del amortiguador.",
+    "revisiones": [
+      {
+        "fecha": "2024-01-25",
+        "km": 2700,
+        "mecanico": "Carlos",
+        "descripcion": "Calibración de suspensiones Fox Factory delantera y trasera, ajuste de SAG al 25%."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM X01 Eagle",
@@ -312,7 +417,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Mario",
+    "kmTotales": 4100,
     "observaciones": "Limpieza integral y engrase.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-10",
+        "km": 4100,
+        "mecanico": "Mario",
+        "descripcion": "Desmontaje completo, limpieza minuciosa, engrase de bujes cerámicos y pedalier."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Campagnolo Super Record 12v",
@@ -345,7 +459,22 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3600,
     "observaciones": "Cambio de rodamientos del basculante.",
+    "revisiones": [
+      {
+        "fecha": "2023-12-05",
+        "km": 1900,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento 100h suspensiones Fox y purga de frenos XT."
+      },
+      {
+        "fecha": "2024-03-15",
+        "km": 3600,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución completa del kit de rodamientos de basculante con prensa Enduro MAX."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Deore XT M8100",
@@ -383,7 +512,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Carlos",
+    "kmTotales": 4800,
     "observaciones": "Instalación de portabultos.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-22",
+        "km": 4800,
+        "mecanico": "Carlos",
+        "descripcion": "Instalación de transportín Bontrager BackRack y ajuste de transmisión SRAM XPLR."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM Force Flattop",
@@ -416,7 +554,16 @@
     "esElectrica": true,
     "mtbTipo": "doble",
     "mecanico": "Elena",
+    "kmTotales": 2950,
     "observaciones": "Sustitución de display.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-08",
+        "km": 2950,
+        "mecanico": "Elena",
+        "descripcion": "Cambio de display MasterMind TCU averiado por garantía y configuración en app."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM Eagle E-bike",
@@ -453,7 +600,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Carlos",
+    "kmTotales": 5100,
     "observaciones": "Centrado de rueda delantera.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-14",
+        "km": 5100,
+        "mecanico": "Carlos",
+        "descripcion": "Centrado de llanta de carbono DT Swiss ARC y reapriete de cabecillas internas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Dura-Ace R9200",
@@ -486,7 +642,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Mario",
+    "kmTotales": 3400,
     "observaciones": "Purga de frenos Shimano.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-19",
+        "km": 3400,
+        "mecanico": "Mario",
+        "descripcion": "Purga completa de frenos Shimano XTR con aceite mineral nuevo y pastillas desengrasadas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM XX1 Eagle Rainbow",
@@ -519,7 +684,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Carlos",
+    "kmTotales": 6200,
     "observaciones": "Cambio de cadena y casete.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-05",
+        "km": 6200,
+        "mecanico": "Carlos",
+        "descripcion": "Instalación de nueva transmisión (cadena Shimano HG701 y cassette 11-42T)."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano GRX HG701",
@@ -551,7 +725,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Elena",
+    "kmTotales": 4300,
     "observaciones": "Ajuste de desviador delantero.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-02",
+        "km": 4300,
+        "mecanico": "Elena",
+        "descripcion": "Ajuste de tensión de desviador Ultegra y rodamientos de ruedas Vision."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Ultegra 11v",
@@ -584,7 +767,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3150,
     "observaciones": "Revisión de bloqueo remoto.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-18",
+        "km": 3150,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución de cable y funda de mando de bloqueo remoto Fox."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Deore XT",
@@ -617,7 +809,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Mario",
+    "kmTotales": 3800,
     "observaciones": "Cambio de cubiertas por desgaste.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-21",
+        "km": 3800,
+        "mecanico": "Mario",
+        "descripcion": "Instalación de par de cubiertas WTB Riddler 700x45c tubeless."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM Apex 11v",
@@ -649,7 +850,16 @@
     "tipo": "carretera",
     "esElectrica": true,
     "mecanico": "Carlos",
+    "kmTotales": 2900,
     "observaciones": "Diagnóstico de error en la asistencia.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-11",
+        "km": 2900,
+        "mecanico": "Carlos",
+        "descripcion": "Diagnóstico por software del sistema TQ, ajuste de sensor de par de pedaleo."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano 105 11v",
@@ -682,7 +892,16 @@
     "esElectrica": false,
     "mtbTipo": "rígida",
     "mecanico": "Elena",
+    "kmTotales": 4700,
     "observaciones": "Sustitución de eje de pedalier.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-27",
+        "km": 4700,
+        "mecanico": "Elena",
+        "descripcion": "Cambio de cazoletas de pedalier Shimano Hollowtech II por holgura."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano SLX M7100",
@@ -714,7 +933,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Carlos",
+    "kmTotales": 5600,
     "observaciones": "Cambio de cables y fundas.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-09",
+        "km": 5600,
+        "mecanico": "Carlos",
+        "descripcion": "Renovación integral de cables y fundas de cambio y frenos."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Ultegra",
@@ -747,7 +975,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Mario",
+    "kmTotales": 3300,
     "observaciones": "Reparación de pinchazo.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-16",
+        "km": 3300,
+        "mecanico": "Mario",
+        "descripcion": "Reparación tubeless con mecha en cubierta trasera y recarga de sellante."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano GRX 810",
@@ -779,7 +1016,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Carlos",
+    "kmTotales": 4100,
     "observaciones": "Montaje de pedales con potenciómetro.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-13",
+        "km": 4100,
+        "mecanico": "Carlos",
+        "descripcion": "Montaje y calibración de potenciómetro en pedales Favero Assioma Duo."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM Red AXS 12v",
@@ -812,7 +1058,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Elena",
+    "kmTotales": 3750,
     "observaciones": "Mantenimiento del amortiguador Fox.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-04",
+        "km": 3750,
+        "mecanico": "Elena",
+        "descripcion": "Mantenimiento preventivo anual amortiguador Fox Float DPS."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano SLX 12v",
@@ -845,7 +1100,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Carlos",
+    "kmTotales": 4900,
     "observaciones": "Ajuste de frenos de disco.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-12",
+        "km": 4900,
+        "mecanico": "Carlos",
+        "descripcion": "Alineación de discos y pinzas de freno hidráulico Shimano GRX."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano GRX 600",
@@ -877,7 +1141,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Mario",
+    "kmTotales": 3200,
     "observaciones": "Revisión pre-carrera.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-21",
+        "km": 3200,
+        "mecanico": "Mario",
+        "descripcion": "Checklist completo de competición: par de apriete, cambio Di2 y tensión de radios."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Dura-Ace",
@@ -910,7 +1183,16 @@
     "esElectrica": true,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 4150,
     "observaciones": "Cambio de plato y cadena específica e-bike.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-20",
+        "km": 4150,
+        "mecanico": "Carlos",
+        "descripcion": "Montaje de cadena KMC e12 y plato de acero Shimano 34T."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena KMC e12 Turbo",
@@ -948,7 +1230,16 @@
     "esElectrica": false,
     "mtbTipo": "rígida",
     "mecanico": "Elena",
+    "kmTotales": 2400,
     "observaciones": "Ajuste de cambios básicos.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-07",
+        "km": 2400,
+        "mecanico": "Elena",
+        "descripcion": "Sincronización de cambio Shimano Deore y lubricación general."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Deore 10v",
@@ -981,7 +1272,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Carlos",
+    "kmTotales": 5200,
     "observaciones": "Montaje de ruedas de carbono.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-17",
+        "km": 5200,
+        "mecanico": "Carlos",
+        "descripcion": "Montaje de ruedas Oquo RC25, discos Galfer Wave y cubiertas Pirelli tubelizadas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano GRX 810",
@@ -1013,7 +1313,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Mario",
+    "kmTotales": 3900,
     "observaciones": "Inspección de cuadro por fisura.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-12",
+        "km": 3900,
+        "mecanico": "Mario",
+        "descripcion": "Test de ultrasonidos en vaina trasera, estructura de carbono intacta."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Ultegra 12v",
@@ -1046,7 +1355,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3650,
     "observaciones": "Cambio de tija telescópica.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-15",
+        "km": 3650,
+        "mecanico": "Carlos",
+        "descripcion": "Instalación de tija OneUp V2 180mm con enrutamiento interno."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM GX Eagle",
@@ -1083,7 +1401,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Elena",
+    "kmTotales": 5100,
     "observaciones": "Cambio de zapatas de freno.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-01",
+        "km": 5100,
+        "mecanico": "Elena",
+        "descripcion": "Cambio de zapatas delanteras y traseras Shimano R55C4 y limpieza de llanta."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Sora 9v",
@@ -1116,7 +1443,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Carlos",
+    "kmTotales": 4400,
     "observaciones": "Ajuste de transmisión 1x.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-14",
+        "km": 4400,
+        "mecanico": "Carlos",
+        "descripcion": "Ajuste del embrague del cambio SRAM Rival 1x y recarga de líquido sellante."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM Rival 1 11v",
@@ -1149,7 +1485,16 @@
     "esElectrica": false,
     "mtbTipo": "rígida",
     "mecanico": "Mario",
+    "kmTotales": 2850,
     "observaciones": "Lubricación general.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-19",
+        "km": 2850,
+        "mecanico": "Mario",
+        "descripcion": "Limpieza integral y lubricación de transmisión y horquilla Manitou."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Deore",
@@ -1181,7 +1526,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Carlos",
+    "kmTotales": 3500,
     "observaciones": "Actualización Di2.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-06",
+        "km": 3500,
+        "mecanico": "Carlos",
+        "descripcion": "Actualización de firmware Shimano Di2 R8170 e inspección de pastillas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Ultegra 12v",
@@ -1214,7 +1568,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Elena",
+    "kmTotales": 4300,
     "observaciones": "Limpieza de bujes.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-24",
+        "km": 4300,
+        "mecanico": "Elena",
+        "descripcion": "Desmontaje de bujes de rueda Formula, limpieza de trinquetes y engrase de rodamientos."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano GRX 10v",
@@ -1247,7 +1610,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3100,
     "observaciones": "Revisión de amortiguador integrado.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-15",
+        "km": 3100,
+        "mecanico": "Carlos",
+        "descripcion": "Servicio oficial IsoStrut Trek: limpieza de cámara, tóricas nuevas y engrase especial."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM XX1 Eagle Gold",
@@ -1279,7 +1651,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Mario",
+    "kmTotales": 4700,
     "observaciones": "Sustitución de roldanas.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-28",
+        "km": 4700,
+        "mecanico": "Mario",
+        "descripcion": "Sustitución de roldanas de cambio por roldanas con rodamientos sellados cerámicos."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano 105 12v",
@@ -1312,7 +1693,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3800,
     "observaciones": "Mantenimiento 50 horas horquilla RockShox.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-03",
+        "km": 3800,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento 50 horas horquilla RockShox SID Select+ y pastillas traseras nuevas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM X01 Eagle",
@@ -1344,7 +1734,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Elena",
+    "kmTotales": 4200,
     "observaciones": "Ajuste de dirección.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-16",
+        "km": 4200,
+        "mecanico": "Elena",
+        "descripcion": "Reajuste de dirección Acros integrada y reapriete de tija VCLS con pasta de carbono."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Ultegra 11v",
@@ -1377,7 +1776,16 @@
     "esElectrica": true,
     "mtbTipo": "doble",
     "mecanico": "Carlos",
+    "kmTotales": 3400,
     "observaciones": "Cambio de sensor de velocidad.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-10",
+        "km": 3400,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución de sensor de velocidad Bosch en la llanta y diagnóstico de batería."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena KMC e12 Turbo",
@@ -1415,7 +1823,16 @@
     "esElectrica": false,
     "mtbTipo": "rígida",
     "mecanico": "Mario",
+    "kmTotales": 2600,
     "observaciones": "Sustitución de puños.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-12",
+        "km": 2600,
+        "mecanico": "Mario",
+        "descripcion": "Instalación de puños ergonómicos con doble fijación y ajuste de frenos Tektro."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena KMC X9",
@@ -1447,7 +1864,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "Carlos",
+    "kmTotales": 5800,
     "observaciones": "Cambio de rodamientos de rueda trasera.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-25",
+        "km": 5800,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución de rodamientos de buje trasero Vision SC55 y ajuste de pastillas."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Ultegra 12v",
@@ -1480,7 +1906,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "Elena",
+    "kmTotales": 3650,
     "observaciones": "Alineación de patilla de cambio.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-08",
+        "km": 3650,
+        "mecanico": "Elena",
+        "descripcion": "Enderezado de patilla de cambio y sincronización de cambios Shimano GRX."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano GRX HG701",
@@ -1513,7 +1948,16 @@
     "esElectrica": false,
     "mtbTipo": "rígida",
     "mecanico": "Carlos",
+    "kmTotales": 3100,
     "observaciones": "Revisión de frenos.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-17",
+        "km": 3100,
+        "mecanico": "Carlos",
+        "descripcion": "Comprobación de frenos hidráulicos Shimano MT200 y centrado de rueda delantera."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM SX Eagle",
@@ -1546,7 +1990,16 @@
     "esElectrica": true,
     "mtbTipo": "doble",
     "mecanico": "Mario",
+    "kmTotales": 2750,
     "observaciones": "Ajuste de motor TQ.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-17",
+        "km": 2750,
+        "mecanico": "Mario",
+        "descripcion": "Ajuste fino de par en motor TQ-HPR50 y purgado de frenos XT."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano XT M8100",
@@ -1583,7 +2036,16 @@
     "tipo": "carretera",
     "esElectrica": false,
     "mecanico": "pruebas",
+    "kmTotales": 3900,
     "observaciones": "Cambio de sillín.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-11",
+        "km": 3900,
+        "mecanico": "pruebas",
+        "descripcion": "Instalación y nivelación de nuevo sillín Selle Royal Vivo."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano Claris 8v",
@@ -1616,7 +2078,16 @@
     "esElectrica": false,
     "suspension": "sin suspensión",
     "mecanico": "pruebas",
+    "kmTotales": 4500,
     "observaciones": "Limpieza de transmisión.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-19",
+        "km": 4500,
+        "mecanico": "pruebas",
+        "descripcion": "Desengrase por ultrasonidos de cassette y cadena SRAM Rival eTap y aplicación de cera."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena SRAM Rival XPLR Flattop",
@@ -1649,7 +2120,16 @@
     "esElectrica": false,
     "mtbTipo": "doble",
     "mecanico": "pruebas",
+    "kmTotales": 3300,
     "observaciones": "Mantenimiento completo suspensión.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-22",
+        "km": 3300,
+        "mecanico": "pruebas",
+        "descripcion": "Servicio de 100 horas Fox Factory completo: retenes SKF en horquilla y amortiguador."
+      }
+    ],
     "componentes": [
       {
         "nombre": "Cadena Shimano XTR M9100",

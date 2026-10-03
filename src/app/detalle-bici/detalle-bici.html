@@ -2,11 +2,42 @@
 <app-navbar />
 
 <div class="container pb-5">
-  <!-- Botón de regreso -->
-  <div class="mb-4">
+  <!-- Botón de regreso y datos generales de cabecera -->
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
     <button class="btn btn-outline-primary btn-sm fw-semibold shadow-sm" (click)="volver()">
       <i class="bi bi-arrow-left me-1"></i> Volver al taller
     </button>
+
+    @if (bici(); as b) {
+      <div class="d-flex flex-wrap align-items-center gap-2">
+        <span class="badge px-3 py-2 text-uppercase fw-semibold"
+              [ngClass]="{
+                'text-bg-primary': b.tipo === 'carretera',
+                'text-bg-dark': b.tipo === 'mtb',
+                'text-bg-gravel': b.tipo === 'gravel'
+              }">
+          {{ b.tipo }}
+        </span>
+
+        @if (b.mtbTipo) {
+          <span class="badge text-bg-secondary text-dark px-3 py-2 fw-semibold">
+            {{ b.mtbTipo | uppercase }}
+          </span>
+        }
+
+        @if (b.suspension) {
+          <span class="badge text-bg-secondary text-dark px-3 py-2 fw-semibold">
+            {{ b.suspension | uppercase }}
+          </span>
+        }
+
+        @if (b.esElectrica) {
+          <span class="badge text-bg-danger px-3 py-2 fw-bold">
+            ⚡ E-BIKE
+          </span>
+        }
+      </div>
+    }
   </div>
 
   @if (cargando()) {
@@ -17,113 +48,223 @@
       <p class="text-muted mt-3">Cargando información de la bicicleta...</p>
     </div>
   } @else if (bici(); as b) {
-    <!-- Tarjeta principal con la información de la bicicleta -->
-    <div class="card bg-white shadow-sm border-0 rounded-4 overflow-hidden">
-      <!-- Encabezado de la tarjeta -->
-      <div class="card-header bg-primary text-white p-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
-        <div>
-          <span class="text-white-50 text-uppercase small fw-bold d-block">Ficha de Bicicleta</span>
-          <h2 class="h3 fw-bold mb-0 text-white">{{ b.marca }} {{ b.modelo }}</h2>
-        </div>
-        
-        <!-- Badges de categoría -->
-        <div class="d-flex flex-wrap gap-2">
-          <span class="badge px-3 py-2 text-uppercase fw-semibold"
-                [ngClass]="{
-                  'text-bg-light text-primary': b.tipo === 'carretera',
-                  'text-bg-dark': b.tipo === 'mtb',
-                  'text-bg-gravel': b.tipo === 'gravel'
-                }">
-            {{ b.tipo }}
-          </span>
-
-          @if (b.mtbTipo) {
-            <span class="badge text-bg-secondary text-dark px-3 py-2 fw-semibold">
-              {{ b.mtbTipo | uppercase }}
-            </span>
-          }
-
-          @if (b.suspension) {
-            <span class="badge text-bg-secondary text-dark px-3 py-2 fw-semibold">
-              {{ b.suspension | uppercase }}
-            </span>
-          }
-
-          @if (b.esElectrica) {
-            <span class="badge text-bg-danger px-3 py-2 fw-bold">
-              ⚡ E-BIKE
-            </span>
-          }
-        </div>
-      </div>
-
-      <!-- Cuerpo con detalles -->
-      <div class="card-body p-4 p-md-5">
-        <div class="row g-4 mb-4">
-          <!-- Columna Cliente -->
-          <div class="col-sm-6 col-lg-3">
-            <div class="p-3 bg-light rounded-3 border h-100">
-              <span class="text-muted small fw-semibold d-block mb-1">
-                <i class="bi bi-person me-1 text-primary"></i> Cliente
-              </span>
-              <span class="fs-5 fw-bold text-dark">{{ b.clienteNombre }}</span>
+    <!-- 1. Grid de 3 Cards superiores: Dueño, Marca y Modelo -->
+    <div class="row g-4 mb-4">
+      <!-- Card Dueño / Cliente -->
+      <div class="col-md-4">
+        <div class="card bg-white shadow-sm border-0 rounded-4 h-100">
+          <div class="card-body p-4 d-flex align-items-center gap-3">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 56px; height: 56px;">
+              <i class="bi bi-person-fill fs-3"></i>
             </div>
-          </div>
-
-          <!-- Columna Marca -->
-          <div class="col-sm-6 col-lg-3">
-            <div class="p-3 bg-light rounded-3 border h-100">
-              <span class="text-muted small fw-semibold d-block mb-1">
-                <i class="bi bi-tag me-1 text-primary"></i> Marca
-              </span>
-              <span class="fs-5 fw-bold text-dark">{{ b.marca }}</span>
+            <div>
+              <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Dueño</span>
+              <h4 class="fw-bold text-dark mb-0 fs-5">{{ b.clienteNombre }}</h4>
+              <span class="text-muted small">Mecánico: <strong>{{ b.mecanico || 'Sin asignar' }}</strong></span>
             </div>
-          </div>
-
-          <!-- Columna Modelo -->
-          <div class="col-sm-6 col-lg-3">
-            <div class="p-3 bg-light rounded-3 border h-100">
-              <span class="text-muted small fw-semibold d-block mb-1">
-                <i class="bi bi-bicycle me-1 text-primary"></i> Modelo
-              </span>
-              <span class="fs-5 fw-bold text-dark">{{ b.modelo }}</span>
-            </div>
-          </div>
-
-          <!-- Columna Mecánico -->
-          <div class="col-sm-6 col-lg-3">
-            <div class="p-3 bg-light rounded-3 border h-100">
-              <span class="text-muted small fw-semibold d-block mb-1">
-                <i class="bi bi-tools me-1 text-primary"></i> Mecánico Asignado
-              </span>
-              <span class="fs-5 fw-bold text-primary">{{ b.mecanico || 'Sin asignar' }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Observaciones / Estado del taller -->
-        <div class="mt-4">
-          <h4 class="h5 fw-bold text-primary mb-3">
-            <i class="bi bi-clipboard2-check me-2"></i>Observaciones del Taller
-          </h4>
-          <div class="p-4 rounded-3 border bg-light">
-            <p class="mb-0 text-secondary fs-6 lead">
-              {{ b.observaciones || 'No hay observaciones registradas para esta bicicleta.' }}
-            </p>
           </div>
         </div>
       </div>
 
-      <!-- Pie con acciones -->
-      <div class="card-footer bg-light border-top p-4 d-flex justify-content-between align-items-center">
-        <span class="text-muted small">
-          ID de registro: <span class="fw-semibold text-dark">#{{ b.id }}</span>
-        </span>
-        <button class="btn btn-secondary fw-semibold px-4" (click)="volver()">
-          Volver al listado
-        </button>
+      <!-- Card Marca -->
+      <div class="col-md-4">
+        <div class="card bg-white shadow-sm border-0 rounded-4 h-100">
+          <div class="card-body p-4 d-flex align-items-center gap-3">
+            <div class="bg-secondary text-dark rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 56px; height: 56px;">
+              <i class="bi bi-tag-fill fs-3"></i>
+            </div>
+            <div>
+              <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Marca</span>
+              <h4 class="fw-bold text-dark mb-0 fs-5">{{ b.marca }}</h4>
+              <span class="text-muted small">Registro #{{ b.id }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Modelo -->
+      <div class="col-md-4">
+        <div class="card bg-white shadow-sm border-0 rounded-4 h-100">
+          <div class="card-body p-4 d-flex align-items-center gap-3">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 56px; height: 56px;">
+              <i class="bi bi-bicycle fs-3"></i>
+            </div>
+            <div>
+              <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Modelo</span>
+              <h4 class="fw-bold text-dark mb-0 fs-5">{{ b.modelo }}</h4>
+              <span class="text-muted small text-capitalize">{{ b.tipo }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Campo de Kilómetros Totales con botón para Anotar Revisión -->
+    <div class="card bg-white shadow-sm border-0 rounded-4 p-4 mb-4">
+      <div class="row align-items-center g-3">
+        <div class="col-md-7 d-flex align-items-center gap-3">
+          <div class="bg-secondary text-dark rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm" style="width: 52px; height: 52px;">
+            <i class="bi bi-speedometer2 fs-3"></i>
+          </div>
+          <div>
+            <span class="text-muted small fw-semibold text-uppercase d-block">Kilometraje Total de la Bici</span>
+            <div class="d-flex align-items-baseline gap-2">
+              <span class="fw-bold fs-3 text-primary">{{ b.kmTotales | number }} km</span>
+              @if (b.revisiones && b.revisiones.length > 0) {
+                <span class="text-muted small">
+                  · {{ b.revisiones.length }} {{ b.revisiones.length === 1 ? 'revisión' : 'revisiones' }} en histórico
+                </span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 d-flex flex-column align-items-md-end">
+          <button 
+            type="button" 
+            class="btn btn-secondary fw-semibold px-4 py-2 shadow-sm d-inline-flex align-items-center gap-2"
+            data-bs-toggle="modal" 
+            data-bs-target="#modalNuevaRevision">
+            <i class="bi bi-clipboard2-plus-fill fs-5"></i>
+            <span>Anotar revisión</span>
+          </button>
+          @if (mensajeKm()) {
+            <span class="text-success small fw-semibold mt-2 d-block text-md-end">
+              <i class="bi bi-check-circle-fill me-1"></i>{{ mensajeKm() }}
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Histórico de Revisiones de la Bicicleta -->
+    <div class="card bg-white shadow-sm border-0 rounded-4 p-4 mb-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <h3 class="h5 fw-bold text-primary mb-0">
+          <i class="bi bi-clock-history text-secondary me-2"></i>Histórico de Revisiones
+        </h3>
+        <span class="badge bg-light text-primary border px-3 py-2 fw-semibold">
+          {{ b.revisiones?.length || 0 }} {{ (b.revisiones?.length === 1) ? 'revisión' : 'revisiones' }}
+        </span>
+      </div>
+
+      @if (b.revisiones && b.revisiones.length > 0) {
+        <div class="list-group list-group-flush rounded-3 border overflow-hidden">
+          @for (rev of b.revisiones; track $index) {
+            <div class="list-group-item p-3 border-bottom hover-bg-light">
+              <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                  <span class="badge bg-primary text-white px-2 py-1">
+                    <i class="bi bi-calendar-event me-1"></i>{{ rev.fecha }}
+                  </span>
+                  <span class="badge bg-secondary text-dark fw-bold px-2 py-1">
+                    <i class="bi bi-speedometer2 me-1"></i>{{ rev.km | number }} km
+                  </span>
+                </div>
+                <div class="text-muted small">
+                  <i class="bi bi-person-fill-gear text-secondary me-1"></i>
+                  Mecánico: <strong class="text-dark">{{ rev.mecanico || 'Taller' }}</strong>
+                </div>
+              </div>
+              <p class="text-secondary mb-0 small ps-1">
+                {{ rev.descripcion }}
+              </p>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="p-4 text-center text-muted bg-light rounded-3 border">
+          <i class="bi bi-journal-x fs-3 text-secondary d-block mb-2"></i>
+          <p class="mb-0">No hay revisiones anotadas en el histórico de esta bicicleta.</p>
+        </div>
+      }
+    </div>
+
+    <!-- 3. Acordeón con los Componentes de la Bicicleta -->
+    <div class="card bg-white shadow-sm border-0 rounded-4 p-4 mb-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <h3 class="h5 fw-bold text-primary mb-0">
+          <i class="bi bi-gear-fill text-secondary me-2"></i>Componentes y Desgaste
+        </h3>
+        <span class="badge bg-light text-primary border px-3 py-2 fw-semibold">
+          {{ b.componentes?.length || 0 }} componentes
+        </span>
+      </div>
+
+      <div class="accordion accordion-flush rounded-3 overflow-hidden border" id="accordionComponentes">
+        @for (comp of b.componentes; track comp.nombre; let idx = $index) {
+          <div class="accordion-item">
+            <h2 class="accordion-header" [id]="'heading-' + idx">
+              <button 
+                class="accordion-button collapsed fw-semibold text-primary py-3" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                [attr.data-bs-target]="'#collapse-' + idx" 
+                aria-expanded="false" 
+                [attr.aria-controls]="'collapse-' + idx">
+                <div class="d-flex justify-content-between align-items-center w-100 me-3">
+                  <span class="d-flex align-items-center">
+                    <i class="bi bi-wrench-adjustable me-2 text-secondary"></i>
+                    {{ comp.nombre }}
+                  </span>
+                  <span class="badge bg-secondary text-dark fw-semibold px-2 py-1">
+                    {{ comp.ultimaRevisionKm | number }} km
+                  </span>
+                </div>
+              </button>
+            </h2>
+
+            <div 
+              [id]="'collapse-' + idx" 
+              class="accordion-collapse collapse" 
+              [attr.aria-labelledby]="'heading-' + idx" 
+              data-bs-parent="#accordionComponentes">
+              <div class="accordion-body bg-light border-top">
+                <!-- Componente hijo con los datos específicos del componente -->
+                <app-componente-bici [componente]="comp"></app-componente-bici>
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <div class="p-4 text-center text-muted bg-white">
+            <i class="bi bi-info-circle fs-3 text-secondary d-block mb-2"></i>
+            <p class="mb-0">No hay componentes registrados para esta bicicleta.</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Botón para Añadir Componentes (antes de las observaciones) -->
+    <div class="d-flex justify-content-end mb-4">
+      <button 
+        type="button" 
+        class="btn btn-secondary fw-bold shadow-sm px-4 py-2"
+        data-bs-toggle="modal" 
+        data-bs-target="#modalNuevoComponente">
+        <i class="bi bi-plus-circle me-2"></i>Añadir Componente
+      </button>
+    </div>
+
+    <!-- 4. Observaciones Generales de la Bicicleta (si existen) -->
+    @if (b.observaciones) {
+      <div class="card bg-white shadow-sm border-0 rounded-4 p-4 mb-4">
+        <h5 class="fw-bold text-primary mb-2">
+          <i class="bi bi-clipboard2-check me-2 text-secondary"></i>Observaciones Generales de la Bici
+        </h5>
+        <div class="p-3 bg-light rounded-3 border">
+          <p class="mb-0 text-secondary fs-6">{{ b.observaciones }}</p>
+        </div>
+      </div>
+    }
+
+    <!-- Modal para anotar nuevas revisiones -->
+    <app-modal-revision 
+      [kmActuales]="b.kmTotales || 0" 
+      (revisionGuardada)="onRevisionGuardada($event)">
+    </app-modal-revision>
+
+    <!-- Modal para añadir nuevos componentes -->
+    <app-modal-componentes></app-modal-componentes>
   } @else {
     <!-- Estado si no se encuentra la bici -->
     <div class="card bg-white shadow-sm border-0 rounded-4 p-5 text-center">

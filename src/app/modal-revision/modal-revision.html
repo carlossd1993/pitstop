@@ -1,0 +1,86 @@
+<!-- Modal Bootstrap 5 para anotar una nueva revisión de la bicicleta -->
+<div class="modal fade" id="modalNuevaRevision" tabindex="-1" aria-labelledby="modalNuevaRevisionLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <!-- Cabecera -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold" id="modalNuevaRevisionLabel">
+          <i class="bi bi-clipboard2-plus text-secondary me-2"></i>Anotar Nueva Revisión
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="modal-body p-4">
+        <!-- Fila: Fecha y Kilómetros -->
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="fechaRevision" class="form-label fw-semibold">Fecha</label>
+            <input
+              #txtFecha
+              type="date"
+              id="fechaRevision"
+              class="form-control"
+              [value]="fechaHoy"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="kmRevision" class="form-label fw-semibold">Kilómetros en la revisión</label>
+            <div class="input-group">
+              <input
+                #txtKm
+                type="number"
+                id="kmRevision"
+                class="form-control"
+                [value]="kmActuales"
+                placeholder="Ej: 3400"
+                min="0"
+              />
+              <span class="input-group-text bg-light text-muted fw-semibold">km</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mecánico Responsable -->
+        <div class="mb-3">
+          <label for="mecanicoRevision" class="form-label fw-semibold">Mecánico responsable</label>
+          <input
+            #txtMecanico
+            type="text"
+            id="mecanicoRevision"
+            class="form-control"
+            [value]="mecanicoSesion"
+            placeholder="Nombre del mecánico..."
+          />
+        </div>
+
+        <!-- Trabajos y Observaciones -->
+        <div class="mb-3">
+          <label for="descRevision" class="form-label fw-semibold">Trabajos realizados y Observaciones</label>
+          <textarea
+            #txtDesc
+            id="descRevision"
+            class="form-control"
+            rows="3"
+            placeholder="Ej: Revisión completa, purgado de frenos, engrase de pedalier y ajuste de cambios..."
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Pie con botones Cancelar y Guardar -->
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg me-1"></i> Cancelar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-success fw-semibold"
+          data-bs-dismiss="modal"
+          (click)="guardar(txtFecha.value, txtKm.value, txtMecanico.value, txtDesc.value); txtDesc.value = ''">
+          <i class="bi bi-floppy me-1"></i> Guardar Revisión
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
