@@ -19,11 +19,23 @@ $secondary-light: #e2c76e; // Variante más clara para hover
 $gravel: #c05621;
 $gravel-hover: #9a451a; // Variante sombreada para hover
 $gravel-light: #d67949; // Variante más clara para hover
+
+// Rojo Alerta / Warning (Para alarmas, avisos de revisión y acciones críticas)
+$danger: #dc3545;
+$danger-hover: #bb2d3b; // Variante más oscura para hover / active
+$danger-light: #fee2e2; // Fondo claro para alertas
+$danger-bg: #fff1f2;    // Fondo muy suave para avisos destacados
+$danger-border: #f87171;// Borde suave de advertencia
+$danger-dark: #991b1b;  // Texto oscuro de advertencia
+$danger-darker: #7f1d1d;// Texto de advertencia más oscuro (activo)
+$warning-red: $danger;   // Alias descriptivo para el rojo del warning
+
 // ==========================================================================
 // Mapeo a Colores de Tema de Bootstrap
 // ==========================================================================
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
-  "gravel": $gravel
+  "gravel": $gravel,
+  "danger": $danger
 );

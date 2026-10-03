@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { NavbarComponent } from '../navbar/navbar';
 import { ComponenteBiciComponent, ComponenteBiciData } from '../componente-bici/componente-bici';
 import { ModalComponentesComponent, ComponenteData } from '../modal-componentes/modal-componentes';
@@ -32,6 +32,16 @@ export class DetalleBiciComponent implements OnInit {
   bici = signal<any>(null);
   cargando = signal<boolean>(true);
   mensajeKm = signal<string>('');
+
+  // Señales para la confirmación de eliminación con número aleatorio
+  numeroConfirmacion = signal<number>(0);
+  numeroIngresado = signal<string>('');
+  eliminandoBici = signal<boolean>(false);
+
+  // Validador: comprueba que el número escrito coincida exactamente
+  get puedeEliminarBici(): boolean {
+    return this.numeroIngresado().trim() === this.numeroConfirmacion().toString();
+  }
 
   ngOnInit() {
     // Capturamos el parámetro 'id' de la URL (ej: /bici/123456789)
@@ -206,6 +216,89 @@ export class DetalleBiciComponent implements OnInit {
       setTimeout(() => {
         this.mensajeKm.set('');
       }, 4000);
+    }
+  }
+
+  // Elimina un componente del array de la bici y sincroniza la lista con Firestore
+  async onComponenteEliminado(index: number) {
+    const biciActual = this.bici();
+    if (biciActual && biciActual.componentes) {
+      const nombreEliminado = biciActual.componentes[index]?.nombre || 'Componente';
+      const componentesActualizados = biciActual.componentes.filter((_: any, i: number) => i !== index);
+
+      // Actualizamos la señal reactiva
+      this.bici.set({
+        ...biciActual,
+        componentes: componentesActualizados
+      });
+
+      this.mensajeKm.set(`¡${nombreEliminado} ha sido eliminado con éxito!`);
+      console.log(`🗑️ Componente #${index} (${nombreEliminado}) eliminado de la bici #${biciActual.id}`);
+
+      // Sincronizamos con Firestore
+      if (biciActual.id) {
+        try {
+          const biciRef = doc(this.firestore, 'bicicletas', biciActual.id);
+          await updateDoc(biciRef, {
+            componentes: componentesActualizados
+          });
+          console.log('🔥 Componente eliminado en Firestore con éxito');
+        } catch (error) {
+          console.error('Error al eliminar componente en Firestore:', error);
+        }
+      }
+
+      setTimeout(() => {
+        this.mensajeKm.set('');
+      }, 4000);
+    }
+  }
+
+  // Prepara el modal generando un nuevo número aleatorio
+  abrirModalEliminarBici() {
+    this.generarNumeroAleatorio();
+  }
+
+  // Genera un número aleatorio de 4 dígitos (entre 1000 y 9999)
+  generarNumeroAleatorio() {
+    const num = Math.floor(1000 + Math.random() * 9000);
+    this.numeroConfirmacion.set(num);
+    this.numeroIngresado.set('');
+  }
+
+  // Elimina la bicicleta en Firestore y redirige al dashboard
+  async eliminarBici() {
+    if (!this.puedeEliminarBici) return;
+
+    const biciActual = this.bici();
+    if (!biciActual || !biciActual.id) return;
+
+    try {
+      this.eliminandoBici.set(true);
+      const biciRef = doc(this.firestore, 'bicicletas', biciActual.id);
+      await deleteDoc(biciRef);
+      console.log(`🗑️ Bicicleta #${biciActual.id} eliminada permanentemente de Firestore.`);
+
+      // Cerrar el modal de Bootstrap
+      const modalEl = document.getElementById('modalEliminarBici');
+      if (modalEl) {
+        const bootstrap = (window as any).bootstrap;
+        if (bootstrap?.Modal) {
+          const modalInstance = bootstrap.Modal.getInstance(modalEl) || bootstrap.Modal.getOrCreateInstance(modalEl);
+          modalInstance?.hide();
+        } else {
+          const btnCerrar = modalEl.querySelector('[data-bs-dismiss="modal"]') as HTMLElement;
+          btnCerrar?.click();
+        }
+      }
+
+      // Redirigir al taller / dashboard
+      this.router.navigate(['/dashboard']);
+    } catch (error) {
+      console.error('Error al eliminar la bicicleta de Firestore:', error);
+      alert('Hubo un error al eliminar la bicicleta en la base de datos.');
+    } finally {
+      this.eliminandoBici.set(false);
     }
   }
 

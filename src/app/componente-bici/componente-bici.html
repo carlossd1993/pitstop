@@ -1,19 +1,95 @@
 @if (componente) {
 <div class="p-2">
+  <!-- Señal de Alarma si se ha superado la duración de la revisión -->
+  @if (estaEnAlarma) {
+    <div class="alert alert-danger border-2 border-danger shadow-sm rounded-4 p-3 mb-3 d-flex align-items-center gap-3 alarm-banner">
+      <div class="alarm-icon-badge bg-danger text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 48px; height: 48px;">
+        <i class="bi bi-bell-fill fs-4 animate-bell"></i>
+      </div>
+      <div class="flex-grow-1">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <span class="fw-bold fs-6 text-danger d-flex align-items-center gap-2">
+            <span>¡SEÑAL DE ALARMA! REVISIÓN OBLIGATORIA SUPERADA</span>
+          </span>
+          <span class="badge bg-danger text-white fw-bold px-3 py-1 shadow-sm">
+            +{{ kmExceso | number }} km excedidos
+          </span>
+        </div>
+        <p class="mb-0 small text-danger mt-1">
+          Este componente tiene un intervalo fijado cada <strong>{{ componente.duracionKm | number }} km</strong>.
+          Lleva recorridos <strong>{{ kmDesdeUltimaRevision | number }} km</strong> desde la última intervención (a los <strong>{{ componente.ultimaRevisionKm | number }} km</strong> de la bici).
+          ¡Superó el límite de uso recomendado! Se requiere revisión inmediata.
+        </p>
+      </div>
+    </div>
+  }
+
   <div class="row g-3 align-items-center mb-3">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Pieza / Componente</span>
       <span class="fw-bold fs-6 text-dark d-flex align-items-center">
         <i class="bi bi-tools text-primary me-2"></i> {{ componente.nombre }}
       </span>
     </div>
-    <div class="col-sm-6 text-sm-end">
+    <div class="col-sm-4 text-sm-center">
       <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Última Revisión</span>
       <span class="badge bg-secondary text-dark fs-6 fw-bold px-3 py-2 shadow-sm">
         <i class="bi bi-speedometer2 me-1"></i> {{ componente.ultimaRevisionKm | number }} km
       </span>
     </div>
+    <div class="col-sm-4 text-sm-end">
+      <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Duración Intervalo</span>
+      @if (componente.duracionKm) {
+        <span class="badge fs-6 fw-bold px-3 py-2 shadow-sm" [class.bg-danger]="estaEnAlarma" [class.text-white]="estaEnAlarma" [class.bg-light]="!estaEnAlarma" [class.text-primary]="!estaEnAlarma" [class.border]="!estaEnAlarma">
+          <i class="bi bi-arrow-repeat me-1"></i> Cada {{ componente.duracionKm | number }} km
+        </span>
+      } @else {
+        <span class="badge bg-light text-muted border fs-6 fw-normal px-3 py-2">
+          Sin límite fijado
+        </span>
+      }
+    </div>
   </div>
+
+  <!-- Barra de progreso de desgaste y vida útil si tiene duracionKm configurado -->
+  @if (componente.duracionKm) {
+    <div class="mb-3 p-3 bg-white rounded-3 border">
+      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+        <span class="small fw-semibold text-dark d-flex align-items-center gap-1">
+          <i class="bi bi-activity text-secondary"></i>
+          <span>Uso desde última revisión:</span>
+          <strong>{{ kmDesdeUltimaRevision | number }} km</strong> de <strong>{{ componente.duracionKm | number }} km</strong>
+        </span>
+        <span class="badge" [ngClass]="{
+          'text-bg-success': porcentajeUso < 70,
+          'text-bg-warning text-dark': porcentajeUso >= 70 && porcentajeUso < 100,
+          'text-bg-danger fw-bold': porcentajeUso >= 100
+        }">
+          @if (estaEnAlarma) {
+            ⚠️ ¡Superado ({{ porcentajeUso }}%)!
+          } @else if (porcentajeUso >= 70) {
+            Próximo a revisión ({{ porcentajeUso }}%)
+          } @else {
+            Estado óptimo ({{ porcentajeUso }}%)
+          }
+        </span>
+      </div>
+      <div class="progress" style="height: 10px;">
+        <div class="progress-bar"
+             [class.bg-success]="porcentajeUso < 70"
+             [class.bg-warning]="porcentajeUso >= 70 && porcentajeUso < 100"
+             [class.bg-danger]="porcentajeUso >= 100"
+             [class.progress-bar-striped]="estaEnAlarma"
+             [class.progress-bar-animated]="estaEnAlarma"
+             role="progressbar" 
+             [style.width.%]="porcentajeUso" 
+             [attr.aria-valuenow]="porcentajeUso" 
+             aria-valuemin="0" 
+             aria-valuemax="100">
+        </div>
+      </div>
+    </div>
+  }
 
   <div>
     <span class="text-muted small fw-semibold text-uppercase d-block mb-2">Observaciones del Componente</span>
@@ -52,13 +128,23 @@
       </button>
     </div>
 
-    <button type="button"
-      class="btn btn-outline-primary btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
-      data-bs-toggle="modal" [attr.data-bs-target]="'#' + modalId"
-      (click)="inputKm.value = (kmActualesBici || componente.ultimaRevisionKm || 0).toString()">
-      <i class="bi bi-pencil-square"></i>
-      <span>Actualizar información</span>
-    </button>
+    <div class="d-flex flex-wrap align-items-center gap-2">
+      <button type="button"
+        class="btn btn-outline-danger btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
+        data-bs-toggle="modal" [attr.data-bs-target]="'#' + modalEliminarId"
+        (click)="abrirModalEliminar()">
+        <i class="bi bi-trash3-fill"></i>
+        <span>Eliminar componente</span>
+      </button>
+
+      <button type="button"
+        class="btn btn-outline-primary btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
+        data-bs-toggle="modal" [attr.data-bs-target]="'#' + modalId"
+        (click)="inputKm.value = (componente.ultimaRevisionKm ?? kmActualesBici ?? 0).toString(); inputDuracion.value = (componente.duracionKm || 300).toString()">
+        <i class="bi bi-pencil-square"></i>
+        <span>Actualizar información</span>
+      </button>
+    </div>
   </div>
 
   <!-- Toast Flotante de Confirmación para Gemini -->
@@ -158,21 +244,37 @@
           <div class="mb-3">
             <div class="d-flex justify-content-between align-items-center mb-1">
               <label [for]="'kmComp_' + index" class="form-label fw-semibold text-dark small mb-0">
-                Última revisión (Kilómetros)
+                Kilómetros de la última revisión
               </label>
               @if (kmActualesBici) {
-                <span class="badge bg-light text-primary border small">
-                  <i class="bi bi-bicycle me-1"></i>Km actuales: {{ kmActualesBici | number }} km
-                </span>
+                <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none small text-primary fw-semibold"
+                  (click)="inputKm.value = kmActualesBici.toString()">
+                  <i class="bi bi-speedometer2 me-1"></i>Poner km actuales ({{ kmActualesBici | number }} km)
+                </button>
               }
             </div>
             <div class="input-group">
               <input #inputKm [id]="'kmComp_' + index" type="number" class="form-control fw-semibold"
-                [value]="kmActualesBici || componente.ultimaRevisionKm || 0" min="0" placeholder="Ej: 1500" />
+                [value]="componente.ultimaRevisionKm ?? kmActualesBici ?? 0" min="0" placeholder="Ej: 1500" />
               <span class="input-group-text bg-light text-muted fw-semibold">km</span>
             </div>
             <div class="form-text small text-muted">
-              Por defecto se cargan los kilómetros actuales de la bicicleta ({{ (kmActualesBici || componente.ultimaRevisionKm || 0) | number }} km).
+              Modifica los kilómetros de la bicicleta en los que se realizó o revisó este componente.
+            </div>
+          </div>
+
+          <!-- Duración para cada revisión (Kilómetros) -->
+          <div class="mb-3">
+            <label [for]="'durComp_' + index" class="form-label fw-semibold text-dark small mb-1">
+              Duración entre revisiones (Kilómetros)
+            </label>
+            <div class="input-group">
+              <input #inputDuracion [id]="'durComp_' + index" type="number" class="form-control fw-semibold"
+                [value]="componente.duracionKm || 300" min="1" placeholder="Ej: 300" />
+              <span class="input-group-text bg-light text-muted fw-semibold">km</span>
+            </div>
+            <div class="form-text small text-muted">
+              Kilómetros de uso tras los cuales saltará la alarma visual avisando de que requiere revisión.
             </div>
           </div>
 
@@ -188,12 +290,81 @@
 
         <!-- Pie del Modal -->
         <div class="modal-footer bg-light d-flex justify-content-between">
-          <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-outline-secondary fw-semibold" data-bs-dismiss="modal">
             <i class="bi bi-x-lg me-1"></i> Cancelar
           </button>
-          <button type="button" class="btn btn-success fw-semibold shadow-sm" data-bs-dismiss="modal"
-            (click)="guardarCambios(inputKm.value, inputObs.value)">
-            <i class="bi bi-floppy me-1"></i> Guardar
+          <button type="button" class="btn btn-primary fw-semibold shadow-sm px-4" data-bs-dismiss="modal"
+            (click)="guardarCambios(inputKm.value, inputDuracion.value, inputObs.value)">
+            <i class="bi bi-floppy me-1"></i> Guardar Cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Eliminar Componente con Confirmación Escrita -->
+  <div class="modal fade" [id]="modalEliminarId" tabindex="-1" [attr.aria-labelledby]="modalEliminarId + 'Label'" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg border-0 rounded-4 overflow-hidden">
+        <!-- Cabecera -->
+        <div class="modal-header bg-danger text-white py-3 px-4">
+          <h5 class="modal-title fw-bold d-flex align-items-center gap-2" [id]="modalEliminarId + 'Label'">
+            <i class="bi bi-trash3-fill fs-4"></i>
+            <span>Eliminar Componente</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <!-- Cuerpo -->
+        <div class="modal-body p-4 text-start">
+          <div class="alert alert-danger bg-danger-subtle border-danger d-flex align-items-center gap-3 mb-3 p-3 rounded-3">
+            <i class="bi bi-exclamation-triangle-fill text-danger fs-2 flex-shrink-0"></i>
+            <div>
+              <strong class="text-danger d-block">¿Deseas eliminar definitivamente este componente?</strong>
+              <span class="small text-danger-emphasis">
+                Se eliminará <strong>"{{ componente.nombre }}"</strong> de la bicicleta y de la base de datos Firestore. Esta acción no se puede deshacer.
+              </span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label [for]="'confirmDel_' + index" class="form-label fw-semibold text-dark mb-1">
+              Para confirmar, escribe exactamente <span class="badge bg-danger text-white font-monospace px-2 py-1 user-select-all">eliminar componente</span>:
+            </label>
+            <input 
+              #inputConfirm 
+              [id]="'confirmDel_' + index" 
+              type="text" 
+              class="form-control form-control-lg border-2" 
+              [class.border-success]="puedeEliminar"
+              [class.border-danger-subtle]="!puedeEliminar"
+              placeholder="eliminar componente"
+              [value]="textoConfirmarEliminar()"
+              (input)="textoConfirmarEliminar.set(inputConfirm.value)" 
+              autocomplete="off"
+            />
+            <div class="form-text small mt-2">
+              @if (puedeEliminar) {
+                <span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i>Texto verificado correctamente. Ya puedes eliminar.</span>
+              } @else {
+                <span class="text-muted">El botón se habilitará solo cuando coincida exactamente la frase requerida.</span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Pie -->
+        <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-secondary fw-semibold" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-danger fw-bold px-4 shadow-sm"
+            [disabled]="!puedeEliminar"
+            data-bs-dismiss="modal"
+            (click)="confirmarEliminar(); inputConfirm.value = ''">
+            <i class="bi bi-trash3-fill me-1"></i> Eliminar Definitivamente
           </button>
         </div>
       </div>

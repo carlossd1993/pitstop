@@ -2,6 +2,15 @@
 <app-navbar />
 
 <div class="container pb-5">
+  <!-- Mensaje de éxito al crear nueva bicicleta -->
+  @if (mensajeExito()) {
+    <div class="alert alert-success alert-dismissible fade show rounded-4 shadow-sm border-0 mb-4 d-flex align-items-center gap-2" role="alert">
+      <i class="bi bi-check-circle-fill fs-5 text-success"></i>
+      <div class="flex-grow-1 fw-semibold">{{ mensajeExito() }}</div>
+      <button type="button" class="btn-close" (click)="mensajeExito.set('')" aria-label="Cerrar"></button>
+    </div>
+  }
+
   <!-- Fila con buscador y botón de nueva bici -->
   <div class="row mb-4">
     <div class="col-md-9">
@@ -21,17 +30,22 @@
     <div class="col-md-4">
       <div class="card shadow-sm h-100">
         <div class="card-body">
-          <h5 class="card-title text-primary fw-bold">{{ bici.clienteNombre }}</h5>
+          <div class="d-flex justify-content-between align-items-start mb-1">
+            <h5 class="card-title text-primary fw-bold mb-0">{{ bici.clienteNombre }}</h5>
+            <span class="badge bg-light text-secondary border small fw-normal">
+              <i class="bi bi-person-fill-gear me-1"></i>{{ bici.mecanico }}
+            </span>
+          </div>
           <h6 class="card-subtitle mb-3 text-muted">{{ bici.marca }} {{ bici.modelo }}</h6>
 
           <!-- Etiquetas dinámicas de colores -->
           <div>
             <span class="badge me-1" [ngClass]="{
                       'text-bg-primary': bici.tipo === 'carretera',
-                      'text-bg-dark': bici.tipo === 'mtb',
+                      'text-bg-dark': bici.tipo === 'mtb' || bici.tipo === 'montana',
                       'text-bg-gravel': bici.tipo === 'gravel'
                     }">
-              {{ bici.tipo | uppercase }}
+              {{ (bici.tipo === 'montana' || bici.tipo === 'mtb' ? 'MTB' : bici.tipo) | uppercase }}
             </span>
 
             @if (bici.mtbTipo) {
@@ -43,7 +57,18 @@
             }
           </div>
         </div>
-        <div class="card-footer bg-transparent border-0 text-end pb-3 pe-3">
+        <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center pb-3 pe-3 ps-3">
+          <button 
+            type="button" 
+            class="btn btn-sm btn-outline-danger shadow-sm d-inline-flex align-items-center gap-1"
+            data-bs-toggle="modal" 
+            data-bs-target="#modalEliminarBiciDashboard"
+            (click)="abrirModalEliminar(bici)"
+            title="Eliminar bicicleta">
+            <i class="bi bi-trash3-fill"></i>
+            <span class="d-none d-sm-inline">Eliminar</span>
+          </button>
+
           <a [routerLink]="['/bici', bici.id]" class="btn btn-sm btn-secondary fw-semibold">
             Ver bicicleta <i class="bi bi-arrow-right ms-1"></i>
           </a>
@@ -62,6 +87,107 @@
   </div>
 </div>
 
+<!-- Modal para Eliminar Bicicleta desde el Dashboard con Código Aleatorio -->
+<div class="modal fade" id="modalEliminarBiciDashboard" tabindex="-1" aria-labelledby="modalEliminarBiciDashLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-4 overflow-hidden">
+      <!-- Cabecera -->
+      <div class="modal-header bg-danger text-white py-3 px-4">
+        <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="modalEliminarBiciDashLabel">
+          <i class="bi bi-trash3-fill fs-4"></i>
+          <span>Eliminar Bicicleta</span>
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
 
+      <!-- Cuerpo -->
+      <div class="modal-body p-4 text-start">
+        @if (biciAEliminar(); as b) {
+          <div class="alert alert-danger bg-danger-subtle border-danger d-flex align-items-center gap-3 mb-3 p-3 rounded-3">
+            <i class="bi bi-exclamation-triangle-fill text-danger fs-1 flex-shrink-0"></i>
+            <div>
+              <strong class="text-danger d-block">¿Seguro que deseas eliminar esta bicicleta?</strong>
+              <span class="small text-danger-emphasis">
+                Se borrará permanentemente la <strong>{{ b.marca }} {{ b.modelo }}</strong> de <strong>{{ b.clienteNombre }}</strong> de la base de datos Firestore.
+              </span>
+            </div>
+          </div>
 
-<app-modal-nueva-bici (biciCreada)="cargarBicicletas()"></app-modal-nueva-bici>
+          <!-- Código Aleatorio en Pantalla -->
+          <div class="bg-light p-3 rounded-3 border text-center mb-3">
+            <span class="text-muted small fw-semibold text-uppercase d-block mb-1">
+              Código de confirmación requerido
+            </span>
+            <div class="d-flex justify-content-center align-items-center gap-2">
+              <span class="display-5 fw-bold text-danger font-monospace px-3 py-1 bg-white border border-danger rounded-3 shadow-sm letter-spacing-2 user-select-all">
+                {{ numeroConfirmacion() }}
+              </span>
+              <button 
+                type="button" 
+                class="btn btn-outline-secondary btn-sm rounded-circle p-2" 
+                (click)="generarNumeroAleatorio()" 
+                title="Generar otro código">
+                <i class="bi bi-arrow-clockwise fs-6"></i>
+              </button>
+            </div>
+            <small class="text-muted d-block mt-2">
+              Escribe este número a continuación para habilitar la eliminación.
+            </small>
+          </div>
+
+          <!-- Input para escribir el número -->
+          <div class="mb-3">
+            <label for="inputNumeroConfirmacionDash" class="form-label fw-semibold text-dark">
+              Introduce el número mostrado:
+            </label>
+            <input 
+              #inputNumDash
+              id="inputNumeroConfirmacionDash"
+              type="text" 
+              class="form-control form-control-lg text-center font-monospace fw-bold fs-4 border-2" 
+              [class.border-success]="puedeEliminarBici"
+              [class.border-danger-subtle]="!puedeEliminarBici"
+              placeholder="Ej: {{ numeroConfirmacion() }}"
+              maxlength="6"
+              [value]="numeroIngresado()"
+              (input)="numeroIngresado.set(inputNumDash.value)"
+              autocomplete="off"
+            />
+            <div class="form-text mt-2 text-center">
+              @if (puedeEliminarBici) {
+                <span class="text-success fw-bold">
+                  <i class="bi bi-check-circle-fill me-1"></i>¡Número correcto! Ya puedes eliminar la bicicleta.
+                </span>
+              } @else {
+                <span class="text-muted">
+                  El botón se activará únicamente cuando el número coincida exactamente.
+                </span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Pie -->
+      <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary fw-semibold" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-danger fw-bold px-4 shadow-sm"
+          [disabled]="!puedeEliminarBici || eliminandoBici()"
+          (click)="confirmarEliminarBici()">
+          @if (eliminandoBici()) {
+            <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+            Eliminando...
+          } @else {
+            <i class="bi bi-trash3-fill me-1"></i> Eliminar Definitivamente
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-nueva-bici></app-modal-nueva-bici>

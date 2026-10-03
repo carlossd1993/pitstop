@@ -1,15 +1,18 @@
 <!-- Modal Bootstrap 5 para dar de alta una nueva bicicleta -->
 <div class="modal fade" id="modalNuevaBici" tabindex="-1" aria-labelledby="modalNuevaBiciLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content shadow">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content shadow border-0 rounded-4 overflow-hidden">
       <!-- Cabecera -->
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title fw-bold" id="modalNuevaBiciLabel">Nueva Bicicleta</h5>
+      <div class="modal-header bg-primary text-white py-3 px-4">
+        <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="modalNuevaBiciLabel">
+          <i class="bi bi-bicycle text-secondary fs-4"></i>
+          <span>Nueva Bicicleta</span>
+        </h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
 
       <!-- Cuerpo del modal -->
-      <div class="modal-body p-4">
+      <div class="modal-body p-4 text-start">
         <!-- 1. Cliente con Datalist -->
         <div class="mb-3">
           <label for="clienteInput" class="form-label fw-semibold">Cliente</label>
@@ -191,31 +194,103 @@
           </div>
         }
 
-        <!-- 5. Observaciones -->
+        <!-- 4.5. Mecánico Responsable -->
         <div class="mb-3">
-          <label for="observaciones" class="form-label fw-semibold">Observaciones</label>
+          <label for="mecanicoInput" class="form-label fw-semibold">Mecánico Responsable</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light text-primary">
+              <i class="bi bi-person-fill-gear"></i>
+            </span>
+            <input
+              #txtMecanico
+              type="text"
+              id="mecanicoInput"
+              class="form-control"
+              [value]="mecanicoSesion()"
+              placeholder="Nombre del mecánico..."
+            />
+          </div>
+          <div class="form-text small text-muted">
+            Mecánico asignado a la bicicleta (por defecto: <strong class="text-dark">{{ mecanicoSesion() }}</strong>).
+          </div>
+        </div>
+
+        <!-- 4.8. Sección de Componentes Dinámicos según tipo de bicicleta -->
+        <div class="card border bg-light-subtle rounded-4 p-3 mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+            <h6 class="fw-bold text-primary mb-0 d-flex align-items-center gap-2">
+              <i class="bi bi-gear-wide-connected text-secondary fs-5"></i>
+              <span>Componentes a registrar ({{ listaComponentesRequeridos().length }})</span>
+            </h6>
+            <span class="badge bg-secondary text-dark fw-semibold small">
+              Opcionales · Puedes dejarlos en blanco
+            </span>
+          </div>
+          <p class="text-muted small mb-3">
+            Rellena los detalles o modelos de las piezas si los conoces. Si los dejas en blanco, se registrarán automáticamente con su nombre estándar.
+          </p>
+
+          <div class="row g-2">
+            @for (comp of listaComponentesRequeridos(); track comp) {
+              <div class="col-md-6">
+                <div class="p-2 bg-white rounded-3 border h-100 shadow-sm">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <label class="form-label small fw-bold text-dark mb-0">
+                      <i class="bi bi-tools text-secondary me-1"></i>{{ comp }}
+                    </label>
+                    <span class="text-muted fst-italic" style="font-size: 0.72rem;">Opcional</span>
+                  </div>
+                  <input 
+                    type="text" 
+                    class="form-control form-control-sm mb-1"
+                    [placeholder]="'Marca / modelo (ej: Shimano, Fox...)'"
+                    [value]="obtenerModeloComponente(comp)"
+                    (input)="actualizarModeloComponente(comp, $any($event.target).value)"
+                  />
+                  <input 
+                    type="text" 
+                    class="form-control form-control-sm text-secondary"
+                    style="font-size: 0.78rem;"
+                    placeholder="Observaciones / estado (opcional)..."
+                    [value]="obtenerObsComponente(comp)"
+                    (input)="actualizarObsComponente(comp, $any($event.target).value)"
+                  />
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- 5. Observaciones Generales -->
+        <div class="mb-3">
+          <label for="observaciones" class="form-label fw-semibold">Observaciones Generales de la Bici</label>
           <textarea
             #txtObs
             class="form-control"
             id="observaciones"
             rows="3"
-            placeholder="Añadir notas del estado de la bici..."
+            placeholder="Añadir notas del estado general de la bicicleta..."
           ></textarea>
         </div>
       </div>
 
       <!-- 6. Footer con botones de acción -->
       <div class="modal-footer bg-light">
-        <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal" [disabled]="guardando()">
           <i class="bi bi-x-lg me-1"></i> Cancelar
         </button>
         
         <button 
           type="button" 
-          class="btn btn-success fw-semibold"
-          data-bs-dismiss="modal"
-          (click)="guardar(txtCliente.value, txtMarca.value, txtModelo.value, txtKm.value, txtObs.value); txtCliente.value = ''; txtMarca.value = ''; txtModelo.value = ''; txtKm.value = '0'; txtObs.value = ''">
-          <i class="bi bi-floppy me-1"></i> Guardar
+          class="btn btn-success fw-semibold shadow-sm px-4"
+          [disabled]="guardando()"
+          (click)="guardar(txtCliente.value, txtMarca.value, txtModelo.value, txtKm.value, txtMecanico.value, txtObs.value)">
+          @if (guardando()) {
+            <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+            Guardando...
+          } @else {
+            <i class="bi bi-floppy me-1"></i> Guardar
+          }
         </button>
       </div>
     </div>

@@ -69,13 +69,13 @@
     }
 
     &.text-danger:hover {
-      background-color: rgba(220, 53, 69, 0.08);
-      color: #dc3545 !important;
+      background-color: rgba($danger, 0.08);
+      color: $danger !important;
     }
 
     &.text-danger:active {
-      background-color: rgba(220, 53, 69, 0.15);
-      color: #dc3545 !important;
+      background-color: rgba($danger, 0.15);
+      color: $danger !important;
     }
   }
 }

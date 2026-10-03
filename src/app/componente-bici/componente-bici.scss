@@ -1,4 +1,5 @@
 // Estilos específicos para el componente-bici
+@use '../../variables' as *;
 
 .btn-outline-gemini {
   border-color: #818cf8;
@@ -23,5 +24,37 @@
 
   &:hover {
     color: #312e81 !important;
+  }
+}
+
+// Estilos de la señal de alarma y aviso visual
+.alarm-banner {
+  background-color: rgba($danger, 0.08);
+  border-left: 6px solid $danger !important;
+  animation: alarmGlow 2s infinite ease-in-out;
+}
+
+.alarm-icon-badge {
+  box-shadow: 0 4px 12px rgba($danger, 0.4);
+}
+
+@keyframes bellRing {
+  0%, 100% { transform: rotate(0); }
+  15%, 45% { transform: rotate(16deg); }
+  30%, 60% { transform: rotate(-16deg); }
+  75% { transform: rotate(0); }
+}
+
+.animate-bell {
+  animation: bellRing 2.2s infinite ease-in-out;
+  display: inline-block;
+}
+
+@keyframes alarmGlow {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba($danger, 0.15);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba($danger, 0.35);
   }
 }

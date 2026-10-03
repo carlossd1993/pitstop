@@ -17,6 +17,16 @@
           data-bs-target="#modalLibroRevisiones">
           <i class="bi bi-book-half me-1"></i> Libro de revisiones
         </button>
+
+        <button 
+          type="button" 
+          class="btn btn-outline-danger btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-1"
+          data-bs-toggle="modal" 
+          data-bs-target="#modalEliminarBici"
+          (click)="abrirModalEliminarBici()">
+          <i class="bi bi-trash3-fill"></i>
+          <span>Eliminar bici</span>
+        </button>
       }
     </div>
 
@@ -233,24 +243,36 @@
       </div>
 
       <div class="accordion accordion-flush rounded-3 overflow-hidden border" id="accordionComponentes">
-        @for (comp of b.componentes; track comp.nombre; let idx = $index) {
-          <div class="accordion-item">
+        @for (comp of b.componentes; track idx; let idx = $index) {
+          <div class="accordion-item" [class.border-danger]="comp.duracionKm && ((b.kmTotales || 0) - (comp.ultimaRevisionKm || 0) >= comp.duracionKm)">
             <h2 class="accordion-header" [id]="'heading-' + idx">
               <button 
                 class="accordion-button collapsed fw-semibold text-primary py-3" 
+                [class.accordion-btn-alarma]="comp.duracionKm && ((b.kmTotales || 0) - (comp.ultimaRevisionKm || 0) >= comp.duracionKm)"
                 type="button" 
                 data-bs-toggle="collapse" 
                 [attr.data-bs-target]="'#collapse-' + idx" 
                 aria-expanded="false" 
                 [attr.aria-controls]="'collapse-' + idx">
-                <div class="d-flex justify-content-between align-items-center w-100 me-3">
+                <div class="d-flex justify-content-between align-items-center w-100 me-3 flex-wrap gap-2">
                   <span class="d-flex align-items-center">
-                    <i class="bi bi-wrench-adjustable me-2 text-secondary"></i>
+                    @if (comp.duracionKm && ((b.kmTotales || 0) - (comp.ultimaRevisionKm || 0) >= comp.duracionKm)) {
+                      <i class="bi bi-bell-fill text-danger me-2 fs-5" title="Alarma: ¡Revisión superada!"></i>
+                    } @else {
+                      <i class="bi bi-wrench-adjustable me-2 text-secondary"></i>
+                    }
                     {{ comp.nombre }}
                   </span>
-                  <span class="badge bg-secondary text-dark fw-semibold px-2 py-1">
-                    {{ comp.ultimaRevisionKm | number }} km
-                  </span>
+                  <div class="d-flex align-items-center gap-2">
+                    @if (comp.duracionKm && ((b.kmTotales || 0) - (comp.ultimaRevisionKm || 0) >= comp.duracionKm)) {
+                      <span class="badge bg-danger text-white fw-bold px-2 py-1 shadow-sm d-inline-flex align-items-center gap-1 badge-alarm">
+                        <i class="bi bi-exclamation-octagon-fill"></i> ¡REVISIÓN VENCIDA! (+{{ ((b.kmTotales || 0) - (comp.ultimaRevisionKm || 0) - comp.duracionKm) | number }} km)
+                      </span>
+                    }
+                    <span class="badge bg-secondary text-dark fw-semibold px-2 py-1">
+                      Últ. rev: {{ comp.ultimaRevisionKm | number }} km
+                    </span>
+                  </div>
                 </div>
               </button>
             </h2>
@@ -266,7 +288,8 @@
                   [componente]="comp" 
                   [index]="idx"
                   [kmActualesBici]="b.kmTotales || 0"
-                  (componenteActualizado)="onComponenteActualizado(idx, $event)">
+                  (componenteActualizado)="onComponenteActualizado(idx, $event)"
+                  (componenteEliminado)="onComponenteEliminado(idx)">
                 </app-componente-bici>
               </div>
             </div>
@@ -310,7 +333,10 @@
     </app-modal-revision>
 
     <!-- Modal para añadir nuevos componentes -->
-    <app-modal-componentes (componenteGuardado)="onComponenteGuardado($event)"></app-modal-componentes>
+    <app-modal-componentes 
+      [kmActualesBici]="b.kmTotales || 0" 
+      (componenteGuardado)="onComponenteGuardado($event)">
+    </app-modal-componentes>
 
     <!-- Modal para el Libro de Revisiones e Impresión -->
     <app-libro-revisiones [bici]="b"></app-libro-revisiones>
@@ -363,6 +389,107 @@
               data-bs-dismiss="modal"
               (click)="actualizarKm(inputNuevoKm.value)">
               <i class="bi bi-floppy me-1"></i> Guardar Kilómetros
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para Eliminar Bicicleta con Confirmación de Número Aleatorio -->
+    <div class="modal fade" id="modalEliminarBici" tabindex="-1" aria-labelledby="modalEliminarBiciLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0 rounded-4 overflow-hidden">
+          <!-- Cabecera -->
+          <div class="modal-header bg-danger text-white py-3 px-4">
+            <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="modalEliminarBiciLabel">
+              <i class="bi bi-trash3-fill fs-4"></i>
+              <span>Eliminar Bicicleta</span>
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <!-- Cuerpo -->
+          <div class="modal-body p-4 text-start">
+            <div class="alert alert-danger bg-danger-subtle border-danger d-flex align-items-center gap-3 mb-3 p-3 rounded-3">
+              <i class="bi bi-exclamation-triangle-fill text-danger fs-1 flex-shrink-0"></i>
+              <div>
+                <strong class="text-danger d-block">¿Seguro que deseas eliminar esta bicicleta?</strong>
+                <span class="small text-danger-emphasis">
+                  Se borrará permanentemente la <strong>{{ b.marca }} {{ b.modelo }}</strong> de <strong>{{ b.clienteNombre }}</strong>, incluyendo todos sus componentes e historial de revisiones.
+                </span>
+              </div>
+            </div>
+
+            <!-- Código Aleatorio en Pantalla -->
+            <div class="bg-light p-3 rounded-3 border text-center mb-3">
+              <span class="text-muted small fw-semibold text-uppercase d-block mb-1">
+                Número de confirmación de seguridad
+              </span>
+              <div class="d-flex justify-content-center align-items-center gap-2">
+                <span class="display-5 fw-bold text-danger font-monospace px-3 py-1 bg-white border border-danger rounded-3 shadow-sm letter-spacing-2 user-select-all">
+                  {{ numeroConfirmacion() }}
+                </span>
+                <button 
+                  type="button" 
+                  class="btn btn-outline-secondary btn-sm rounded-circle p-2" 
+                  (click)="generarNumeroAleatorio()" 
+                  title="Generar otro código">
+                  <i class="bi bi-arrow-clockwise fs-6"></i>
+                </button>
+              </div>
+              <small class="text-muted d-block mt-2">
+                Escribe este número a continuación para habilitar la eliminación.
+              </small>
+            </div>
+
+            <!-- Input para escribir el número -->
+            <div class="mb-3">
+              <label for="inputNumeroConfirmacion" class="form-label fw-semibold text-dark">
+                Introduce el número mostrado:
+              </label>
+              <input 
+                #inputNumConfirm
+                id="inputNumeroConfirmacion"
+                type="text" 
+                class="form-control form-control-lg text-center font-monospace fw-bold fs-4 border-2" 
+                [class.border-success]="puedeEliminarBici"
+                [class.border-danger-subtle]="!puedeEliminarBici"
+                placeholder="Ej: {{ numeroConfirmacion() }}"
+                maxlength="6"
+                [value]="numeroIngresado()"
+                (input)="numeroIngresado.set(inputNumConfirm.value)"
+                autocomplete="off"
+              />
+              <div class="form-text mt-2 text-center">
+                @if (puedeEliminarBici) {
+                  <span class="text-success fw-bold">
+                    <i class="bi bi-check-circle-fill me-1"></i>¡Número correcto! Ya puedes eliminar la bicicleta.
+                  </span>
+                } @else {
+                  <span class="text-muted">
+                    El botón se activará únicamente cuando el número coincida exactamente.
+                  </span>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Pie -->
+          <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-secondary fw-semibold" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button 
+              type="button" 
+              class="btn btn-danger fw-bold px-4 shadow-sm"
+              [disabled]="!puedeEliminarBici || eliminandoBici()"
+              (click)="eliminarBici()">
+              @if (eliminandoBici()) {
+                <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                Eliminando...
+              } @else {
+                <i class="bi bi-trash3-fill me-1"></i> Eliminar Definitivamente
+              }
             </button>
           </div>
         </div>
