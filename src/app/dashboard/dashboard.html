@@ -44,7 +44,9 @@
           </div>
         </div>
         <div class="card-footer bg-transparent border-0 text-end pb-3 pe-3">
-          <button class="btn btn-sm btn-outline-primary">Ver historial</button>
+          <a [routerLink]="['/bici', bici.id]" class="btn btn-sm btn-secondary fw-semibold">
+            Ver bicicleta <i class="bi bi-arrow-right ms-1"></i>
+          </a>
         </div>
       </div>
     </div>

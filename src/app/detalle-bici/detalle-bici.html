@@ -1,0 +1,140 @@
+<!-- Barra de navegación -->
+<app-navbar />
+
+<div class="container pb-5">
+  <!-- Botón de regreso -->
+  <div class="mb-4">
+    <button class="btn btn-outline-primary btn-sm fw-semibold shadow-sm" (click)="volver()">
+      <i class="bi bi-arrow-left me-1"></i> Volver al taller
+    </button>
+  </div>
+
+  @if (cargando()) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando datos...</span>
+      </div>
+      <p class="text-muted mt-3">Cargando información de la bicicleta...</p>
+    </div>
+  } @else if (bici(); as b) {
+    <!-- Tarjeta principal con la información de la bicicleta -->
+    <div class="card bg-white shadow-sm border-0 rounded-4 overflow-hidden">
+      <!-- Encabezado de la tarjeta -->
+      <div class="card-header bg-primary text-white p-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <div>
+          <span class="text-white-50 text-uppercase small fw-bold d-block">Ficha de Bicicleta</span>
+          <h2 class="h3 fw-bold mb-0 text-white">{{ b.marca }} {{ b.modelo }}</h2>
+        </div>
+        
+        <!-- Badges de categoría -->
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge px-3 py-2 text-uppercase fw-semibold"
+                [ngClass]="{
+                  'text-bg-light text-primary': b.tipo === 'carretera',
+                  'text-bg-dark': b.tipo === 'mtb',
+                  'text-bg-gravel': b.tipo === 'gravel'
+                }">
+            {{ b.tipo }}
+          </span>
+
+          @if (b.mtbTipo) {
+            <span class="badge text-bg-secondary text-dark px-3 py-2 fw-semibold">
+              {{ b.mtbTipo | uppercase }}
+            </span>
+          }
+
+          @if (b.suspension) {
+            <span class="badge text-bg-secondary text-dark px-3 py-2 fw-semibold">
+              {{ b.suspension | uppercase }}
+            </span>
+          }
+
+          @if (b.esElectrica) {
+            <span class="badge text-bg-danger px-3 py-2 fw-bold">
+              ⚡ E-BIKE
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Cuerpo con detalles -->
+      <div class="card-body p-4 p-md-5">
+        <div class="row g-4 mb-4">
+          <!-- Columna Cliente -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="p-3 bg-light rounded-3 border h-100">
+              <span class="text-muted small fw-semibold d-block mb-1">
+                <i class="bi bi-person me-1 text-primary"></i> Cliente
+              </span>
+              <span class="fs-5 fw-bold text-dark">{{ b.clienteNombre }}</span>
+            </div>
+          </div>
+
+          <!-- Columna Marca -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="p-3 bg-light rounded-3 border h-100">
+              <span class="text-muted small fw-semibold d-block mb-1">
+                <i class="bi bi-tag me-1 text-primary"></i> Marca
+              </span>
+              <span class="fs-5 fw-bold text-dark">{{ b.marca }}</span>
+            </div>
+          </div>
+
+          <!-- Columna Modelo -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="p-3 bg-light rounded-3 border h-100">
+              <span class="text-muted small fw-semibold d-block mb-1">
+                <i class="bi bi-bicycle me-1 text-primary"></i> Modelo
+              </span>
+              <span class="fs-5 fw-bold text-dark">{{ b.modelo }}</span>
+            </div>
+          </div>
+
+          <!-- Columna Mecánico -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="p-3 bg-light rounded-3 border h-100">
+              <span class="text-muted small fw-semibold d-block mb-1">
+                <i class="bi bi-tools me-1 text-primary"></i> Mecánico Asignado
+              </span>
+              <span class="fs-5 fw-bold text-primary">{{ b.mecanico || 'Sin asignar' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Observaciones / Estado del taller -->
+        <div class="mt-4">
+          <h4 class="h5 fw-bold text-primary mb-3">
+            <i class="bi bi-clipboard2-check me-2"></i>Observaciones del Taller
+          </h4>
+          <div class="p-4 rounded-3 border bg-light">
+            <p class="mb-0 text-secondary fs-6 lead">
+              {{ b.observaciones || 'No hay observaciones registradas para esta bicicleta.' }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie con acciones -->
+      <div class="card-footer bg-light border-top p-4 d-flex justify-content-between align-items-center">
+        <span class="text-muted small">
+          ID de registro: <span class="fw-semibold text-dark">#{{ b.id }}</span>
+        </span>
+        <button class="btn btn-secondary fw-semibold px-4" (click)="volver()">
+          Volver al listado
+        </button>
+      </div>
+    </div>
+  } @else {
+    <!-- Estado si no se encuentra la bici -->
+    <div class="card bg-white shadow-sm border-0 rounded-4 p-5 text-center">
+      <div class="py-4">
+        <i class="bi bi-exclamation-triangle text-warning display-4 mb-3 d-block"></i>
+        <h3 class="h4 fw-bold text-primary">Bicicleta no encontrada</h3>
+        <p class="text-muted">No se ha podido localizar ninguna bicicleta con este identificador.</p>
+        <button class="btn btn-primary fw-semibold mt-2" (click)="volver()">
+          Volver al Dashboard
+        </button>
+      </div>
+    </div>
+  }
+</div>
