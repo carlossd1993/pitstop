@@ -17,6 +17,7 @@ export interface ComponenteBiciData {
 export class ComponenteBiciComponent {
   @Input() componente?: ComponenteBiciData;
   @Input() index: number = 0;
+  @Input() kmActualesBici: number = 0;
   @Output() componenteActualizado = new EventEmitter<ComponenteBiciData>();
 
   mostrarToastGemini = signal<boolean>(false);

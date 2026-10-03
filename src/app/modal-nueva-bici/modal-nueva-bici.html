@@ -52,6 +52,23 @@
           </div>
         </div>
 
+        <!-- Kilómetros actuales de la bicicleta -->
+        <div class="mb-3">
+          <label for="kmInput" class="form-label fw-semibold">Kilómetros actuales</label>
+          <div class="input-group">
+            <input
+              #txtKm
+              type="number"
+              id="kmInput"
+              class="form-control"
+              placeholder="Ej: 0"
+              min="0"
+              value="0"
+            />
+            <span class="input-group-text bg-light text-muted fw-semibold">km</span>
+          </div>
+        </div>
+
         <!-- 2. Selector E-Bike (Chip / Botón con btn-check) -->
         <div class="mb-3">
           <input
@@ -197,7 +214,7 @@
           type="button" 
           class="btn btn-success fw-semibold"
           data-bs-dismiss="modal"
-          (click)="guardar(txtCliente.value, txtMarca.value, txtModelo.value, txtObs.value)">
+          (click)="guardar(txtCliente.value, txtMarca.value, txtModelo.value, txtKm.value, txtObs.value); txtCliente.value = ''; txtMarca.value = ''; txtModelo.value = ''; txtKm.value = '0'; txtObs.value = ''">
           <i class="bi bi-floppy me-1"></i> Guardar
         </button>
       </div>

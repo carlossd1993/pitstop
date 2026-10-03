@@ -1,8 +1,11 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { Component, OnInit, signal, computed, inject } from '@angular/core';
+import { CommonModule } from '@angular/common'; 
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar';
 import { ModalNuevaBiciComponent } from '../modal-nueva-bici/modal-nueva-bici';
+
+// Importaciones de Firebase
+import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,22 +18,22 @@ export class DashboardComponent implements OnInit {
   bicicletas = signal<any[]>([]);
   terminoBusqueda = signal('');
 
-  // NUEVO: Señal para almacenar el mecánico de la sesión actual
+  // 2. Señal para almacenar el mecánico de la sesión actual
   mecanicoActual = signal('');
 
-  // 2. Señal computada con doble filtro (mecánico y búsqueda)
+  // 3. Inyectamos Firestore
+  private firestore = inject(Firestore);
+
+  // 4. Señal computada con doble filtro (mecánico y búsqueda)
   bicicletasFiltradas = computed(() => {
     const termino = this.terminoBusqueda().toLowerCase();
-    // Pasamos a minúsculas el nombre de la sesión
-    const mecanico = this.mecanicoActual().toLowerCase(); 
+    const mecanico = this.mecanicoActual().toLowerCase();
     let lista = this.bicicletas();
 
-    // FILTRO 1: Comparamos forzando ambos lados a minúsculas
     if (mecanico) {
       lista = lista.filter(bici => bici.mecanico?.toLowerCase() === mecanico);
     }
 
-    // FILTRO 2: Aplicar la búsqueda por texto si el usuario ha escrito algo
     if (!termino) return lista;
 
     return lista.filter(bici =>
@@ -40,10 +43,10 @@ export class DashboardComponent implements OnInit {
     );
   });
 
-  constructor(private location: Location) { }
+  constructor() { }
 
   ngOnInit() {
-    // Recuperar el nombre del mecánico de la sesión local
+    // Recuperamos el nombre con tu doble validación
     const mecanicoGuardado = localStorage.getItem('mecanicoNombre') || localStorage.getItem('mecanicoSesion');
     if (mecanicoGuardado) {
       this.mecanicoActual.set(mecanicoGuardado);
@@ -54,19 +57,28 @@ export class DashboardComponent implements OnInit {
 
   async cargarBicicletas() {
     try {
-      const url = this.location.prepareExternalUrl('/data/bicicletas.json');
-      const respuesta = await fetch(url);
-      const datos = await respuesta.json();
+      // 1. Apuntamos a la colección 'bicicletas' en Firestore
+      const bicisRef = collection(this.firestore, 'bicicletas');
+      
+      // 2. Traemos todos los documentos
+      const snapshot = await getDocs(bicisRef);
+      
+      // 3. Los mapeamos incluyendo el ID real generado por Firebase
+      const arrayBicis = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
 
-      const arrayBicis = Array.isArray(datos) ? datos : datos.bicicletas || [];
+      // 4. Actualizamos la señal
       this.bicicletas.set(arrayBicis);
+      console.log('🔥 Bicis de Firestore:', this.bicicletas());
 
     } catch (error) {
-      console.error('Error cargando el JSON:', error);
+      console.error('Error cargando los datos de Firebase:', error);
     }
   }
 
-  // 4. Función para actualizar la señal del buscador en tiempo real
+  // 5. Función para actualizar la señal del buscador en tiempo real
   alEscribir(event: Event) {
     const input = event.target as HTMLInputElement;
     this.terminoBusqueda.set(input.value);

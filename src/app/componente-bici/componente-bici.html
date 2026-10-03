@@ -54,7 +54,8 @@
 
     <button type="button"
       class="btn btn-outline-primary btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
-      data-bs-toggle="modal" [attr.data-bs-target]="'#' + modalId">
+      data-bs-toggle="modal" [attr.data-bs-target]="'#' + modalId"
+      (click)="inputKm.value = (kmActualesBici || componente.ultimaRevisionKm || 0).toString()">
       <i class="bi bi-pencil-square"></i>
       <span>Actualizar información</span>
     </button>
@@ -155,16 +156,23 @@
 
           <!-- Kilómetros de última revisión -->
           <div class="mb-3">
-            <label [for]="'kmComp_' + index" class="form-label fw-semibold text-dark small mb-1">
-              Última revisión (Kilómetros)
-            </label>
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <label [for]="'kmComp_' + index" class="form-label fw-semibold text-dark small mb-0">
+                Última revisión (Kilómetros)
+              </label>
+              @if (kmActualesBici) {
+                <span class="badge bg-light text-primary border small">
+                  <i class="bi bi-bicycle me-1"></i>Km actuales: {{ kmActualesBici | number }} km
+                </span>
+              }
+            </div>
             <div class="input-group">
               <input #inputKm [id]="'kmComp_' + index" type="number" class="form-control fw-semibold"
-                [value]="componente.ultimaRevisionKm" min="0" placeholder="Ej: 1500" />
+                [value]="kmActualesBici || componente.ultimaRevisionKm || 0" min="0" placeholder="Ej: 1500" />
               <span class="input-group-text bg-light text-muted fw-semibold">km</span>
             </div>
             <div class="form-text small text-muted">
-              Indica los kilómetros totales de la bicicleta en los que se intervino este componente.
+              Por defecto se cargan los kilómetros actuales de la bicicleta ({{ (kmActualesBici || componente.ultimaRevisionKm || 0) | number }} km).
             </div>
           </div>
 

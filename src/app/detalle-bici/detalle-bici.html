@@ -122,6 +122,16 @@
             <span class="text-muted small fw-semibold text-uppercase d-block">Kilometraje Total de la Bici</span>
             <div class="d-flex align-items-baseline gap-2">
               <span class="fw-bold fs-3 text-primary">{{ b.kmTotales | number }} km</span>
+              <button 
+                type="button" 
+                class="btn btn-outline-secondary btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-1"
+                style="width: 28px; height: 28px;"
+                data-bs-toggle="modal" 
+                data-bs-target="#modalActualizarKm"
+                (click)="inputNuevoKm.value = (b.kmTotales || 0).toString()"
+                title="Modificar kilómetros totales">
+                <i class="bi bi-pencil-fill" style="font-size: 0.75rem;"></i>
+              </button>
               @if (b.revisiones && b.revisiones.length > 0) {
                 <span class="text-muted small">
                   · {{ b.revisiones.length }} {{ b.revisiones.length === 1 ? 'revisión' : 'revisiones' }} en histórico
@@ -131,7 +141,17 @@
           </div>
         </div>
 
-        <div class="col-md-5 d-flex flex-column align-items-md-end">
+        <div class="col-md-5 d-flex flex-wrap justify-content-md-end align-items-center gap-2">
+          <button 
+            type="button" 
+            class="btn btn-outline-primary fw-semibold px-3 py-2 shadow-sm d-inline-flex align-items-center gap-2"
+            data-bs-toggle="modal" 
+            data-bs-target="#modalActualizarKm"
+            (click)="inputNuevoKm.value = (b.kmTotales || 0).toString()">
+            <i class="bi bi-speedometer"></i>
+            <span>Actualizar km</span>
+          </button>
+
           <button 
             type="button" 
             class="btn btn-secondary fw-semibold px-4 py-2 shadow-sm d-inline-flex align-items-center gap-2"
@@ -141,7 +161,7 @@
             <span>Anotar revisión</span>
           </button>
           @if (mensajeKm()) {
-            <span class="text-success small fw-semibold mt-2 d-block text-md-end">
+            <span class="text-success small fw-semibold mt-2 d-block w-100 text-md-end">
               <i class="bi bi-check-circle-fill me-1"></i>{{ mensajeKm() }}
             </span>
           }
@@ -242,7 +262,12 @@
               data-bs-parent="#accordionComponentes">
               <div class="accordion-body bg-light border-top">
                 <!-- Componente hijo con los datos específicos del componente -->
-                <app-componente-bici [componente]="comp" [index]="idx"></app-componente-bici>
+                <app-componente-bici 
+                  [componente]="comp" 
+                  [index]="idx"
+                  [kmActualesBici]="b.kmTotales || 0"
+                  (componenteActualizado)="onComponenteActualizado(idx, $event)">
+                </app-componente-bici>
               </div>
             </div>
           </div>
@@ -285,10 +310,64 @@
     </app-modal-revision>
 
     <!-- Modal para añadir nuevos componentes -->
-    <app-modal-componentes></app-modal-componentes>
+    <app-modal-componentes (componenteGuardado)="onComponenteGuardado($event)"></app-modal-componentes>
 
     <!-- Modal para el Libro de Revisiones e Impresión -->
     <app-libro-revisiones [bici]="b"></app-libro-revisiones>
+
+    <!-- Modal para Actualizar Kilómetros Totales sin crear revisión -->
+    <div class="modal fade" id="modalActualizarKm" tabindex="-1" aria-labelledby="modalActualizarKmLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow border-0 rounded-4 overflow-hidden">
+          <div class="modal-header bg-primary text-white py-3 px-4">
+            <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="modalActualizarKmLabel">
+              <i class="bi bi-speedometer2 text-secondary fs-4"></i>
+              <span>Actualizar Odómetro de la Bici</span>
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="modal-body p-4 text-start">
+            <p class="text-muted small mb-3">
+              Modifica los kilómetros totales de la bicicleta (<strong>{{ b.marca }} {{ b.modelo }}</strong>). 
+              Este cambio se guardará directamente en la base de datos sin añadir una revisión en el histórico.
+            </p>
+
+            <div class="mb-3">
+              <label for="inputNuevoKm" class="form-label fw-semibold text-dark">Nuevo Kilometraje Total</label>
+              <div class="input-group input-group-lg">
+                <input 
+                  #inputNuevoKm 
+                  id="inputNuevoKm" 
+                  type="number" 
+                  class="form-control fw-bold text-primary" 
+                  [value]="b.kmTotales || 0" 
+                  min="0" 
+                  placeholder="Ej: 3500" 
+                />
+                <span class="input-group-text bg-light text-muted fw-bold">km</span>
+              </div>
+              <div class="form-text small text-muted mt-2">
+                Kilometraje actual registrado: <strong>{{ b.kmTotales | number }} km</strong>.
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer bg-light px-4 py-3 d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-secondary fw-semibold" data-bs-dismiss="modal">
+              <i class="bi bi-x-lg me-1"></i> Cancelar
+            </button>
+            <button 
+              type="button" 
+              class="btn btn-primary fw-bold shadow-sm px-4" 
+              data-bs-dismiss="modal"
+              (click)="actualizarKm(inputNuevoKm.value)">
+              <i class="bi bi-floppy me-1"></i> Guardar Kilómetros
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   } @else {
     <!-- Estado si no se encuentra la bici -->
     <div class="card bg-white shadow-sm border-0 rounded-4 p-5 text-center">

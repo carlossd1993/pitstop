@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+
+export interface ComponenteData {
+  nombre: string;
+  ultimaRevisionKm: number;
+  duracionKm?: number;
+  observaciones: string;
+}
 
 @Component({
   selector: 'app-modal-componentes',
@@ -7,15 +14,20 @@ import { Component } from '@angular/core';
   styleUrl: './modal-componentes.scss',
 })
 export class ModalComponentesComponent {
-  // Función para capturar los datos del modal e imprimirlos por consola
-  guardar(nombreTxt: string, kmTxt: string, obsTxt: string) {
-    const nuevoComponente = {
+  @Output() componenteGuardado = new EventEmitter<ComponenteData>();
+
+  // Función para capturar los datos del modal y emitirlos
+  guardar(nombreTxt: string, kmTxt: string, duracionTxt: string, obsTxt: string) {
+    const durNum = Number(duracionTxt);
+    const nuevoComponente: ComponenteData = {
       nombre: nombreTxt.trim() || 'Componente sin nombre',
       ultimaRevisionKm: Number(kmTxt) || 0,
+      duracionKm: !isNaN(durNum) && durNum > 0 ? durNum : undefined,
       observaciones: obsTxt.trim() || 'Sin observaciones registradas.'
     };
 
-    console.log('⚙️ Componente a guardar en el JSON:', nuevoComponente);
+    console.log('⚙️ Componente a guardar con duración:', nuevoComponente);
+    this.componenteGuardado.emit(nuevoComponente);
   }
 }
 
