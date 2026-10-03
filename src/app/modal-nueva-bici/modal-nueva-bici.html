@@ -1,0 +1,175 @@
+<!-- Modal Bootstrap 5 para dar de alta una nueva bicicleta -->
+<div class="modal fade" id="modalNuevaBici" tabindex="-1" aria-labelledby="modalNuevaBiciLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <!-- Cabecera -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold" id="modalNuevaBiciLabel">Nueva Bicicleta</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <!-- Cuerpo del modal -->
+      <div class="modal-body p-4">
+        <!-- 1. Cliente con Datalist -->
+        <div class="mb-3">
+          <label for="clienteInput" class="form-label fw-semibold">Cliente</label>
+          <input
+            type="text"
+            id="clienteInput"
+            class="form-control"
+            list="clientesDatalist"
+            placeholder="Buscar o escribir nombre del cliente..."
+          />
+          <datalist id="clientesDatalist">
+            @for (cliente of clientes(); track cliente) {
+              <option [value]="cliente"></option>
+            }
+          </datalist>
+        </div>
+
+        <!-- 2. Selector E-Bike (Chip / Botón con btn-check) -->
+        <div class="mb-3">
+          <input
+            type="checkbox"
+            class="btn-check"
+            id="esElectrica"
+            autocomplete="off"
+            [checked]="esElectrica()"
+            (change)="esElectrica.set(!esElectrica())"
+          />
+          <label class="btn btn-outline-danger rounded-pill px-3 py-1 fw-semibold" for="esElectrica">
+            ⚡ E-Bike (Eléctrica)
+          </label>
+        </div>
+
+        <!-- 3. Tipo de Bicicleta (btn-group con btn-check) -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold d-block">Tipo de Bicicleta</label>
+          <div class="btn-group w-100" role="group" aria-label="Tipo de bicicleta">
+            <input
+              type="radio"
+              class="btn-check"
+              name="tipoBicicleta"
+              id="tipoCarretera"
+              autocomplete="off"
+              [checked]="tipoBicicleta() === 'carretera'"
+              (change)="tipoBicicleta.set('carretera')"
+            />
+            <label class="btn btn-outline-primary fw-semibold" for="tipoCarretera">Carretera</label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="tipoBicicleta"
+              id="tipoMontana"
+              autocomplete="off"
+              [checked]="tipoBicicleta() === 'montana'"
+              (change)="tipoBicicleta.set('montana')"
+            />
+            <label class="btn btn-outline-primary fw-semibold" for="tipoMontana">Montaña</label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="tipoBicicleta"
+              id="tipoGravel"
+              autocomplete="off"
+              [checked]="tipoBicicleta() === 'gravel'"
+              (change)="tipoBicicleta.set('gravel')"
+            />
+            <label class="btn btn-outline-primary fw-semibold" for="tipoGravel">Gravel</label>
+          </div>
+        </div>
+
+        <!-- 4. Campos Condicionales con @if -->
+
+        <!-- Condicional: Montaña -->
+        @if (tipoBicicleta() === 'montana') {
+          <div class="mb-3 p-3 bg-light rounded border">
+            <label class="form-label fw-semibold d-block mb-2">Suspensión (Montaña)</label>
+            <div class="d-flex gap-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="subtipoMontana"
+                  id="mtbDoble"
+                  value="doble"
+                  [checked]="subtipoMontana() === 'doble'"
+                  (change)="subtipoMontana.set('doble')"
+                />
+                <label class="form-check-label" for="mtbDoble">Doble</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="subtipoMontana"
+                  id="mtbRigida"
+                  value="rigida"
+                  [checked]="subtipoMontana() === 'rigida'"
+                  (change)="subtipoMontana.set('rigida')"
+                />
+                <label class="form-check-label" for="mtbRigida">Rígida</label>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Condicional: Gravel -->
+        @if (tipoBicicleta() === 'gravel') {
+          <div class="mb-3 p-3 bg-light rounded border">
+            <label class="form-label fw-semibold d-block mb-2">Suspensión (Gravel)</label>
+            <div class="d-flex gap-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="subtipoGravel"
+                  id="gravelConSuspension"
+                  value="con_suspension"
+                  [checked]="subtipoGravel() === 'con_suspension'"
+                  (change)="subtipoGravel.set('con_suspension')"
+                />
+                <label class="form-check-label" for="gravelConSuspension">Con suspensión</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="subtipoGravel"
+                  id="gravelSinSuspension"
+                  value="sin_suspension"
+                  [checked]="subtipoGravel() === 'sin_suspension'"
+                  (change)="subtipoGravel.set('sin_suspension')"
+                />
+                <label class="form-check-label" for="gravelSinSuspension">Sin suspensión</label>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- 5. Observaciones -->
+        <div class="mb-3">
+          <label for="observaciones" class="form-label fw-semibold">Observaciones</label>
+          <textarea
+            class="form-control"
+            id="observaciones"
+            rows="3"
+            placeholder="Añadir notas del estado de la bici..."
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- 6. Footer con botones de acción -->
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+          <i class="bi bi-x-lg me-1"></i> Cancelar
+        </button>
+        <button type="button" class="btn btn-success fw-semibold">
+          <i class="bi bi-floppy me-1"></i> Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

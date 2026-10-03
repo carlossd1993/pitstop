@@ -1,11 +1,12 @@
 import { Component, OnInit, signal, computed } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar';
+import { ModalNuevaBiciComponent } from '../modal-nueva-bici/modal-nueva-bici';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, ModalNuevaBiciComponent],
   templateUrl: './dashboard.html'
 })
 export class DashboardComponent implements OnInit {

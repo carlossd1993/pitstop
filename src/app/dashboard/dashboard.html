@@ -1,63 +1,63 @@
 <!-- Barra de navegación -->
-<app-navbar/>
+<app-navbar />
 
 <div class="container pb-5">
   <!-- Fila con buscador y botón de nueva bici -->
   <div class="row mb-4">
     <div class="col-md-9">
       <!-- Input conectado al evento (input) para filtrar en tiempo real -->
-      <input type="text" 
-             class="form-control form-control-lg shadow-sm" 
-             placeholder="Buscar por cliente, marca o modelo..."
-             (input)="alEscribir($event)">
+      <input type="text" class="form-control form-control-lg shadow-sm"
+        placeholder="Buscar por cliente, marca o modelo..." (input)="alEscribir($event)">
     </div>
     <div class="col-md-3">
-      <button class="btn btn-secondary btn-lg w-100 shadow-sm fw-bold">+ Nueva Bici</button>
+      <button class="btn btn-secondary btn-lg w-100 shadow-sm fw-bold" data-bs-toggle="modal"
+        data-bs-target="#modalNuevaBici">+ Nueva Bici</button>
     </div>
   </div>
 
   <!-- Grid leyendo directamente de bicicletasFiltradas() -->
   <div class="row g-4">
     @for (bici of bicicletasFiltradas(); track bici.id) {
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title text-primary fw-bold">{{ bici.clienteNombre }}</h5>
-            <h6 class="card-subtitle mb-3 text-muted">{{ bici.marca }} {{ bici.modelo }}</h6>
-            
-            <!-- Etiquetas dinámicas de colores -->
-            <div>
-              <span class="badge me-1"
-                    [ngClass]="{
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title text-primary fw-bold">{{ bici.clienteNombre }}</h5>
+          <h6 class="card-subtitle mb-3 text-muted">{{ bici.marca }} {{ bici.modelo }}</h6>
+
+          <!-- Etiquetas dinámicas de colores -->
+          <div>
+            <span class="badge me-1" [ngClass]="{
                       'text-bg-primary': bici.tipo === 'carretera',
                       'text-bg-dark': bici.tipo === 'mtb',
                       'text-bg-gravel': bici.tipo === 'gravel'
                     }">
-                {{ bici.tipo | uppercase }}
-              </span>
-              
-              @if (bici.mtbTipo) {
-                <span class="badge text-bg-secondary me-1">{{ bici.mtbTipo | uppercase }}</span>
-              }
-              
-              @if (bici.esElectrica) {
-                <span class="badge text-bg-danger fw-bold">E-BIKE</span>
-              }
-            </div>
-          </div>
-          <div class="card-footer bg-transparent border-0 text-end pb-3 pe-3">
-            <button class="btn btn-sm btn-outline-primary">Ver historial</button>
+              {{ bici.tipo | uppercase }}
+            </span>
+
+            @if (bici.mtbTipo) {
+            <span class="badge text-bg-secondary me-1">{{ bici.mtbTipo | uppercase }}</span>
+            }
+
+            @if (bici.esElectrica) {
+            <span class="badge text-bg-danger fw-bold">E-BIKE</span>
+            }
           </div>
         </div>
+        <div class="card-footer bg-transparent border-0 text-end pb-3 pe-3">
+          <button class="btn btn-sm btn-outline-primary">Ver historial</button>
+        </div>
       </div>
+    </div>
     } @empty {
-      <!-- Ruedita de carga o mensaje de lista vacía si la búsqueda no encuentra nada -->
-      <div class="col-12 text-center py-5">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Cargando...</span>
-        </div>
-        <p class="text-muted mt-3">Buscando bicicletas...</p>
+    <!-- Ruedita de carga o mensaje de lista vacía si la búsqueda no encuentra nada -->
+    <div class="col-12 text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
       </div>
+      <p class="text-muted mt-3">Buscando bicicletas...</p>
+    </div>
     }
   </div>
 </div>
+
+<app-modal-nueva-bici></app-modal-nueva-bici>
