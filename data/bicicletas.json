@@ -1,0 +1,502 @@
+[
+  {
+    "id": "bici_001",
+    "clienteId": "cli_101",
+    "clienteNombre": "Carlos",
+    "marca": "Canyon",
+    "modelo": "Lux World Cup",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_002",
+    "clienteId": "cli_102",
+    "clienteNombre": "Robe Iniesta",
+    "marca": "Orbea",
+    "modelo": "Orca M30",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_003",
+    "clienteId": "cli_103",
+    "clienteNombre": "Kutxi Romero",
+    "marca": "Specialized",
+    "modelo": "Diverge STR",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_004",
+    "clienteId": "cli_104",
+    "clienteNombre": "Enric Mas",
+    "marca": "Canyon",
+    "modelo": "Aeroad CF SLX",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_005",
+    "clienteId": "cli_105",
+    "clienteNombre": "Txus di Fellatio",
+    "marca": "Megamo",
+    "modelo": "West",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_006",
+    "clienteId": "cli_106",
+    "clienteNombre": "Alejandro Valverde",
+    "marca": "Pinarello",
+    "modelo": "Dogma F",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_007",
+    "clienteId": "cli_107",
+    "clienteNombre": "Aragorn",
+    "marca": "Santa Cruz",
+    "modelo": "Hightower",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_008",
+    "clienteId": "cli_108",
+    "clienteNombre": "Legolas",
+    "marca": "Cannondale",
+    "modelo": "Scalpel HT",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_009",
+    "clienteId": "cli_109",
+    "clienteNombre": "Gimli",
+    "marca": "Orbea",
+    "modelo": "Wild FS",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_010",
+    "clienteId": "cli_110",
+    "clienteNombre": "Gandalf",
+    "marca": "Trek",
+    "modelo": "Domane+ SLR",
+    "tipo": "carretera",
+    "esElectrica": true,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_011",
+    "clienteId": "cli_111",
+    "clienteNombre": "Harry Potter",
+    "marca": "Specialized",
+    "modelo": "Tarmac SL8",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_012",
+    "clienteId": "cli_112",
+    "clienteNombre": "Ron Weasley",
+    "marca": "Giant",
+    "modelo": "Revolt Advanced",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_013",
+    "clienteId": "cli_113",
+    "clienteNombre": "Hermione Granger",
+    "marca": "BMC",
+    "modelo": "Teammachine SLR",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_014",
+    "clienteId": "cli_114",
+    "clienteNombre": "Severus Snape",
+    "marca": "Colnago",
+    "modelo": "V4Rs",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_015",
+    "clienteId": "cli_115",
+    "clienteNombre": "Sirius Black",
+    "marca": "Santa Cruz",
+    "modelo": "Chameleon",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_016",
+    "clienteId": "cli_116",
+    "clienteNombre": "Luke Skywalker",
+    "marca": "Scott",
+    "modelo": "Addict Gravel",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_017",
+    "clienteId": "cli_117",
+    "clienteNombre": "Darth Vader",
+    "marca": "Trek",
+    "modelo": "Madone SLR",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_018",
+    "clienteId": "cli_118",
+    "clienteNombre": "Han Solo",
+    "marca": "Merida",
+    "modelo": "Silex 7000",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_019",
+    "clienteId": "cli_119",
+    "clienteNombre": "Obi-Wan Kenobi",
+    "marca": "Orbea",
+    "modelo": "Oiz M-Pro",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_020",
+    "clienteId": "cli_120",
+    "clienteNombre": "Yoda",
+    "marca": "Specialized",
+    "modelo": "Turbo Levo SL",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_021",
+    "clienteId": "cli_121",
+    "clienteNombre": "Tai Kamiya",
+    "marca": "BH",
+    "modelo": "Lynx Race",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_022",
+    "clienteId": "cli_122",
+    "clienteNombre": "Matt Ishida",
+    "marca": "Canyon",
+    "modelo": "Exceed CF",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_023",
+    "clienteId": "cli_123",
+    "clienteNombre": "Sora Takenouchi",
+    "marca": "Liv",
+    "modelo": "Langma Advanced",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_024",
+    "clienteId": "cli_124",
+    "clienteNombre": "Izzy Izumi",
+    "marca": "Cannondale",
+    "modelo": "Topstone Neo",
+    "tipo": "gravel",
+    "esElectrica": true,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_025",
+    "clienteId": "cli_125",
+    "clienteNombre": "Sheldon Cooper",
+    "marca": "Cervélo",
+    "modelo": "S5",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_026",
+    "clienteId": "cli_126",
+    "clienteNombre": "Leonard Hofstadter",
+    "marca": "Trek",
+    "modelo": "Checkpoint SL",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_027",
+    "clienteId": "cli_127",
+    "clienteNombre": "Penny",
+    "marca": "Specialized",
+    "modelo": "Roubaix",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_028",
+    "clienteId": "cli_128",
+    "clienteNombre": "Howard Wolowitz",
+    "marca": "Orbea",
+    "modelo": "Rise",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_029",
+    "clienteId": "cli_129",
+    "clienteNombre": "Raj Koothrappali",
+    "marca": "BMC",
+    "modelo": "URS One",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_030",
+    "clienteId": "cli_130",
+    "clienteNombre": "Homer Simpson",
+    "marca": "Mondraker",
+    "modelo": "Chaser",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_031",
+    "clienteId": "cli_131",
+    "clienteNombre": "Bart Simpson",
+    "marca": "Santa Cruz",
+    "modelo": "Jackal",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_032",
+    "clienteId": "cli_132",
+    "clienteNombre": "Ned Flanders",
+    "marca": "Canyon",
+    "modelo": "Endurace CF",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_033",
+    "clienteId": "cli_133",
+    "clienteNombre": "Marge Simpson",
+    "marca": "Trek",
+    "modelo": "Marlin 8",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_034",
+    "clienteId": "cli_134",
+    "clienteNombre": "Montgomery Burns",
+    "marca": "Pinarello",
+    "modelo": "Nytro E9",
+    "tipo": "carretera",
+    "esElectrica": true,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_035",
+    "clienteId": "cli_105",
+    "clienteNombre": "Txus di Fellatio",
+    "marca": "Trek",
+    "modelo": "Procaliber",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_036",
+    "clienteId": "cli_136",
+    "clienteNombre": "Pulpul",
+    "marca": "Scott",
+    "modelo": "Spark RC",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_037",
+    "clienteId": "cli_104",
+    "clienteNombre": "Enric Mas",
+    "marca": "Canyon",
+    "modelo": "Speedmax",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_038",
+    "clienteId": "cli_138",
+    "clienteNombre": "Iñaki Antón",
+    "marca": "Orbea",
+    "modelo": "Alma M-Team",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_039",
+    "clienteId": "cli_139",
+    "clienteNombre": "Miguel Indurain",
+    "marca": "Pinarello",
+    "modelo": "Bolide F",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_040",
+    "clienteId": "cli_140",
+    "clienteNombre": "Chewbacca",
+    "marca": "Surly",
+    "modelo": "Ghost Grappler",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_041",
+    "clienteId": "cli_141",
+    "clienteNombre": "Gollum",
+    "marca": "GT",
+    "modelo": "Zaskar",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_042",
+    "clienteId": "cli_142",
+    "clienteNombre": "Albus Dumbledore",
+    "marca": "Specialized",
+    "modelo": "Aethos",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_043",
+    "clienteId": "cli_103",
+    "clienteNombre": "Kutxi Romero",
+    "marca": "Kona",
+    "modelo": "Sutra LTD",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_044",
+    "clienteId": "cli_144",
+    "clienteNombre": "Stuart Bloom",
+    "marca": "Cube",
+    "modelo": "Stereo Hybrid",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_045",
+    "clienteId": "cli_145",
+    "clienteNombre": "Milhouse Van Houten",
+    "marca": "Merida",
+    "modelo": "Big Nine",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rigida"
+  },
+  {
+    "id": "bici_046",
+    "clienteId": "cli_146",
+    "clienteNombre": "Perico Delgado",
+    "marca": "BH",
+    "modelo": "Aerolight",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_047",
+    "clienteId": "cli_147",
+    "clienteNombre": "Moha",
+    "marca": "Giant",
+    "modelo": "Trance X",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_048",
+    "clienteId": "cli_148",
+    "clienteNombre": "Zeta",
+    "marca": "Mondraker",
+    "modelo": "Foxy Carbon",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble"
+  },
+  {
+    "id": "bici_049",
+    "clienteId": "cli_149",
+    "clienteNombre": "Nairo Quintana",
+    "marca": "Canyon",
+    "modelo": "Ultimate CF SLX",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mtbTipo": null
+  },
+  {
+    "id": "bici_050",
+    "clienteId": "cli_120",
+    "clienteNombre": "Yoda",
+    "marca": "Brompton",
+    "modelo": "Electric C Line",
+    "tipo": "carretera",
+    "esElectrica": true,
+    "mtbTipo": null
+  }
+]
