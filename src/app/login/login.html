@@ -6,32 +6,25 @@
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div class="mb-3">
           <label for="usuario" class="form-label fw-semibold">Usuario</label>
-          <input
-            type="text"
-            id="usuario"
-            class="form-control"
-            formControlName="usuario"
-            placeholder="Introduce tu usuario"
-            autocomplete="username"
-          />
+          <input type="text" id="usuario" class="form-control" formControlName="usuario"
+            placeholder="Introduce tu usuario" autocomplete="username" />
         </div>
 
         <div class="mb-4">
           <label for="contrasenia" class="form-label fw-semibold">Contraseña</label>
-          <input
-            type="password"
-            id="contrasenia"
-            class="form-control"
-            formControlName="contrasenia"
-            placeholder="Introduce tu contraseña"
-            autocomplete="current-password"
-          />
+          <input type="password" id="contrasenia" class="form-control" formControlName="contrasenia"
+            placeholder="Introduce tu contraseña" autocomplete="current-password" />
         </div>
 
         <button type="submit" class="btn btn-secondary w-100 fw-semibold py-2">
           Entrar
         </button>
       </form>
+      @if (errorMensaje) {
+      <div class="alert alert-danger mt-3" role="alert">
+        {{ errorMensaje }}
+      </div>
+      }
     </div>
   </div>
 </div>
