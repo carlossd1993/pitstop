@@ -1,0 +1,24 @@
+// ==========================================================================
+// Paleta de Colores
+// ==========================================================================
+
+// Color Blanco
+$white: #ffffff;
+
+// Azul Marino Muy Oscuro (Color Principal)
+$primary: #0a192f;
+$primary-hover: #172a45;       // Variante más clara para hover
+$primary-dark: #06101e;        // Variante más oscura para sombreado / active
+
+// Dorado Elegante (Color de Acento / Secundario)
+$secondary: #d4af37;
+$secondary-hover: #b89324;     // Variante sombreada para hover
+$secondary-light: #e2c76e;     // Variante más clara para hover
+
+// ==========================================================================
+// Mapeo a Colores de Tema de Bootstrap
+// ==========================================================================
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary
+);
