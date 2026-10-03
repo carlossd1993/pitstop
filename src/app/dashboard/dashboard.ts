@@ -10,17 +10,26 @@ import { ModalNuevaBiciComponent } from '../modal-nueva-bici/modal-nueva-bici';
   templateUrl: './dashboard.html'
 })
 export class DashboardComponent implements OnInit {
-  // 1. Señal con la lista original de bicicletas
+  // 1. Señales de datos y estado
   bicicletas = signal<any[]>([]);
-
-  // 2. Señal que guarda lo que el usuario teclea en el buscador
   terminoBusqueda = signal('');
 
-  // 3. Señal computada que filtra la lista automáticamente
+  // NUEVO: Señal para almacenar el mecánico de la sesión actual
+  mecanicoActual = signal('');
+
+  // 2. Señal computada con doble filtro (mecánico y búsqueda)
   bicicletasFiltradas = computed(() => {
     const termino = this.terminoBusqueda().toLowerCase();
-    const lista = this.bicicletas();
+    // Pasamos a minúsculas el nombre de la sesión
+    const mecanico = this.mecanicoActual().toLowerCase(); 
+    let lista = this.bicicletas();
 
+    // FILTRO 1: Comparamos forzando ambos lados a minúsculas
+    if (mecanico) {
+      lista = lista.filter(bici => bici.mecanico?.toLowerCase() === mecanico);
+    }
+
+    // FILTRO 2: Aplicar la búsqueda por texto si el usuario ha escrito algo
     if (!termino) return lista;
 
     return lista.filter(bici =>
@@ -33,6 +42,12 @@ export class DashboardComponent implements OnInit {
   constructor(private location: Location) { }
 
   ngOnInit() {
+    // NUEVO: Recuperar el nombre del mecánico de la sesión local
+    const mecanicoGuardado = localStorage.getItem('mecanicoSesion');
+    if (mecanicoGuardado) {
+      this.mecanicoActual.set(mecanicoGuardado);
+    }
+
     this.cargarBicicletas();
   }
 
@@ -55,6 +70,4 @@ export class DashboardComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     this.terminoBusqueda.set(input.value);
   }
-
-
 }

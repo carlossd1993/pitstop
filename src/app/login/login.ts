@@ -57,6 +57,7 @@ export class LoginComponent {
       if (docData['contrasenia'] === contrasenia) {
         console.log('Login correcto. ¡Bienvenido!');
         this.errorMensaje = '';
+        localStorage.setItem('mecanicoSesion', usuario)
         
         this.router.navigate(['/dashboard']);
       } else {
