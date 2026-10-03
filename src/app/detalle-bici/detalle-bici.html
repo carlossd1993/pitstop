@@ -4,9 +4,21 @@
 <div class="container pb-5">
   <!-- Botón de regreso y datos generales de cabecera -->
   <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
-    <button class="btn btn-outline-primary btn-sm fw-semibold shadow-sm" (click)="volver()">
-      <i class="bi bi-arrow-left me-1"></i> Volver al taller
-    </button>
+    <div class="d-flex flex-wrap align-items-center gap-2">
+      <button class="btn btn-outline-primary btn-sm fw-semibold shadow-sm" (click)="volver()">
+        <i class="bi bi-arrow-left me-1"></i> Volver al taller
+      </button>
+
+      @if (bici()) {
+        <button 
+          type="button" 
+          class="btn btn-secondary btn-sm fw-semibold shadow-sm"
+          data-bs-toggle="modal" 
+          data-bs-target="#modalLibroRevisiones">
+          <i class="bi bi-book-half me-1"></i> Libro de revisiones
+        </button>
+      }
+    </div>
 
     @if (bici(); as b) {
       <div class="d-flex flex-wrap align-items-center gap-2">
@@ -143,9 +155,18 @@
         <h3 class="h5 fw-bold text-primary mb-0">
           <i class="bi bi-clock-history text-secondary me-2"></i>Histórico de Revisiones
         </h3>
-        <span class="badge bg-light text-primary border px-3 py-2 fw-semibold">
-          {{ b.revisiones?.length || 0 }} {{ (b.revisiones?.length === 1) ? 'revisión' : 'revisiones' }}
-        </span>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge bg-light text-primary border px-3 py-2 fw-semibold">
+            {{ b.revisiones?.length || 0 }} {{ (b.revisiones?.length === 1) ? 'revisión' : 'revisiones' }}
+          </span>
+          <button 
+            type="button" 
+            class="btn btn-outline-primary btn-sm fw-semibold shadow-sm"
+            data-bs-toggle="modal" 
+            data-bs-target="#modalLibroRevisiones">
+            <i class="bi bi-printer me-1"></i> Imprimir libro
+          </button>
+        </div>
       </div>
 
       @if (b.revisiones && b.revisiones.length > 0) {
@@ -265,6 +286,9 @@
 
     <!-- Modal para añadir nuevos componentes -->
     <app-modal-componentes></app-modal-componentes>
+
+    <!-- Modal para el Libro de Revisiones e Impresión -->
+    <app-libro-revisiones [bici]="b"></app-libro-revisiones>
   } @else {
     <!-- Estado si no se encuentra la bici -->
     <div class="card bg-white shadow-sm border-0 rounded-4 p-5 text-center">

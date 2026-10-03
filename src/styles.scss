@@ -23,3 +23,20 @@ body {
         z-index: -1;
     }
 }
+
+@media print {
+    body {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+
+    body::before {
+        display: none !important;
+    }
+
+    app-navbar,
+    .modal-backdrop,
+    .no-print {
+        display: none !important;
+    }
+}

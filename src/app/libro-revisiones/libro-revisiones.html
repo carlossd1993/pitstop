@@ -1,0 +1,187 @@
+<!-- Modal Bootstrap 5 para el Libro de Revisiones e Impresión -->
+<div class="modal fade" id="modalLibroRevisiones" tabindex="-1" aria-labelledby="modalLibroRevisionesLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content shadow-lg border-0">
+
+      <!-- Cabecera del Modal (No se imprime) -->
+      <div class="modal-header bg-primary text-white no-print">
+        <h5 class="modal-title fw-bold d-flex align-items-center" id="modalLibroRevisionesLabel">
+          <i class="bi bi-book-half text-secondary me-2 fs-4"></i>
+          <span>Libro Oficial de Revisiones y Mantenimiento</span>
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <!-- Cuerpo del Modal: Contiene la hoja de impresión del libro -->
+      <div class="modal-body p-3 p-md-4 bg-light">
+        @if (bici; as b) {
+        <!-- Hoja imprimible -->
+        <div class="hoja-impresion bg-white p-4 p-md-5 rounded-3 shadow-sm mx-auto">
+
+
+
+
+
+          <!-- Ficha Técnica de la Bicicleta -->
+          <div class="card border border-primary-subtle bg-light mb-4 rounded-3">
+            <div class="card-header bg-primary text-white py-2 px-3 fw-bold small text-uppercase letter-spacing">
+              <i class="bi bi-bicycle me-2 text-secondary"></i>Datos del Vehículo y Propietario
+            </div>
+            <div class="card-body p-3">
+              <div class="row g-3">
+                <div class="col-sm-6 col-md-3">
+                  <span class="text-muted small d-block">Cliente / Propietario:</span>
+                  <strong class="text-primary fs-6">{{ b.clienteNombre }}</strong>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <span class="text-muted small d-block">Marca y Modelo:</span>
+                  <strong class="text-primary fs-6">{{ b.marca }} {{ b.modelo }}</strong>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <span class="text-muted small d-block">Odómetro Total:</span>
+                  <span class="badge bg-secondary text-primary fs-6 fw-bold px-2 py-1">
+                    {{ b.kmTotales | number }} km
+                  </span>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <span class="text-muted small d-block">Categoría:</span>
+                  <strong class="text-primary text-capitalize">
+                    {{ b.tipo }}
+                    @if (b.mtbTipo) { - {{ b.mtbTipo }} }
+                    @if (b.suspension) { - {{ b.suspension }} }
+                    @if (b.esElectrica) { (⚡ E-Bike) }
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1. Historial de Revisiones Realizadas -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="fw-bold text-primary mb-0 fs-6 text-uppercase border-start border-4 border-secondary ps-2">
+                Histórico de Revisiones y Mantenimientos
+              </h5>
+              <span class="badge text-bg-light border text-primary">
+                Total registradas: {{ b.revisiones?.length || 0 }}
+              </span>
+            </div>
+
+            @if (b.revisiones && b.revisiones.length > 0) {
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm align-middle mb-0">
+                <thead class="table-primary text-white">
+                  <tr>
+                    <th style="width: 50px;" class="text-center">#</th>
+                    <th style="width: 120px;">Fecha</th>
+                    <th style="width: 110px;" class="text-end">Kilometraje</th>
+                    <th style="width: 130px;">Mecánico</th>
+                    <th>Trabajos Realizados y Diagnóstico</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (rev of b.revisiones; track $index) {
+                  <tr>
+                    <td class="text-center text-muted fw-semibold">{{ $index + 1 }}</td>
+                    <td>
+                      <strong class="text-primary">{{ rev.fecha }}</strong>
+                    </td>
+                    <td class="text-end">
+                      <span class="badge bg-light text-primary border">{{ rev.km | number }} km</span>
+                    </td>
+                    <td>
+                      <i class="bi bi-person-wrench me-1 text-secondary"></i>
+                      {{ rev.mecanico || 'Taller' }}
+                    </td>
+                    <td class="small text-secondary">
+                      {{ rev.descripcion }}
+                    </td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            } @else {
+            <div class="p-3 text-center text-muted border rounded-3 bg-light small">
+              No constan intervenciones ni revisiones previas registradas para este vehículo.
+            </div>
+            }
+          </div>
+
+          <!-- 2. Estado de Componentes Clave -->
+          @if (b.componentes && b.componentes.length > 0) {
+          <div class="mb-4">
+            <h5 class="fw-bold text-primary mb-2 fs-6 text-uppercase border-start border-4 border-secondary ps-2">
+              Plan de Desgaste y Estado de Componentes
+            </h5>
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th style="width: 250px;">Componente</th>
+                    <th style="width: 130px;" class="text-end">Última Rev. (Km)</th>
+                    <th>Observaciones y Diagnóstico de Desgaste</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (comp of b.componentes; track comp.nombre) {
+                  <tr>
+                    <td class="fw-semibold text-primary">
+                      <i class="bi bi-gear me-1 text-secondary"></i>
+                      {{ comp.nombre }}
+                    </td>
+                    <td class="text-end">
+                      <span class="badge bg-light text-primary border">{{ comp.ultimaRevisionKm | number }} km</span>
+                    </td>
+                    <td class="small text-secondary">
+                      {{ comp.observaciones }}
+                    </td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+          }
+
+          <!-- 3. Observaciones Generales (si existen) -->
+          @if (b.observaciones) {
+          <div class="mb-4">
+            <h6 class="fw-bold text-primary mb-1 small text-uppercase">Notas Técnicas Adicionales:</h6>
+            <div class="p-2 border rounded bg-light small text-secondary">
+              {{ b.observaciones }}
+            </div>
+          </div>
+          }
+
+
+
+        </div>
+        } @else {
+        <div class="p-5 text-center text-muted">
+          <p>No hay información disponible de la bicicleta.</p>
+        </div>
+        }
+      </div>
+
+      <!-- Pie del Modal con Botones (No se imprime) -->
+      <div class="modal-footer bg-white d-flex justify-content-between align-items-center no-print">
+        <span class="text-muted small">
+          <i class="bi bi-info-circle me-1"></i>
+          Puedes imprimirlo directamente o guardarlo como PDF desde la opción de tu impresora del sistema.
+        </span>
+
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+            <i class="bi bi-x-lg me-1"></i> Cerrar
+          </button>
+          <button type="button" class="btn btn-primary fw-bold shadow-sm px-4" (click)="imprimir()">
+            <i class="bi bi-printer-fill me-2"></i> Imprimir Libro de Revisiones
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

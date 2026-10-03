@@ -5,11 +5,19 @@ import { NavbarComponent } from '../navbar/navbar';
 import { ComponenteBiciComponent } from '../componente-bici/componente-bici';
 import { ModalComponentesComponent } from '../modal-componentes/modal-componentes';
 import { ModalRevisionComponent, RevisionData } from '../modal-revision/modal-revision';
+import { LibroRevisionesComponent } from '../libro-revisiones/libro-revisiones';
 
 @Component({
   selector: 'app-detalle-bici',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, ComponenteBiciComponent, ModalComponentesComponent, ModalRevisionComponent],
+  imports: [
+    CommonModule, 
+    NavbarComponent, 
+    ComponenteBiciComponent, 
+    ModalComponentesComponent, 
+    ModalRevisionComponent,
+    LibroRevisionesComponent
+  ],
   templateUrl: './detalle-bici.html',
   styleUrl: './detalle-bici.scss',
 })
