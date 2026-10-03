@@ -58,7 +58,7 @@ export class LoginComponent {
         console.log('Login correcto. ¡Bienvenido!');
         this.errorMensaje = '';
         
-        // this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard']);
       } else {
         this.errorMensaje = 'Contraseña incorrecta.';
       }

@@ -1,10 +1,15 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login'; // Asegúrate de que la ruta coincida con tu estructura
+import { DashboardComponent } from './dashboard/dashboard';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   },
   {
     path: '',
@@ -14,5 +19,6 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: '/login' // Cualquier ruta mal escrita enviará al usuario al login
-  }
+  },
+  { path: 'dashboard', component: DashboardComponent }
 ];
