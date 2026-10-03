@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, NgZone, signal } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 // Definimos la estructura de los datos que esperamos
@@ -22,21 +22,28 @@ export interface Bicicleta {
   styleUrls: ['./dashboard.scss']
 })
 export class DashboardComponent implements OnInit {
-  bicicletas: Bicicleta[] = [];
-  constructor(private router: Router) { }
+// Inicializamos la señal con un array vacío
+bicicletas = signal<any[]>([]);  constructor(private router: Router, private zone: NgZone) { }
   ngOnInit() {
     this.cargarBicicletas();
   }
 
   async cargarBicicletas() {
-    try {
-      // Llamada simulada a la base de datos usando el JSON local
-      const respuesta = await fetch('data/bicicletas.json');
-      this.bicicletas = await respuesta.json();
-    } catch (error) {
-      console.error('Error cargando el JSON de prueba:', error);
-    }
+  try {
+    const respuesta = await fetch('data/bicicletas.json');
+    const datos = await respuesta.json();
+
+    // Extraemos el array (por si tu JSON empieza por { "bicicletas": [...] })
+    const arrayBicis = Array.isArray(datos) ? datos : datos.bicicletas || [];
+
+    // .set() dispara la orden directa e irrevocable de actualizar el HTML
+    this.bicicletas.set(arrayBicis); 
+
+    console.log('Comprobación de datos:', this.bicicletas());
+  } catch (error) {
+    console.error('Error del fetch:', error);
   }
+}
 
   // Función que llama el botón de la barra de navegación
   onLogout() {

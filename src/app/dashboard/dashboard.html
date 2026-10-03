@@ -22,7 +22,7 @@
 
   <!-- Grid donde Angular pintará las 50 tarjetas -->
   <div class="row g-4">
-    @for (bici of bicicletas; track bici.id) {
+    @for (bici of bicicletas(); track bici.id) {
     <div class="col-md-4">
       <div class="card shadow-sm h-100">
         <div class="card-body">
