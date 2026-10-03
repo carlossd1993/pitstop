@@ -20,7 +20,7 @@ export class ModalNuevaBiciComponent {
   guardar(clienteTxt: string, marcaTxt: string, modeloTxt: string, obsTxt: string) {
 
     // Leemos el mecánico directamente de la sesión
-    const mecanico = localStorage.getItem('mecanicoSesion') || 'Desconocido';
+    const mecanico = localStorage.getItem('mecanicoNombre') || localStorage.getItem('mecanicoSesion') || 'Desconocido';
 
     // Montamos el objeto final cruzando los textos con las señales de los botones
     const nuevaBici = {

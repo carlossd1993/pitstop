@@ -43,8 +43,8 @@ export class DashboardComponent implements OnInit {
   constructor(private location: Location) { }
 
   ngOnInit() {
-    // NUEVO: Recuperar el nombre del mecánico de la sesión local
-    const mecanicoGuardado = localStorage.getItem('mecanicoSesion');
+    // Recuperar el nombre del mecánico de la sesión local
+    const mecanicoGuardado = localStorage.getItem('mecanicoNombre') || localStorage.getItem('mecanicoSesion');
     if (mecanicoGuardado) {
       this.mecanicoActual.set(mecanicoGuardado);
     }

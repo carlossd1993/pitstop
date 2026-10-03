@@ -1,0 +1,129 @@
+// Estilos para el botón redondo de usuario, su menú desplegable y el modal
+@use '../../variables' as *;
+
+.user-avatar-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50% !important;
+  border: 2px solid rgba($secondary, 0.45);
+  background-color: $secondary;
+  color: $primary;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  // Ocultamos la flecha triangular habitual de Bootstrap para conservar el botón redondo
+  &::after {
+    display: none !important;
+  }
+
+  &:hover,
+  &:focus,
+  &[aria-expanded="true"] {
+    background-color: $secondary-light;
+    border-color: $secondary;
+    color: $primary-dark;
+    transform: scale(1.06);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.45) !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $secondary-light;
+    outline-offset: 2px;
+  }
+}
+
+.user-dropdown-menu {
+  min-width: 230px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(10, 25, 47, 0.08);
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .user-header {
+    background-color: #f8fafc;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  .user-avatar-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .dropdown-item {
+    border-radius: 8px;
+    margin: 2px 4px;
+    width: calc(100% - 8px);
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      background-color: rgba($primary, 0.06);
+      color: $primary;
+      transform: translateX(2px);
+    }
+
+    &.text-danger:hover {
+      background-color: rgba(220, 53, 69, 0.08);
+      color: #dc3545 !important;
+    }
+
+    &.text-danger:active {
+      background-color: rgba(220, 53, 69, 0.15);
+      color: #dc3545 !important;
+    }
+  }
+}
+
+// Estilos del modal de cambio de contraseña
+#modalCambiarPassword {
+  .modal-content {
+    border: none;
+    border-radius: 16px;
+  }
+
+  .modal-header {
+    border-bottom: 2px solid $secondary;
+  }
+
+  .input-group {
+    .input-group-text {
+      background-color: #f8fafc;
+      border-color: #dee2e6;
+    }
+
+    .form-control {
+      border-color: #dee2e6;
+      &:focus {
+        border-color: $secondary;
+        box-shadow: 0 0 0 0.25rem rgba($secondary, 0.25);
+      }
+    }
+
+    .btn-outline-secondary {
+      border-color: #dee2e6;
+      color: #6c757d;
+
+      &:hover {
+        background-color: #e9ecef;
+        color: $primary;
+      }
+    }
+  }
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

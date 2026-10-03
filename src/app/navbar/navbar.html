@@ -1,12 +1,209 @@
 <nav class="navbar navbar-expand bg-primary shadow-sm mb-4">
-    <div class="container">
-        <span class="navbar-brand text-white fw-bold fs-4 mb-0">PitStop</span>
-        <span class="navbar-text text-white">
-            bienvenido {{ nombreMecanico() }}
-        </span>
-        <button class="btn btn-secondary btn-sm fw-semibold px-3" (click)="onLogout()">
-            Cerrar sesión
-        </button>
+    <div class="container d-flex align-items-center justify-content-between">
+        <a routerLink="/dashboard" class="navbar-brand text-white fw-bold fs-4 mb-0 text-decoration-none">
+            PitStop
+        </a>
 
+        <!-- Menú desplegable con botón redondo de usuario -->
+        <div class="dropdown">
+            <button class="btn btn-secondary rounded-circle user-avatar-btn shadow-sm dropdown-toggle" 
+                    type="button" 
+                    id="userDropdown" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    title="Menú de usuario">
+                <i class="bi bi-person-fill fs-5"></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 user-dropdown-menu py-2 mt-2" aria-labelledby="userDropdown">
+                <!-- Información del usuario desplegada -->
+                <li class="px-3 py-2 border-bottom user-header">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="user-avatar-badge rounded-circle d-flex align-items-center justify-content-center bg-primary text-secondary">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div class="user-text-details text-truncate">
+                            <span class="d-block fw-bold text-dark text-truncate" style="max-width: 170px;">
+                                {{ nombreMecanico() || 'Mecánico' }}
+                            </span>
+                            @if (usuarioMecanico()) {
+                                <span class="d-block text-muted small text-truncate" style="font-size: 0.75rem;">
+                                    @{{ usuarioMecanico() }}
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Botón Cambiar datos / contraseña -->
+                <li class="pt-1">
+                    <button class="dropdown-item d-flex align-items-center gap-2 py-2 fw-semibold text-dark user-menu-item" 
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#modalCambiarPassword"
+                            (click)="abrirModalPassword()">
+                        <i class="bi bi-key-fill text-secondary fs-5"></i>
+                        <span>Cambiar datos</span>
+                    </button>
+                </li>
+
+                <li><hr class="dropdown-divider my-1"></li>
+
+                <!-- Botón para cerrar sesión -->
+                <li>
+                    <button class="dropdown-item d-flex align-items-center gap-2 py-2 text-danger fw-semibold user-menu-item" (click)="onLogout()">
+                        <i class="bi bi-box-arrow-right fs-5"></i>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
+
+<!-- Modal para Cambiar Contraseña / Cambiar Datos -->
+<div class="modal fade" id="modalCambiarPassword" tabindex="-1" aria-labelledby="modalCambiarPasswordLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg border-0 rounded-4 overflow-hidden">
+            <!-- Cabecera del Modal -->
+            <div class="modal-header bg-primary text-white py-3 px-4">
+                <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="modalCambiarPasswordLabel">
+                    <i class="bi bi-shield-lock-fill text-secondary fs-4"></i>
+                    <span>Cambiar Contraseña</span>
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar" (click)="limpiarFormularioPassword()"></button>
+            </div>
+
+            <!-- Cuerpo del Modal -->
+            <div class="modal-body p-4">
+                <p class="text-muted small mb-3">
+                    Introduce tu contraseña actual y la nueva contraseña dos veces para confirmar la actualización.
+                </p>
+
+                <!-- Mensajes de estado -->
+                @if (mensajeError()) {
+                    <div class="alert alert-danger d-flex align-items-center gap-2 py-2 mb-3" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill fs-5 flex-shrink-0"></i>
+                        <div>{{ mensajeError() }}</div>
+                    </div>
+                }
+
+                @if (mensajeExito()) {
+                    <div class="alert alert-success d-flex align-items-center gap-2 py-2 mb-3" role="alert">
+                        <i class="bi bi-check-circle-fill fs-5 flex-shrink-0"></i>
+                        <div>{{ mensajeExito() }}</div>
+                    </div>
+                }
+
+                <form (ngSubmit)="cambiarContrasenia()">
+                    <!-- Contraseña actual / vieja -->
+                    <div class="mb-3">
+                        <label for="passVieja" class="form-label fw-semibold text-dark">Contraseña actual</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light text-muted border-end-0">
+                                <i class="bi bi-lock-fill"></i>
+                            </span>
+                            <input 
+                                [type]="mostrarPassVieja() ? 'text' : 'password'" 
+                                id="passVieja" 
+                                class="form-control border-start-0 border-end-0" 
+                                placeholder="Introduce tu contraseña actual"
+                                [ngModel]="contraseniaVieja()" 
+                                (ngModelChange)="contraseniaVieja.set($event)" 
+                                name="passVieja"
+                                required
+                                autocomplete="current-password"
+                            />
+                            <button 
+                                class="btn btn-outline-secondary border-start-0" 
+                                type="button" 
+                                (click)="mostrarPassVieja.set(!mostrarPassVieja())"
+                                title="Mostrar / Ocultar contraseña">
+                                <i class="bi" [class.bi-eye]="!mostrarPassVieja()" [class.bi-eye-slash]="mostrarPassVieja()"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Nueva contraseña -->
+                    <div class="mb-3">
+                        <label for="passNueva" class="form-label fw-semibold text-dark">Nueva contraseña</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light text-muted border-end-0">
+                                <i class="bi bi-key-fill"></i>
+                            </span>
+                            <input 
+                                [type]="mostrarPassNueva() ? 'text' : 'password'" 
+                                id="passNueva" 
+                                class="form-control border-start-0 border-end-0" 
+                                placeholder="Introduce la nueva contraseña"
+                                [ngModel]="nuevaContrasenia()" 
+                                (ngModelChange)="nuevaContrasenia.set($event)" 
+                                name="passNueva"
+                                required
+                                autocomplete="new-password"
+                            />
+                            <button 
+                                class="btn btn-outline-secondary border-start-0" 
+                                type="button" 
+                                (click)="mostrarPassNueva.set(!mostrarPassNueva())"
+                                title="Mostrar / Ocultar contraseña">
+                                <i class="bi" [class.bi-eye]="!mostrarPassNueva()" [class.bi-eye-slash]="mostrarPassNueva()"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Repetir nueva contraseña -->
+                    <div class="mb-4">
+                        <label for="passRepetir" class="form-label fw-semibold text-dark">Repetir nueva contraseña</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light text-muted border-end-0">
+                                <i class="bi bi-shield-check"></i>
+                            </span>
+                            <input 
+                                [type]="mostrarPassRepetir() ? 'text' : 'password'" 
+                                id="passRepetir" 
+                                class="form-control border-start-0 border-end-0" 
+                                placeholder="Repite la nueva contraseña"
+                                [ngModel]="repetirNuevaContrasenia()" 
+                                (ngModelChange)="repetirNuevaContrasenia.set($event)" 
+                                name="passRepetir"
+                                required
+                                autocomplete="new-password"
+                            />
+                            <button 
+                                class="btn btn-outline-secondary border-start-0" 
+                                type="button" 
+                                (click)="mostrarPassRepetir.set(!mostrarPassRepetir())"
+                                title="Mostrar / Ocultar contraseña">
+                                <i class="bi" [class.bi-eye]="!mostrarPassRepetir()" [class.bi-eye-slash]="mostrarPassRepetir()"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pie del Modal -->
+                    <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                        <button 
+                            type="button" 
+                            class="btn btn-light fw-semibold text-muted" 
+                            data-bs-dismiss="modal" 
+                            (click)="limpiarFormularioPassword()">
+                            Cancelar
+                        </button>
+                        <button 
+                            type="submit" 
+                            class="btn btn-secondary fw-bold px-4 shadow-sm"
+                            [disabled]="cargandoCambio() || !contraseniaVieja() || !nuevaContrasenia() || !repetirNuevaContrasenia()">
+                            @if (cargandoCambio()) {
+                                <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                                <span>Guardando...</span>
+                            } @else {
+                                <i class="bi bi-check-lg me-1"></i>
+                                <span>Guardar contraseña</span>
+                            }
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

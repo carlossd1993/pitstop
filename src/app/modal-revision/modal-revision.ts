@@ -24,7 +24,7 @@ export class ModalRevisionComponent implements OnInit {
 
   ngOnInit() {
     this.fechaHoy = new Date().toISOString().substring(0, 10);
-    this.mecanicoSesion = localStorage.getItem('mecanicoSesion') || 'Carlos';
+    this.mecanicoSesion = localStorage.getItem('mecanicoNombre') || localStorage.getItem('mecanicoSesion') || 'Carlos';
   }
 
   guardar(fechaTxt: string, kmTxt: string, mecanicoTxt: string, descTxt: string) {
