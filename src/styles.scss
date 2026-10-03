@@ -1,3 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'variables';
 @import 'bootstrap/scss/bootstrap';
+
+body {
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('./assets/images/fondo.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.7;
+        /* Ajusta la transparencia aquí (0.0 es invisible, 1.0 es opaco) */
+        z-index: -1;
+    }
+}
