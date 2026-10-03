@@ -1,171 +1,195 @@
 @if (componente) {
-  <div class="p-2">
-    <div class="row g-3 align-items-center mb-3">
-      <div class="col-sm-6">
-        <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Pieza / Componente</span>
-        <span class="fw-bold fs-6 text-dark d-flex align-items-center">
-          <i class="bi bi-tools text-primary me-2"></i> {{ componente.nombre }}
-        </span>
-      </div>
-      <div class="col-sm-6 text-sm-end">
-        <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Última Revisión</span>
-        <span class="badge bg-secondary text-dark fs-6 fw-bold px-3 py-2 shadow-sm">
-          <i class="bi bi-speedometer2 me-1"></i> {{ componente.ultimaRevisionKm | number }} km
-        </span>
-      </div>
+<div class="p-2">
+  <div class="row g-3 align-items-center mb-3">
+    <div class="col-sm-6">
+      <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Pieza / Componente</span>
+      <span class="fw-bold fs-6 text-dark d-flex align-items-center">
+        <i class="bi bi-tools text-primary me-2"></i> {{ componente.nombre }}
+      </span>
     </div>
-
-    <div>
-      <span class="text-muted small fw-semibold text-uppercase d-block mb-2">Observaciones del Componente</span>
-      <div class="p-3 bg-white rounded-3 border">
-        <p class="mb-0 text-secondary fs-6">
-          <i class="bi bi-chat-left-text text-primary me-2"></i>{{ componente.observaciones }}
-        </p>
-      </div>
+    <div class="col-sm-6 text-sm-end">
+      <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Última Revisión</span>
+      <span class="badge bg-secondary text-dark fs-6 fw-bold px-3 py-2 shadow-sm">
+        <i class="bi bi-speedometer2 me-1"></i> {{ componente.ultimaRevisionKm | number }} km
+      </span>
     </div>
+  </div>
 
-    <!-- Acciones del componente: Buscar recambios (Google Shopping, Amazon) y Actualizar información -->
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3 pt-2 border-top">
-      <div class="d-flex flex-wrap align-items-center gap-2">
-        <a 
-          [href]="googleShoppingUrl" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn btn-outline-secondary btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
-          title="Buscar repuestos o precios de este componente en Google Shopping">
-          <i class="bi bi-cart3 text-secondary"></i>
-          <span>Buscar en la web</span>
-          <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.75rem;"></i>
-        </a>
+  <div>
+    <span class="text-muted small fw-semibold text-uppercase d-block mb-2">Observaciones del Componente</span>
+    <div class="p-3 bg-white rounded-3 border">
+      <p class="mb-0 text-secondary fs-6">
+        <i class="bi bi-chat-left-text text-primary me-2"></i>{{ componente.observaciones }}
+      </p>
+    </div>
+  </div>
 
-        <a 
-          [href]="amazonUrl" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn btn-outline-dark btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
-          title="Buscar este componente en Amazon">
-          <i class="bi bi-bag-check-fill text-warning"></i>
-          <span>Amazon</span>
-          <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.75rem;"></i>
-        </a>
-      </div>
+  <!-- Acciones del componente: Buscar recambios (Google Shopping, Amazon) y Actualizar información -->
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-3 pt-2 border-top">
+    <div class="d-flex flex-wrap align-items-center gap-2">
+      <a [href]="googleShoppingUrl" target="_blank" rel="noopener noreferrer"
+        class="btn btn-outline-secondary btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
+        title="Buscar repuestos o precios de este componente en Google Shopping">
+        <i class="bi bi-cart3 text-secondary"></i>
+        <span>Buscar en la web</span>
+        <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.75rem;"></i>
+      </a>
 
-      <button 
-        type="button" 
+      <a [href]="amazonUrl" target="_blank" rel="noopener noreferrer"
         class="btn btn-outline-primary btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
-        data-bs-toggle="modal" 
-        [attr.data-bs-target]="'#' + modalId">
-        <i class="bi bi-pencil-square"></i>
-        <span>Actualizar información</span>
+        title="Buscar este componente en Amazon">
+        <i class="bi bi-bag-check-fill text-warning"></i>
+        <span>Amazon</span>
+        <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.75rem;"></i>
+      </a>
+
+      <button type="button" (click)="iniciarConsultaGemini()"
+        class="btn btn-outline-gemini btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
+        title="Consultar a Google Gemini cuándo realizar el mantenimiento y vida útil de este componente">
+        <i class="bi bi-stars"></i>
+        <span>Preguntar a Gemini</span>
+        <i class="bi bi-box-arrow-up-right" style="font-size: 0.75rem;"></i>
       </button>
     </div>
 
-    <!-- Modal para editar información del componente -->
-    <div class="modal fade" [id]="modalId" tabindex="-1" [attr.aria-labelledby]="modalId + 'Label'" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow border-0">
-          <!-- Cabecera -->
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title fw-bold fs-6 d-flex align-items-center" [id]="modalId + 'Label'">
-              <i class="bi bi-pencil-square text-secondary me-2"></i>
-              Actualizar Componente: {{ componente.nombre }}
-            </h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+    <button type="button"
+      class="btn btn-outline-primary btn-sm fw-semibold shadow-sm d-inline-flex align-items-center gap-2"
+      data-bs-toggle="modal" [attr.data-bs-target]="'#' + modalId">
+      <i class="bi bi-pencil-square"></i>
+      <span>Actualizar información</span>
+    </button>
+  </div>
+
+  <!-- Toast Flotante de Confirmación para Gemini -->
+  @if (mostrarToastGemini()) {
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+      <div class="toast show shadow-lg border-0 rounded-4 overflow-hidden" role="alert" aria-live="assertive" aria-atomic="true" style="max-width: 440px;">
+        <div class="toast-header bg-primary text-white py-2 px-3">
+          <i class="bi bi-stars text-secondary me-2 fs-5"></i>
+          <strong class="me-auto">Asistente Técnico Gemini</strong>
+          <small class="text-white-50">PitStop AI</small>
+          <button type="button" class="btn-close btn-close-white" (click)="cerrarToastGemini()" aria-label="Cerrar"></button>
+        </div>
+        <div class="toast-body bg-white p-3">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="badge bg-secondary text-dark fw-bold px-2 py-1 flex-shrink-0">
+              <i class="bi bi-clipboard-check me-1"></i>Copiado
+            </span>
+            <span class="fw-semibold text-dark small">
+              Consulta preparada para <strong>{{ componente?.nombre }}</strong>:
+            </span>
           </div>
 
-          <!-- Cuerpo -->
-          <div class="modal-body p-4 text-start">
-            <!-- Pieza / Componente (solo lectura) con enlaces a Google Shopping y Amazon -->
-            <div class="mb-3">
-              <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-1">
-                <label class="form-label fw-semibold text-muted small mb-0">Pieza / Componente</label>
-                <div class="d-flex align-items-center gap-3">
-                  <a 
-                    [href]="googleShoppingUrl" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="small text-decoration-none d-inline-flex align-items-center gap-1 text-primary fw-semibold"
-                    title="Ver ofertas y precios en Google Shopping">
-                    <i class="bi bi-cart3"></i>
-                    <span>Google Shopping</span>
-                    <i class="bi bi-box-arrow-up-right" style="font-size: 0.7rem;"></i>
-                  </a>
-                  <a 
-                    [href]="amazonUrl" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="small text-decoration-none d-inline-flex align-items-center gap-1 text-dark fw-semibold"
-                    title="Ver opciones en Amazon">
-                    <i class="bi bi-bag-check-fill text-warning"></i>
-                    <span>Amazon</span>
-                    <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.7rem;"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="input-group">
-                <span class="input-group-text bg-light"><i class="bi bi-tools text-primary"></i></span>
-                <input 
-                  type="text" 
-                  class="form-control bg-light fw-bold text-dark" 
-                  [value]="componente.nombre" 
-                  readonly 
-                  disabled
-                />
-              </div>
-            </div>
-
-            <!-- Kilómetros de última revisión -->
-            <div class="mb-3">
-              <label [for]="'kmComp_' + index" class="form-label fw-semibold text-dark small mb-1">
-                Última revisión (Kilómetros)
-              </label>
-              <div class="input-group">
-                <input 
-                  #inputKm
-                  [id]="'kmComp_' + index"
-                  type="number" 
-                  class="form-control fw-semibold" 
-                  [value]="componente.ultimaRevisionKm" 
-                  min="0"
-                  placeholder="Ej: 1500"
-                />
-                <span class="input-group-text bg-light text-muted fw-semibold">km</span>
-              </div>
-              <div class="form-text small text-muted">
-                Indica los kilómetros totales de la bicicleta en los que se intervino este componente.
-              </div>
-            </div>
-
-            <!-- Observaciones del Componente -->
-            <div class="mb-3">
-              <label [for]="'obsComp_' + index" class="form-label fw-semibold text-dark small mb-1">
-                Observaciones y estado del componente
-              </label>
-              <textarea 
-                #inputObs
-                [id]="'obsComp_' + index"
-                class="form-control" 
-                rows="4" 
-                placeholder="Añade notas del desgaste, sustituciones, ajustes o mantenimiento..."
-              >{{ componente.observaciones }}</textarea>
-            </div>
+          <div class="p-2 bg-light rounded-3 border small text-secondary mb-3 fst-italic" style="max-height: 100px; overflow-y: auto;">
+            "{{ promptGeminiActual() }}"
           </div>
 
-          <!-- Pie del Modal -->
-          <div class="modal-footer bg-light d-flex justify-content-between">
-            <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
-              <i class="bi bi-x-lg me-1"></i> Cancelar
+          <p class="text-muted small mb-3">
+            <i class="bi bi-info-circle text-primary me-1"></i>
+            Pulsa en <strong>Comprendido</strong> para abrir Gemini en una nueva pestaña y pegar la pregunta con <kbd class="bg-secondary text-dark fw-bold px-2 py-1">Ctrl + V</kbd>.
+          </p>
+
+          <div class="d-flex justify-content-end gap-2 border-top pt-2">
+            <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold" (click)="cerrarToastGemini()">
+              Cancelar
             </button>
-            <button 
-              type="button" 
-              class="btn btn-success fw-semibold shadow-sm" 
-              data-bs-dismiss="modal"
-              (click)="guardarCambios(inputKm.value, inputObs.value)">
-              <i class="bi bi-floppy me-1"></i> Guardar
+            <button type="button" class="btn btn-primary btn-sm fw-bold shadow-sm d-inline-flex align-items-center gap-2" (click)="confirmarYAbrirGemini()">
+              <span>Comprendido</span>
+              <i class="bi bi-box-arrow-up-right"></i>
             </button>
           </div>
         </div>
       </div>
     </div>
+  }
+
+  <!-- Modal para editar información del componente -->
+  <div class="modal fade" [id]="modalId" tabindex="-1" [attr.aria-labelledby]="modalId + 'Label'" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow border-0">
+        <!-- Cabecera -->
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title fw-bold fs-6 d-flex align-items-center" [id]="modalId + 'Label'">
+            <i class="bi bi-pencil-square text-secondary me-2"></i>
+            Actualizar Componente: {{ componente.nombre }}
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <!-- Cuerpo -->
+        <div class="modal-body p-4 text-start">
+          <!-- Pieza / Componente (solo lectura) con enlaces a Google Shopping, Amazon y Gemini -->
+          <div class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-1">
+              <label class="form-label fw-semibold text-muted small mb-0">Pieza / Componente</label>
+              <div class="d-flex align-items-center gap-3">
+                <a [href]="googleShoppingUrl" target="_blank" rel="noopener noreferrer"
+                  class="small text-decoration-none d-inline-flex align-items-center gap-1 text-primary fw-semibold"
+                  title="Ver ofertas y precios en Google Shopping">
+                  <i class="bi bi-cart3"></i>
+                  <span>Buscar en la web</span>
+                  <i class="bi bi-box-arrow-up-right" style="font-size: 0.7rem;"></i>
+                </a>
+                <a [href]="amazonUrl" target="_blank" rel="noopener noreferrer"
+                  class="small text-decoration-none d-inline-flex align-items-center gap-1 text-dark fw-semibold"
+                  title="Ver opciones en Amazon">
+                  <i class="bi bi-bag-check-fill text-warning"></i>
+                  <span>Amazon</span>
+                  <i class="bi bi-box-arrow-up-right text-muted" style="font-size: 0.7rem;"></i>
+                </a>
+                <a href="javascript:void(0)" (click)="iniciarConsultaGemini()"
+                  class="small text-decoration-none d-inline-flex align-items-center gap-1 text-gemini fw-semibold"
+                  title="Consultar mantenimiento a Google Gemini">
+                  <i class="bi bi-stars"></i>
+                  <span>Gemini</span>
+                  <i class="bi bi-box-arrow-up-right" style="font-size: 0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-tools text-primary"></i></span>
+              <input type="text" class="form-control bg-light fw-bold text-dark" [value]="componente.nombre" readonly
+                disabled />
+            </div>
+          </div>
+
+          <!-- Kilómetros de última revisión -->
+          <div class="mb-3">
+            <label [for]="'kmComp_' + index" class="form-label fw-semibold text-dark small mb-1">
+              Última revisión (Kilómetros)
+            </label>
+            <div class="input-group">
+              <input #inputKm [id]="'kmComp_' + index" type="number" class="form-control fw-semibold"
+                [value]="componente.ultimaRevisionKm" min="0" placeholder="Ej: 1500" />
+              <span class="input-group-text bg-light text-muted fw-semibold">km</span>
+            </div>
+            <div class="form-text small text-muted">
+              Indica los kilómetros totales de la bicicleta en los que se intervino este componente.
+            </div>
+          </div>
+
+          <!-- Observaciones del Componente -->
+          <div class="mb-3">
+            <label [for]="'obsComp_' + index" class="form-label fw-semibold text-dark small mb-1">
+              Observaciones y estado del componente
+            </label>
+            <textarea #inputObs [id]="'obsComp_' + index" class="form-control" rows="4"
+              placeholder="Añade notas del desgaste, sustituciones, ajustes o mantenimiento...">{{ componente.observaciones }}</textarea>
+          </div>
+        </div>
+
+        <!-- Pie del Modal -->
+        <div class="modal-footer bg-light d-flex justify-content-between">
+          <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">
+            <i class="bi bi-x-lg me-1"></i> Cancelar
+          </button>
+          <button type="button" class="btn btn-success fw-semibold shadow-sm" data-bs-dismiss="modal"
+            (click)="guardarCambios(inputKm.value, inputObs.value)">
+            <i class="bi bi-floppy me-1"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 }

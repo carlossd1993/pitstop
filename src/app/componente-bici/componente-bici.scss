@@ -1,1 +1,27 @@
 // Estilos específicos para el componente-bici
+
+.btn-outline-gemini {
+  border-color: #818cf8;
+  color: #4f46e5;
+  background-color: #f5f3ff;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+    color: #ffffff;
+    border-color: transparent;
+
+    i {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.text-gemini {
+  color: #4f46e5 !important;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #312e81 !important;
+  }
+}
