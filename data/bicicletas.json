@@ -1,502 +1,2161 @@
 [
   {
-    "id": "bici_001",
-    "clienteId": "cli_101",
-    "clienteNombre": "Carlos",
-    "marca": "Canyon",
-    "modelo": "Lux World Cup",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_002",
-    "clienteId": "cli_102",
-    "clienteNombre": "Robe Iniesta",
-    "marca": "Orbea",
-    "modelo": "Orca M30",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_003",
-    "clienteId": "cli_103",
-    "clienteNombre": "Kutxi Romero",
-    "marca": "Specialized",
-    "modelo": "Diverge STR",
-    "tipo": "gravel",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_004",
-    "clienteId": "cli_104",
-    "clienteNombre": "Enric Mas",
-    "marca": "Canyon",
-    "modelo": "Aeroad CF SLX",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_005",
-    "clienteId": "cli_105",
-    "clienteNombre": "Txus di Fellatio",
-    "marca": "Megamo",
-    "modelo": "West",
-    "tipo": "gravel",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_006",
-    "clienteId": "cli_106",
-    "clienteNombre": "Alejandro Valverde",
-    "marca": "Pinarello",
-    "modelo": "Dogma F",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_007",
-    "clienteId": "cli_107",
-    "clienteNombre": "Aragorn",
-    "marca": "Santa Cruz",
-    "modelo": "Hightower",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_008",
-    "clienteId": "cli_108",
-    "clienteNombre": "Legolas",
-    "marca": "Cannondale",
-    "modelo": "Scalpel HT",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_009",
-    "clienteId": "cli_109",
-    "clienteNombre": "Gimli",
+    "id": 1,
+    "clienteNombre": "Juan Pérez",
     "marca": "Orbea",
     "modelo": "Wild FS",
     "tipo": "mtb",
     "esElectrica": true,
-    "mtbTipo": "doble"
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3250,
+    "observaciones": "Revisión general y cambio de pastillas de freno.",
+    "revisiones": [
+      {
+        "fecha": "2024-01-10",
+        "km": 1500,
+        "mecanico": "Carlos",
+        "descripcion": "Revisión inicial, actualización de software del motor Bosch y purgado de frenos."
+      },
+      {
+        "fecha": "2024-03-22",
+        "km": 3250,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento de 50h de horquilla Fox 38 y sustitución de pastillas traseras cerámicas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Deore",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Revisado estiramiento con galga, desgaste en tolerancia (0.4%)."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano D03S",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Sustituidas pastillas traseras por compuesto cerámico Galfer."
+      },
+      {
+        "nombre": "Horquilla Fox 38 Float Factory",
+        "ultimaRevisionKm": 900,
+        "observaciones": "Mantenimiento básico de 50h completado con aceite Fox Gold."
+      },
+      {
+        "nombre": "Amortiguador Fox Float X2",
+        "ultimaRevisionKm": 900,
+        "observaciones": "Presión ajustada a 180 psi, rebote calibrado."
+      },
+      {
+        "nombre": "Motor Bosch Performance Line CX",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Diagnóstico de software OK, salud de batería al 96%."
+      }
+    ]
   },
   {
-    "id": "bici_010",
-    "clienteId": "cli_110",
-    "clienteNombre": "Gandalf",
+    "id": 2,
+    "clienteNombre": "María Gómez",
     "marca": "Trek",
-    "modelo": "Domane+ SLR",
-    "tipo": "carretera",
-    "esElectrica": true,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_011",
-    "clienteId": "cli_111",
-    "clienteNombre": "Harry Potter",
-    "marca": "Specialized",
-    "modelo": "Tarmac SL8",
+    "modelo": "Émonda",
     "tipo": "carretera",
     "esElectrica": false,
-    "mtbTipo": null
+    "mecanico": "Carlos",
+    "kmTotales": 5400,
+    "observaciones": "Ajuste de cambios electrónicos.",
+    "revisiones": [
+      {
+        "fecha": "2023-11-15",
+        "km": 3300,
+        "mecanico": "Carlos",
+        "descripcion": "Cambio de cubiertas Continental GP5000 y ajuste de zapatas."
+      },
+      {
+        "fecha": "2024-02-28",
+        "km": 5400,
+        "mecanico": "Carlos",
+        "descripcion": "Calibración fina de cambios electrónicos Di2 y engrase de pedalier."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Ultegra 12v",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Desgaste al 0.4%, tratada con lubricante seco de cera."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L05A",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Comprobado grosor, vida útil estimada al 60%."
+      },
+      {
+        "nombre": "Cubiertas Continental Grand Prix 5000",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Banda de rodadura en buen estado, sin cortes laterales."
+      },
+      {
+        "nombre": "Transmisión electrónica Di2",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Batería cargada al 100% y firmware actualizado vía E-Tube."
+      }
+    ]
   },
   {
-    "id": "bici_012",
-    "clienteId": "cli_112",
-    "clienteNombre": "Ron Weasley",
-    "marca": "Giant",
-    "modelo": "Revolt Advanced",
+    "id": 3,
+    "clienteNombre": "Luis Miguel",
+    "marca": "Specialized",
+    "modelo": "Diverge",
     "tipo": "gravel",
     "esElectrica": false,
-    "mtbTipo": null
+    "suspension": "con suspensión",
+    "mecanico": "Elena",
+    "kmTotales": 3100,
+    "observaciones": "Tubelizar ruedas.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-14",
+        "km": 3100,
+        "mecanico": "Elena",
+        "descripcion": "Tubelización de ambas ruedas con líquido sellante y revisión de Future Shock."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM Rival Flattop",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Desgaste al 0.5%, óptimo funcionamiento."
+      },
+      {
+        "nombre": "Pastillas de freno SRAM Paceline",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Purgado de circuito hidráulico con líquido DOT 5.1 realizado."
+      },
+      {
+        "nombre": "Cubiertas Pathfinder Pro 700x38c",
+        "ultimaRevisionKm": 800,
+        "observaciones": "Líquido sellante tubeless renovado (60ml por rueda)."
+      },
+      {
+        "nombre": "Suspensión Future Shock 2.0",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Cartucho hidráulico inspeccionado, funcionamiento suave."
+      }
+    ]
   },
   {
-    "id": "bici_013",
-    "clienteId": "cli_113",
-    "clienteNombre": "Hermione Granger",
-    "marca": "BMC",
-    "modelo": "Teammachine SLR",
-    "tipo": "carretera",
+    "id": 4,
+    "clienteNombre": "Laura Torres",
+    "marca": "Canyon",
+    "modelo": "Grizl",
+    "tipo": "gravel",
     "esElectrica": false,
-    "mtbTipo": null
+    "suspension": "sin suspensión",
+    "mecanico": "Carlos",
+    "kmTotales": 4200,
+    "observaciones": "Crujido en el pedalier.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-05",
+        "km": 4200,
+        "mecanico": "Carlos",
+        "descripcion": "Desmontaje de pedalier PressFit, limpieza y engrase con pasta de montaje antiblindaje."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano GRX 11v",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Limpieza profunda por ultrasonidos y cera líquida aplicada."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano K05S",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Discos centrados, pastillas semimetálicas al 50%."
+      },
+      {
+        "nombre": "Cubiertas Maxxis Rambler 700x45c",
+        "ultimaRevisionKm": 1000,
+        "observaciones": "Desgaste uniforme, presión ajustada a 2.8 bar."
+      },
+      {
+        "nombre": "Pedalier PressFit Shimano BB72",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Desmontaje, engrase cerámico de cazoletas por crujidos previos."
+      }
+    ]
   },
   {
-    "id": "bici_014",
-    "clienteId": "cli_114",
-    "clienteNombre": "Severus Snape",
-    "marca": "Colnago",
-    "modelo": "V4Rs",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_015",
-    "clienteId": "cli_115",
-    "clienteNombre": "Sirius Black",
-    "marca": "Santa Cruz",
-    "modelo": "Chameleon",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_016",
-    "clienteId": "cli_116",
-    "clienteNombre": "Luke Skywalker",
+    "id": 5,
+    "clienteNombre": "Roberto Carlos",
     "marca": "Scott",
-    "modelo": "Addict Gravel",
-    "tipo": "gravel",
+    "modelo": "Scale",
+    "tipo": "mtb",
     "esElectrica": false,
-    "mtbTipo": null
+    "mtbTipo": "rígida",
+    "mecanico": "Carlos",
+    "kmTotales": 2150,
+    "observaciones": "Mantenimiento de la horquilla.",
+    "revisiones": [
+      {
+        "fecha": "2024-01-20",
+        "km": 1200,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento básico de horquilla SID, cambio de retenes SKF y aceite."
+      },
+      {
+        "fecha": "2024-03-12",
+        "km": 2150,
+        "mecanico": "Carlos",
+        "descripcion": "Ajuste de presiones, engrase de dirección y lubricación de transmisión."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM GX Eagle 12v",
+        "ultimaRevisionKm": 950,
+        "observaciones": "Desgaste al 0.3%, holguras normales."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano XT",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Limpieza de pistones, pastillas al 80% de material útil."
+      },
+      {
+        "nombre": "Horquilla RockShox SID SL Select",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Retenes SKF cambiados y niveles de aceite de suspensión revisados."
+      },
+      {
+        "nombre": "Cubiertas Schwalbe Racing Ray / Ralph",
+        "ultimaRevisionKm": 950,
+        "observaciones": "Taquedo en buen estado con desgaste uniforme."
+      }
+    ]
   },
   {
-    "id": "bici_017",
-    "clienteId": "cli_117",
-    "clienteNombre": "Darth Vader",
-    "marca": "Trek",
-    "modelo": "Madone SLR",
+    "id": 6,
+    "clienteNombre": "Ana Belén",
+    "marca": "Giant",
+    "modelo": "Defy",
     "tipo": "carretera",
     "esElectrica": false,
-    "mtbTipo": null
+    "mecanico": "Mario",
+    "kmTotales": 6800,
+    "observaciones": "Cambio de cinta de manillar.",
+    "revisiones": [
+      {
+        "fecha": "2023-09-18",
+        "km": 3600,
+        "mecanico": "Mario",
+        "descripcion": "Cambio de cadena Shimano 105 y zapatas de freno."
+      },
+      {
+        "fecha": "2024-02-10",
+        "km": 6800,
+        "mecanico": "Mario",
+        "descripcion": "Instalación de nueva cinta de manillar Supacaz y centrado de ruedas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano 105 11v",
+        "ultimaRevisionKm": 3200,
+        "observaciones": "Desgaste al 0.7%, se recomienda cambio en próxima visita."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L05A",
+        "ultimaRevisionKm": 2200,
+        "observaciones": "Pastillas al 40% de vida útil, limpiadas con alcohol isopropílico."
+      },
+      {
+        "nombre": "Cubiertas Giant Gavia Fondo 1",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Sin signos de cristalización, sellado tubeless correcto."
+      },
+      {
+        "nombre": "Cinta de manillar Supacaz",
+        "ultimaRevisionKm": 3200,
+        "observaciones": "Cinta recién sustituida con tapones expandibles asegurados."
+      }
+    ]
   },
   {
-    "id": "bici_018",
-    "clienteId": "cli_118",
-    "clienteNombre": "Han Solo",
+    "id": 7,
+    "clienteNombre": "Pedro Sánchez",
     "marca": "Merida",
-    "modelo": "Silex 7000",
-    "tipo": "gravel",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_019",
-    "clienteId": "cli_119",
-    "clienteNombre": "Obi-Wan Kenobi",
-    "marca": "Orbea",
-    "modelo": "Oiz M-Pro",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_020",
-    "clienteId": "cli_120",
-    "clienteNombre": "Yoda",
-    "marca": "Specialized",
-    "modelo": "Turbo Levo SL",
+    "modelo": "eOne-Sixty",
     "tipo": "mtb",
     "esElectrica": true,
-    "mtbTipo": "doble"
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3900,
+    "observaciones": "Actualización de software del motor.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-01",
+        "km": 3900,
+        "mecanico": "Carlos",
+        "descripcion": "Actualización de firmware motor Shimano EP8 a versión 4.2.0 y purga de frenos de 4 pistones."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena KMC e12 Turbo",
+        "ultimaRevisionKm": 1750,
+        "observaciones": "Cadena reforzada específica e-bike sin elongación excesiva."
+      },
+      {
+        "nombre": "Frenos Shimano Deore 4 pistones",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Líquido mineral purgado, mordida firme y sin fatiga."
+      },
+      {
+        "nombre": "Horquilla Marzocchi Z1 E-bike",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Revisión preventiva sin holgura en casquillos."
+      },
+      {
+        "nombre": "Amortiguador Fox Float DPX2",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Sin fugas de aire ni marcas en el vástago Kashima."
+      },
+      {
+        "nombre": "Motor Shimano STEPS EP8",
+        "ultimaRevisionKm": 1750,
+        "observaciones": "Software actualizado a la versión más reciente, par motor a 85Nm."
+      }
+    ]
   },
   {
-    "id": "bici_021",
-    "clienteId": "cli_121",
-    "clienteNombre": "Tai Kamiya",
+    "id": 8,
+    "clienteNombre": "Sofía Martín",
+    "marca": "BH",
+    "modelo": "Core Gravel",
+    "tipo": "gravel",
+    "esElectrica": true,
+    "suspension": "sin suspensión",
+    "mecanico": "Elena",
+    "kmTotales": 1850,
+    "observaciones": "Revisión de batería y conexiones.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-18",
+        "km": 1850,
+        "mecanico": "Elena",
+        "descripcion": "Test de batería BH (100% de capacidad) e inspección de sellado de conectores."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano HG-601",
+        "ultimaRevisionKm": 850,
+        "observaciones": "Estado impecable, tensión y engrase adecuados."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano GRX",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Discos desengrasados y pastillas al 65%."
+      },
+      {
+        "nombre": "Cubiertas Hutchinson Touareg 700x40c",
+        "ultimaRevisionKm": 850,
+        "observaciones": "Presión ajustada para pista rápida y asfalto roto."
+      },
+      {
+        "nombre": "Motor central BH 2ES-MAG",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Conectores impermeables limpios y batería al 100% de salud."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "clienteNombre": "Javier Ruiz",
+    "marca": "Megamo",
+    "modelo": "Track",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 2700,
+    "observaciones": "Ajuste de presiones del amortiguador.",
+    "revisiones": [
+      {
+        "fecha": "2024-01-25",
+        "km": 2700,
+        "mecanico": "Carlos",
+        "descripcion": "Calibración de suspensiones Fox Factory delantera y trasera, ajuste de SAG al 25%."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM X01 Eagle",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Desgaste al 0.4%, tratada con cera Squirt."
+      },
+      {
+        "nombre": "Pastillas de freno Galfer Rojas (Advanced)",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Pastillas con un 75% de grosor disponible."
+      },
+      {
+        "nombre": "Horquilla Fox 34 SC Factory",
+        "ultimaRevisionKm": 1000,
+        "observaciones": "Aceite renovado y guardapolvos SKF de baja fricción."
+      },
+      {
+        "nombre": "Amortiguador Fox Float DPS Factory",
+        "ultimaRevisionKm": 1000,
+        "observaciones": "Presión ajustada a 165 psi acorde al SAG del piloto (25%)."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "clienteNombre": "Carmen López",
+    "marca": "Pinarello",
+    "modelo": "Dogma",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Mario",
+    "kmTotales": 4100,
+    "observaciones": "Limpieza integral y engrase.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-10",
+        "km": 4100,
+        "mecanico": "Mario",
+        "descripcion": "Desmontaje completo, limpieza minuciosa, engrase de bujes cerámicos y pedalier."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Campagnolo Super Record 12v",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Lubricante cerámico de alto rendimiento aplicado."
+      },
+      {
+        "nombre": "Pastillas de freno Campagnolo DB",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Pastillas orgánicas con 70% de vida útil remanente."
+      },
+      {
+        "nombre": "Ruedas Fulcrum Speed 40 DB",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Bujes cerámicos USB girando con suavidad, centradas al milímetro."
+      },
+      {
+        "nombre": "Pedalier y rodamientos de dirección",
+        "ultimaRevisionKm": 2500,
+        "observaciones": "Desmontaje completo, limpieza minuciosa y engrase de teflón."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "clienteNombre": "Diego Fernández",
+    "marca": "Orbea",
+    "modelo": "Oiz",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3600,
+    "observaciones": "Cambio de rodamientos del basculante.",
+    "revisiones": [
+      {
+        "fecha": "2023-12-05",
+        "km": 1900,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento 100h suspensiones Fox y purga de frenos XT."
+      },
+      {
+        "fecha": "2024-03-15",
+        "km": 3600,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución completa del kit de rodamientos de basculante con prensa Enduro MAX."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Deore XT M8100",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Desgaste al 0.35%, eslabón rápido Shimano reemplazado."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano Ice-Tech J04C",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Sustituidas por nuevas pastillas refrigeradas."
+      },
+      {
+        "nombre": "Horquilla Fox 34 Step-Cast Factory",
+        "ultimaRevisionKm": 1250,
+        "observaciones": "Mantenimiento oficial de 100 horas completado."
+      },
+      {
+        "nombre": "Amortiguador Fox i-line DPS",
+        "ultimaRevisionKm": 1250,
+        "observaciones": "Mando remoto Squidlock revisado y sincronizado en sus 3 posiciones."
+      },
+      {
+        "nombre": "Kit de rodamientos del basculante",
+        "ultimaRevisionKm": 2200,
+        "observaciones": "Rodamientos Enduro MAX nuevos instalados con par de apriete oficial."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "clienteNombre": "Lucía Navarro",
+    "marca": "Trek",
+    "modelo": "Checkpoint",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Carlos",
+    "kmTotales": 4800,
+    "observaciones": "Instalación de portabultos.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-22",
+        "km": 4800,
+        "mecanico": "Carlos",
+        "descripcion": "Instalación de transportín Bontrager BackRack y ajuste de transmisión SRAM XPLR."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM Force Flattop",
+        "ultimaRevisionKm": 2000,
+        "observaciones": "Desgaste al 0.5%, óptima."
+      },
+      {
+        "nombre": "Pastillas de freno SRAM eTap",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Pastillas traseras con 50% de espesor restante."
+      },
+      {
+        "nombre": "Cubiertas Bontrager GR1 Team Issue",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Sellado tubeless comprobado y sin fugas."
+      },
+      {
+        "nombre": "Transmisión 1x12 SRAM XPLR",
+        "ultimaRevisionKm": 2000,
+        "observaciones": "Roldanas limpiadas y polea embrague lubricada."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "clienteNombre": "Miguel Ángel",
+    "marca": "Specialized",
+    "modelo": "Turbo Levo",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble",
+    "mecanico": "Elena",
+    "kmTotales": 2950,
+    "observaciones": "Sustitución de display.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-08",
+        "km": 2950,
+        "mecanico": "Elena",
+        "descripcion": "Cambio de display MasterMind TCU averiado por garantía y configuración en app."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM Eagle E-bike",
+        "ultimaRevisionKm": 1350,
+        "observaciones": "Tratamiento con cera líquida específico para alto torque."
+      },
+      {
+        "nombre": "Pastillas de freno SRAM Code RS",
+        "ultimaRevisionKm": 900,
+        "observaciones": "Pastillas sinterizadas metálicas con mordida potente."
+      },
+      {
+        "nombre": "Horquilla RockShox Lyrik Select",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Presión a 85 psi y tokens reductores verificados."
+      },
+      {
+        "nombre": "Amortiguador RockShox Deluxe Select+",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Sin holguras en los casquillos reductores."
+      },
+      {
+        "nombre": "Display MasterMind TCU y motor Brose 2.2",
+        "ultimaRevisionKm": 1350,
+        "observaciones": "Display nuevo configurado y sincronizado con app Mission Control."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "clienteNombre": "Isabel Domínguez",
+    "marca": "Canyon",
+    "modelo": "Aeroad",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Carlos",
+    "kmTotales": 5100,
+    "observaciones": "Centrado de rueda delantera.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-14",
+        "km": 5100,
+        "mecanico": "Carlos",
+        "descripcion": "Centrado de llanta de carbono DT Swiss ARC y reapriete de cabecillas internas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Dura-Ace R9200",
+        "ultimaRevisionKm": 2400,
+        "observaciones": "Medición con galga al 0.45%, óptima."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L05A",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Pastillas con un 60% de grosor útil."
+      },
+      {
+        "nombre": "Ruedas de carbono DT Swiss ARC 1400",
+        "ultimaRevisionKm": 2400,
+        "observaciones": "Centrado fino y equilibrado de tensión de radios realizado."
+      },
+      {
+        "nombre": "Cockpit aerodinámico Canyon CP0018",
+        "ultimaRevisionKm": 2400,
+        "observaciones": "Tornillería revisada y fijada con llave dinamométrica."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "clienteNombre": "Antonio Moreno",
+    "marca": "Scott",
+    "modelo": "Spark",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble",
+    "mecanico": "Mario",
+    "kmTotales": 3400,
+    "observaciones": "Purga de frenos Shimano.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-19",
+        "km": 3400,
+        "mecanico": "Mario",
+        "descripcion": "Purga completa de frenos Shimano XTR con aceite mineral nuevo y pastillas desengrasadas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM XX1 Eagle Rainbow",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Sin holguras laterales, desgaste al 0.3%."
+      },
+      {
+        "nombre": "Frenos Shimano XTR M9100",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Circuito purgado con aceite mineral, tacto directo y seco."
+      },
+      {
+        "nombre": "Horquilla RockShox SID Ultimate 120mm",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Cartucho hidráulico Charger Race Day revisado."
+      },
+      {
+        "nombre": "Amortiguador integrado Fox Nude 5T",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Cable del mando TwinLoc con tensión verificada."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "clienteNombre": "Beatriz Gil",
+    "marca": "Giant",
+    "modelo": "Revolt",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Carlos",
+    "kmTotales": 6200,
+    "observaciones": "Cambio de cadena y casete.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-05",
+        "km": 6200,
+        "mecanico": "Carlos",
+        "descripcion": "Instalación de nueva transmisión (cadena Shimano HG701 y cassette 11-42T)."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano GRX HG701",
+        "ultimaRevisionKm": 2800,
+        "observaciones": "Cadena nueva recién sustituida."
+      },
+      {
+        "nombre": "Cassette Shimano Deore M5100 11-42T",
+        "ultimaRevisionKm": 2800,
+        "observaciones": "Cassette nuevo a estrenar, sincronizado perfectamente."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano K05S",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Pastillas al 55% de vida útil restante."
+      },
+      {
+        "nombre": "Cubiertas Maxxis Receptor 700x40c",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Banda lisa central sin cortes ni deformaciones."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "clienteNombre": "Fernando Herrero",
+    "marca": "Merida",
+    "modelo": "Scultura",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Elena",
+    "kmTotales": 4300,
+    "observaciones": "Ajuste de desviador delantero.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-02",
+        "km": 4300,
+        "mecanico": "Elena",
+        "descripcion": "Ajuste de tensión de desviador Ultegra y rodamientos de ruedas Vision."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Ultegra 11v",
+        "ultimaRevisionKm": 1950,
+        "observaciones": "Desgaste al 0.4%, tratada con cera."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano Ultegra",
+        "ultimaRevisionKm": 1950,
+        "observaciones": "Pastillas al 70%, tacto dosificable."
+      },
+      {
+        "nombre": "Desviador delantero Shimano Ultegra",
+        "ultimaRevisionKm": 1950,
+        "observaciones": "Ajustados topes H y L y tensión del cable de acero."
+      },
+      {
+        "nombre": "Ruedas Vision SC55 Disc Carbon",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Pistas de rodadura y bujes revisados."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "clienteNombre": "Raquel Vidal",
     "marca": "BH",
     "modelo": "Lynx Race",
     "tipo": "mtb",
     "esElectrica": false,
-    "mtbTipo": "doble"
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3150,
+    "observaciones": "Revisión de bloqueo remoto.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-18",
+        "km": 3150,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución de cable y funda de mando de bloqueo remoto Fox."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Deore XT",
+        "ultimaRevisionKm": 1450,
+        "observaciones": "Desgaste medido al 0.45%."
+      },
+      {
+        "nombre": "Frenos Shimano Deore XT M8100",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Pastillas ventiladas al 65% de vida."
+      },
+      {
+        "nombre": "Horquilla Fox 32 SC Performance",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Retenes limpiados y lubricados exteriormente."
+      },
+      {
+        "nombre": "Amortiguador Fox Float DPS EVOL",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Mando de bloqueo remoto ajustado y funcionando con precisión."
+      }
+    ]
   },
   {
-    "id": "bici_022",
-    "clienteId": "cli_122",
-    "clienteNombre": "Matt Ishida",
-    "marca": "Canyon",
-    "modelo": "Exceed CF",
+    "id": 19,
+    "clienteNombre": "Pablo Blanco",
+    "marca": "Megamo",
+    "modelo": "West",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Mario",
+    "kmTotales": 3800,
+    "observaciones": "Cambio de cubiertas por desgaste.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-21",
+        "km": 3800,
+        "mecanico": "Mario",
+        "descripcion": "Instalación de par de cubiertas WTB Riddler 700x45c tubeless."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM Apex 11v",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Desgaste al 0.5%, desgaste moderado."
+      },
+      {
+        "nombre": "Pastillas de freno SRAM Apex",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Desgaste regular sin cristalización."
+      },
+      {
+        "nombre": "Cubiertas WTB Riddler 700x45c",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Cubiertas nuevas instaladas con fondo de llanta tubeless nuevo."
+      },
+      {
+        "nombre": "Ruedas Megamo Gravel GR",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Radios verificados con tensiómetro Park Tool."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "clienteNombre": "Rosa Morales",
+    "marca": "Trek",
+    "modelo": "Domane+",
+    "tipo": "carretera",
+    "esElectrica": true,
+    "mecanico": "Carlos",
+    "kmTotales": 2900,
+    "observaciones": "Diagnóstico de error en la asistencia.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-11",
+        "km": 2900,
+        "mecanico": "Carlos",
+        "descripcion": "Diagnóstico por software del sistema TQ, ajuste de sensor de par de pedaleo."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano 105 11v",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Desgaste al 0.3%, limpia y engrasada."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano RT-MT800",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Discos Ice-Tech sin alabeo, pastillas al 75%."
+      },
+      {
+        "nombre": "Sistema de asistencia eléctrica TQ-HPR50",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Diagnóstico de error completado; sensor de par recalibrado."
+      },
+      {
+        "nombre": "Cubiertas Bontrager R3 Hard-Case Lite",
+        "ultimaRevisionKm": 1000,
+        "observaciones": "Flancos y banda de rodadura en perfecto estado."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "clienteNombre": "Jorge Medina",
+    "marca": "Orbea",
+    "modelo": "Alma",
     "tipo": "mtb",
     "esElectrica": false,
-    "mtbTipo": "rigida"
+    "mtbTipo": "rígida",
+    "mecanico": "Elena",
+    "kmTotales": 4700,
+    "observaciones": "Sustitución de eje de pedalier.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-27",
+        "km": 4700,
+        "mecanico": "Elena",
+        "descripcion": "Cambio de cazoletas de pedalier Shimano Hollowtech II por holgura."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano SLX M7100",
+        "ultimaRevisionKm": 2200,
+        "observaciones": "Cadena revisada con galga, vida útil al 50%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano Deore",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Pastillas de resina al 60%."
+      },
+      {
+        "nombre": "Horquilla RockShox Judy Silver TK",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Barras limpias y sin marcas de fricción."
+      },
+      {
+        "nombre": "Eje de pedalier Shimano Hollowtech II",
+        "ultimaRevisionKm": 2200,
+        "observaciones": "Cazoletas nuevas instaladas y engrasadas con grasa de litio."
+      }
+    ]
   },
   {
-    "id": "bici_023",
-    "clienteId": "cli_123",
-    "clienteNombre": "Sora Takenouchi",
-    "marca": "Liv",
-    "modelo": "Langma Advanced",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_024",
-    "clienteId": "cli_124",
-    "clienteNombre": "Izzy Izumi",
-    "marca": "Cannondale",
-    "modelo": "Topstone Neo",
-    "tipo": "gravel",
-    "esElectrica": true,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_025",
-    "clienteId": "cli_125",
-    "clienteNombre": "Sheldon Cooper",
-    "marca": "Cervélo",
-    "modelo": "S5",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_026",
-    "clienteId": "cli_126",
-    "clienteNombre": "Leonard Hofstadter",
-    "marca": "Trek",
-    "modelo": "Checkpoint SL",
-    "tipo": "gravel",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_027",
-    "clienteId": "cli_127",
-    "clienteNombre": "Penny",
+    "id": 22,
+    "clienteNombre": "Nuria Castro",
     "marca": "Specialized",
     "modelo": "Roubaix",
     "tipo": "carretera",
     "esElectrica": false,
-    "mtbTipo": null
+    "mecanico": "Carlos",
+    "kmTotales": 5600,
+    "observaciones": "Cambio de cables y fundas.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-09",
+        "km": 5600,
+        "mecanico": "Carlos",
+        "descripcion": "Renovación integral de cables y fundas de cambio y frenos."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Ultegra",
+        "ultimaRevisionKm": 2600,
+        "observaciones": "Cables de cambio y fundas SP41 sustituidos."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L03A",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Pastillas delanteras nuevas; traseras al 65%."
+      },
+      {
+        "nombre": "Cartucho Future Shock 1.5",
+        "ultimaRevisionKm": 2600,
+        "observaciones": "Muelle medio instalado, respuesta progresiva adecuada."
+      },
+      {
+        "nombre": "Cubiertas Specialized Turbo Pro 700x30c",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Presión revisada a 5.0 bar."
+      }
+    ]
   },
   {
-    "id": "bici_028",
-    "clienteId": "cli_128",
-    "clienteNombre": "Howard Wolowitz",
-    "marca": "Orbea",
-    "modelo": "Rise",
-    "tipo": "mtb",
-    "esElectrica": true,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_029",
-    "clienteId": "cli_129",
-    "clienteNombre": "Raj Koothrappali",
-    "marca": "BMC",
-    "modelo": "URS One",
+    "id": 23,
+    "clienteNombre": "Víctor Sanz",
+    "marca": "Canyon",
+    "modelo": "Grail",
     "tipo": "gravel",
     "esElectrica": false,
-    "mtbTipo": null
+    "suspension": "sin suspensión",
+    "mecanico": "Mario",
+    "kmTotales": 3300,
+    "observaciones": "Reparación de pinchazo.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-16",
+        "km": 3300,
+        "mecanico": "Mario",
+        "descripcion": "Reparación tubeless con mecha en cubierta trasera y recarga de sellante."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano GRX 810",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Tratamiento de parafina aplicado."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano GRX",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Pastillas al 75%."
+      },
+      {
+        "nombre": "Cubiertas Schwalbe G-One Bite",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Pinchazo reparado con mecha y recarga de 50ml de sellante."
+      },
+      {
+        "nombre": "Manillar Canyon CP07 Gravel Cockpit",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Inspección de par de apriete en todos los tornillos."
+      }
+    ]
   },
   {
-    "id": "bici_030",
-    "clienteId": "cli_130",
-    "clienteNombre": "Homer Simpson",
-    "marca": "Mondraker",
-    "modelo": "Chaser",
-    "tipo": "mtb",
-    "esElectrica": true,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_031",
-    "clienteId": "cli_131",
-    "clienteNombre": "Bart Simpson",
-    "marca": "Santa Cruz",
-    "modelo": "Jackal",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_032",
-    "clienteId": "cli_132",
-    "clienteNombre": "Ned Flanders",
-    "marca": "Canyon",
-    "modelo": "Endurace CF",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_033",
-    "clienteId": "cli_133",
-    "clienteNombre": "Marge Simpson",
-    "marca": "Trek",
-    "modelo": "Marlin 8",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_034",
-    "clienteId": "cli_134",
-    "clienteNombre": "Montgomery Burns",
-    "marca": "Pinarello",
-    "modelo": "Nytro E9",
-    "tipo": "carretera",
-    "esElectrica": true,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_035",
-    "clienteId": "cli_105",
-    "clienteNombre": "Txus di Fellatio",
-    "marca": "Trek",
-    "modelo": "Procaliber",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_036",
-    "clienteId": "cli_136",
-    "clienteNombre": "Pulpul",
+    "id": 24,
+    "clienteNombre": "Silvia Ortiz",
     "marca": "Scott",
-    "modelo": "Spark RC",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_037",
-    "clienteId": "cli_104",
-    "clienteNombre": "Enric Mas",
-    "marca": "Canyon",
-    "modelo": "Speedmax",
+    "modelo": "Addict",
     "tipo": "carretera",
     "esElectrica": false,
-    "mtbTipo": null
+    "mecanico": "Carlos",
+    "kmTotales": 4100,
+    "observaciones": "Montaje de pedales con potenciómetro.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-13",
+        "km": 4100,
+        "mecanico": "Carlos",
+        "descripcion": "Montaje y calibración de potenciómetro en pedales Favero Assioma Duo."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM Red AXS 12v",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Desgaste inferior al 0.3%."
+      },
+      {
+        "nombre": "Pastillas de freno SRAM Red",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Pastillas al 70% de vida."
+      },
+      {
+        "nombre": "Pedales con potenciómetro Favero Assioma Duo",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Montaje, emparejamiento ANT+ y calibración de offset cero."
+      },
+      {
+        "nombre": "Ruedas Syncros Capital 1.0 35",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Bujes revisados, giro libre y sin fricción."
+      }
+    ]
   },
   {
-    "id": "bici_038",
-    "clienteId": "cli_138",
-    "clienteNombre": "Iñaki Antón",
-    "marca": "Orbea",
-    "modelo": "Alma M-Team",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_039",
-    "clienteId": "cli_139",
-    "clienteNombre": "Miguel Indurain",
-    "marca": "Pinarello",
-    "modelo": "Bolide F",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_040",
-    "clienteId": "cli_140",
-    "clienteNombre": "Chewbacca",
-    "marca": "Surly",
-    "modelo": "Ghost Grappler",
-    "tipo": "gravel",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_041",
-    "clienteId": "cli_141",
-    "clienteNombre": "Gollum",
-    "marca": "GT",
-    "modelo": "Zaskar",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_042",
-    "clienteId": "cli_142",
-    "clienteNombre": "Albus Dumbledore",
-    "marca": "Specialized",
-    "modelo": "Aethos",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_043",
-    "clienteId": "cli_103",
-    "clienteNombre": "Kutxi Romero",
-    "marca": "Kona",
-    "modelo": "Sutra LTD",
-    "tipo": "gravel",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_044",
-    "clienteId": "cli_144",
-    "clienteNombre": "Stuart Bloom",
-    "marca": "Cube",
-    "modelo": "Stereo Hybrid",
-    "tipo": "mtb",
-    "esElectrica": true,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_045",
-    "clienteId": "cli_145",
-    "clienteNombre": "Milhouse Van Houten",
-    "marca": "Merida",
-    "modelo": "Big Nine",
-    "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "rigida"
-  },
-  {
-    "id": "bici_046",
-    "clienteId": "cli_146",
-    "clienteNombre": "Perico Delgado",
-    "marca": "BH",
-    "modelo": "Aerolight",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_047",
-    "clienteId": "cli_147",
-    "clienteNombre": "Moha",
+    "id": 25,
+    "clienteNombre": "Andrés Rubio",
     "marca": "Giant",
-    "modelo": "Trance X",
+    "modelo": "Trance",
     "tipo": "mtb",
     "esElectrica": false,
-    "mtbTipo": "doble"
+    "mtbTipo": "doble",
+    "mecanico": "Elena",
+    "kmTotales": 3750,
+    "observaciones": "Mantenimiento del amortiguador Fox.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-04",
+        "km": 3750,
+        "mecanico": "Elena",
+        "descripcion": "Mantenimiento preventivo anual amortiguador Fox Float DPS."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano SLX 12v",
+        "ultimaRevisionKm": 1650,
+        "observaciones": "Desgaste medido al 0.5%."
+      },
+      {
+        "nombre": "Frenos Shimano MT520 4 pistones",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Pastillas sinterizadas metálicas al 60%."
+      },
+      {
+        "nombre": "Horquilla Fox 34 Float Rhythm 150mm",
+        "ultimaRevisionKm": 1650,
+        "observaciones": "Retenes SKF cambiados y baño de aceite nuevo."
+      },
+      {
+        "nombre": "Amortiguador Fox Float DPS Performance",
+        "ultimaRevisionKm": 1650,
+        "observaciones": "Mantenimiento anual de cámara de aire y juntas completado."
+      }
+    ]
   },
   {
-    "id": "bici_048",
-    "clienteId": "cli_148",
-    "clienteNombre": "Zeta",
-    "marca": "Mondraker",
-    "modelo": "Foxy Carbon",
+    "id": 26,
+    "clienteNombre": "Teresa Marín",
+    "marca": "Merida",
+    "modelo": "Silex",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Carlos",
+    "kmTotales": 4900,
+    "observaciones": "Ajuste de frenos de disco.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-12",
+        "km": 4900,
+        "mecanico": "Carlos",
+        "descripcion": "Alineación de discos y pinzas de freno hidráulico Shimano GRX."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano GRX 600",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Desgaste al 0.4%."
+      },
+      {
+        "nombre": "Frenos de disco hidráulicos Shimano GRX",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Alineación de pinzas y discos de 160mm sin rozamientos."
+      },
+      {
+        "nombre": "Cubiertas Maxxis Rambler 700x38c",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Desgaste normal en banda de rodadura."
+      },
+      {
+        "nombre": "Dirección cónica FSA No.55P",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Rodamientos cónicos sellados limpiados y engrasados."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "clienteNombre": "Rubén Iglesias",
+    "marca": "BH",
+    "modelo": "Ultralight",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Mario",
+    "kmTotales": 3200,
+    "observaciones": "Revisión pre-carrera.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-21",
+        "km": 3200,
+        "mecanico": "Mario",
+        "descripcion": "Checklist completo de competición: par de apriete, cambio Di2 y tensión de radios."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Dura-Ace",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Desgaste al 0.25%, lista para competición."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano Dura-Ace",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Pastillas al 80%."
+      },
+      {
+        "nombre": "Ruedas BH EVO 38 Disc Carbon",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Tensión de radios verificada en banco."
+      },
+      {
+        "nombre": "Transmisión Shimano Ultegra Di2",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Ajuste milimétrico de cambios sincronizados."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "clienteNombre": "Marta Garrido",
+    "marca": "Megamo",
+    "modelo": "Crafter",
     "tipo": "mtb",
-    "esElectrica": false,
-    "mtbTipo": "doble"
-  },
-  {
-    "id": "bici_049",
-    "clienteId": "cli_149",
-    "clienteNombre": "Nairo Quintana",
-    "marca": "Canyon",
-    "modelo": "Ultimate CF SLX",
-    "tipo": "carretera",
-    "esElectrica": false,
-    "mtbTipo": null
-  },
-  {
-    "id": "bici_050",
-    "clienteId": "cli_120",
-    "clienteNombre": "Yoda",
-    "marca": "Brompton",
-    "modelo": "Electric C Line",
-    "tipo": "carretera",
     "esElectrica": true,
-    "mtbTipo": null
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 4150,
+    "observaciones": "Cambio de plato y cadena específica e-bike.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-20",
+        "km": 4150,
+        "mecanico": "Carlos",
+        "descripcion": "Montaje de cadena KMC e12 y plato de acero Shimano 34T."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena KMC e12 Turbo",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Cadena reforzada nueva instalada."
+      },
+      {
+        "nombre": "Plato de acero Shimano e-bike 34T",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Plato nuevo de alta resistencia sin juego axial."
+      },
+      {
+        "nombre": "Frenos Shimano XT M8120 4 pistones",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Pastillas refrigeradas N04C al 70%."
+      },
+      {
+        "nombre": "Horquilla Fox 38 Float Performance 160mm",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Mantenimiento 50h de aceite realizado."
+      },
+      {
+        "nombre": "Motor Shimano EP8 85Nm",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Tornillos de soporte de motor apretados con fijador de roscas."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "clienteNombre": "Raúl Suárez",
+    "marca": "Trek",
+    "modelo": "Marlin",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rígida",
+    "mecanico": "Elena",
+    "kmTotales": 2400,
+    "observaciones": "Ajuste de cambios básicos.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-07",
+        "km": 2400,
+        "mecanico": "Elena",
+        "descripcion": "Sincronización de cambio Shimano Deore y lubricación general."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Deore 10v",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Desgaste al 0.35%, limpia y lubricada."
+      },
+      {
+        "nombre": "Frenos hidráulicos Tektro HD-M275",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Pastillas al 60% de material."
+      },
+      {
+        "nombre": "Horquilla SR Suntour XCM 30",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Barras limpias y precarga de muelle ajustada."
+      },
+      {
+        "nombre": "Cambio trasero Shimano Deore M5120",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Ajuste de topes H y L y sincronización de tensión."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "clienteNombre": "Lorena Cruz",
+    "marca": "Orbea",
+    "modelo": "Terra",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Carlos",
+    "kmTotales": 5200,
+    "observaciones": "Montaje de ruedas de carbono.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-17",
+        "km": 5200,
+        "mecanico": "Carlos",
+        "descripcion": "Montaje de ruedas Oquo RC25, discos Galfer Wave y cubiertas Pirelli tubelizadas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano GRX 810",
+        "ultimaRevisionKm": 2300,
+        "observaciones": "Desgaste medido al 0.4%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano K05S",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Pastillas al 65% de vida útil."
+      },
+      {
+        "nombre": "Ruedas de carbono Oquo Gravel RC25 Team",
+        "ultimaRevisionKm": 2300,
+        "observaciones": "Ruedas nuevas montadas con discos Galfer Wave 160mm."
+      },
+      {
+        "nombre": "Cubiertas Pirelli Cinturato Gravel H",
+        "ultimaRevisionKm": 800,
+        "observaciones": "Tubelizadas con 70ml de líquido sellante biodegradable."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "clienteNombre": "Gonzalo Vicente",
+    "marca": "Specialized",
+    "modelo": "Tarmac",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Mario",
+    "kmTotales": 3900,
+    "observaciones": "Inspección de cuadro por fisura.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-12",
+        "km": 3900,
+        "mecanico": "Mario",
+        "descripcion": "Test de ultrasonidos en vaina trasera, estructura de carbono intacta."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Ultegra 12v",
+        "ultimaRevisionKm": 1750,
+        "observaciones": "Desgaste al 0.35%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L05A",
+        "ultimaRevisionKm": 1750,
+        "observaciones": "Pastillas al 75%."
+      },
+      {
+        "nombre": "Cuadro S-Works FACT 12r Carbon",
+        "ultimaRevisionKm": 1750,
+        "observaciones": "Inspección minuciosa sin fisuras estructurales en las vainas."
+      },
+      {
+        "nombre": "Pedalier cerámico CeramicSpeed",
+        "ultimaRevisionKm": 1750,
+        "observaciones": "Giro completamente fluido sin holguras."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "clienteNombre": "Alba Peña",
+    "marca": "Canyon",
+    "modelo": "Spectral",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3650,
+    "observaciones": "Cambio de tija telescópica.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-15",
+        "km": 3650,
+        "mecanico": "Carlos",
+        "descripcion": "Instalación de tija OneUp V2 180mm con enrutamiento interno."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM GX Eagle",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Desgaste al 0.5%."
+      },
+      {
+        "nombre": "Frenos SRAM Code R 4 pistones",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Purgado con líquido DOT 5.1."
+      },
+      {
+        "nombre": "Horquilla Fox 36 Rhythm 160mm",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Retenes cambiados y lubricados."
+      },
+      {
+        "nombre": "Amortiguador Fox Float X Performance",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Presión a 175 psi con respuesta ágil."
+      },
+      {
+        "nombre": "Tija telescópica OneUp V2 180mm",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Tija nueva instalada con cable nuevo y mando en manillar."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "clienteNombre": "Óscar Flores",
+    "marca": "Scott",
+    "modelo": "Speedster",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Elena",
+    "kmTotales": 5100,
+    "observaciones": "Cambio de zapatas de freno.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-01",
+        "km": 5100,
+        "mecanico": "Elena",
+        "descripcion": "Cambio de zapatas delanteras y traseras Shimano R55C4 y limpieza de llanta."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Sora 9v",
+        "ultimaRevisionKm": 2400,
+        "observaciones": "Desgaste al 0.6%, programar cambio en breve."
+      },
+      {
+        "nombre": "Zapatas de freno Shimano R55C4",
+        "ultimaRevisionKm": 2400,
+        "observaciones": "Zapatas nuevas montadas y ajustadas a la pista de llanta."
+      },
+      {
+        "nombre": "Ruedas Syncros Race 24",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Pista de frenado desengrasada y limpia."
+      },
+      {
+        "nombre": "Cables y fundas de freno",
+        "ultimaRevisionKm": 2400,
+        "observaciones": "Fundas lubricadas con teflón líquido."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "clienteNombre": "Clara Núñez",
+    "marca": "Giant",
+    "modelo": "TCX",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Carlos",
+    "kmTotales": 4400,
+    "observaciones": "Ajuste de transmisión 1x.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-14",
+        "km": 4400,
+        "mecanico": "Carlos",
+        "descripcion": "Ajuste del embrague del cambio SRAM Rival 1x y recarga de líquido sellante."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM Rival 1 11v",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Desgaste al 0.45%."
+      },
+      {
+        "nombre": "Transmisión 1x11 SRAM Rival",
+        "ultimaRevisionKm": 2100,
+        "observaciones": "Embrague Type 3 del cambio ajustado para evitar caídas de cadena."
+      },
+      {
+        "nombre": "Frenos hidráulicos SRAM Rival 1",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Pastillas orgánicas al 60%."
+      },
+      {
+        "nombre": "Cubiertas Maxxis All Terrane 700x33c",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Líquido antipinchazos renovado en ambas ruedas."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "clienteNombre": "Héctor Reyes",
+    "marca": "Merida",
+    "modelo": "Big.Nine",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rígida",
+    "mecanico": "Mario",
+    "kmTotales": 2850,
+    "observaciones": "Lubricación general.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-19",
+        "km": 2850,
+        "mecanico": "Mario",
+        "descripcion": "Limpieza integral y lubricación de transmisión y horquilla Manitou."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Deore",
+        "ultimaRevisionKm": 1350,
+        "observaciones": "Lubricada a conciencia con lubricante de teflón para seco."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano B05S",
+        "ultimaRevisionKm": 1350,
+        "observaciones": "Pastillas de resina con 70% de material."
+      },
+      {
+        "nombre": "Horquilla Manitou Markhor Comp",
+        "ultimaRevisionKm": 1350,
+        "observaciones": "Presión a 80 psi y bloqueo verificado."
+      },
+      {
+        "nombre": "Transmisión completa",
+        "ultimaRevisionKm": 1350,
+        "observaciones": "Limpieza y desengrasado con brocha y baño de agua tibia."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "clienteNombre": "Elena León",
+    "marca": "BH",
+    "modelo": "RS1",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Carlos",
+    "kmTotales": 3500,
+    "observaciones": "Actualización Di2.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-06",
+        "km": 3500,
+        "mecanico": "Carlos",
+        "descripcion": "Actualización de firmware Shimano Di2 R8170 e inspección de pastillas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Ultegra 12v",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Desgaste inferior al 0.3%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L05A",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Discos de 160/140 sin alabeos, pastillas al 75%."
+      },
+      {
+        "nombre": "Grupo Shimano Ultegra Di2 R8170",
+        "ultimaRevisionKm": 1600,
+        "observaciones": "Actualización a la versión más reciente vía E-Tube Project."
+      },
+      {
+        "nombre": "Ruedas Vision Team 35 Disc",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Centrado dentro de tolerancias estándar."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "clienteNombre": "Marcos Herrera",
+    "marca": "Megamo",
+    "modelo": "Jakar",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Elena",
+    "kmTotales": 4300,
+    "observaciones": "Limpieza de bujes.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-24",
+        "km": 4300,
+        "mecanico": "Elena",
+        "descripcion": "Desmontaje de bujes de rueda Formula, limpieza de trinquetes y engrase de rodamientos."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano GRX 10v",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Desgaste al 0.4%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano GRX",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Pastillas al 60%."
+      },
+      {
+        "nombre": "Bujes de rueda Formula CL-712",
+        "ultimaRevisionKm": 1900,
+        "observaciones": "Desmontaje de núcleos, limpieza de trinquetes y engrase marino antihumedad."
+      },
+      {
+        "nombre": "Cubiertas WTB Riddler 700x45c",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Dibujo lateral en buen estado."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "clienteNombre": "Inés Cabrera",
+    "marca": "Trek",
+    "modelo": "Supercaliber",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3100,
+    "observaciones": "Revisión de amortiguador integrado.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-15",
+        "km": 3100,
+        "mecanico": "Carlos",
+        "descripcion": "Servicio oficial IsoStrut Trek: limpieza de cámara, tóricas nuevas y engrase especial."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM XX1 Eagle Gold",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Desgaste al 0.3%."
+      },
+      {
+        "nombre": "Frenos SRAM Level Ultimate",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Pastillas cerámicas Galfer al 70%."
+      },
+      {
+        "nombre": "Horquilla RockShox SID SL Ultimate",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Bloqueo remoto TwistLoc verificado."
+      },
+      {
+        "nombre": "Amortiguador estructural IsoStrut",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Mantenimiento oficial Trek IsoStrut realizado, sin holguras ni fugas."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "clienteNombre": "Iván Aguilar",
+    "marca": "Orbea",
+    "modelo": "Orca",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Mario",
+    "kmTotales": 4700,
+    "observaciones": "Sustitución de roldanas.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-28",
+        "km": 4700,
+        "mecanico": "Mario",
+        "descripcion": "Sustitución de roldanas de cambio por roldanas con rodamientos sellados cerámicos."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano 105 12v",
+        "ultimaRevisionKm": 2200,
+        "observaciones": "Desgaste al 0.45%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L05A",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Pastillas al 50% de material."
+      },
+      {
+        "nombre": "Roldanas de cambio trasero Shimano",
+        "ultimaRevisionKm": 2200,
+        "observaciones": "Roldanas cerámicas selladas nuevas instaladas."
+      },
+      {
+        "nombre": "Manillar y potencia integrada OC",
+        "ultimaRevisionKm": 1800,
+        "observaciones": "Ajuste de holgura en el juego de dirección."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "clienteNombre": "Patricia Vega",
+    "marca": "Specialized",
+    "modelo": "Epic EVO",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3800,
+    "observaciones": "Mantenimiento 50 horas horquilla RockShox.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-03",
+        "km": 3800,
+        "mecanico": "Carlos",
+        "descripcion": "Mantenimiento 50 horas horquilla RockShox SID Select+ y pastillas traseras nuevas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM X01 Eagle",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Desgaste al 0.35%."
+      },
+      {
+        "nombre": "Pastillas de freno SRAM G2 RS",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Pastillas traseras nuevas, delanteras al 70%."
+      },
+      {
+        "nombre": "Horquilla RockShox SID Select+ 120mm",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Mantenimiento 50h completado con aceite Maxima Plush."
+      },
+      {
+        "nombre": "Amortiguador RockShox Deluxe Select+",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Juntas de aire lubricadas con grasa Dynamic Seal."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "clienteNombre": "David Méndez",
+    "marca": "Canyon",
+    "modelo": "Endurace",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Elena",
+    "kmTotales": 4200,
+    "observaciones": "Ajuste de dirección.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-16",
+        "km": 4200,
+        "mecanico": "Elena",
+        "descripcion": "Reajuste de dirección Acros integrada y reapriete de tija VCLS con pasta de carbono."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Ultegra 11v",
+        "ultimaRevisionKm": 1850,
+        "observaciones": "Desgaste al 0.4%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano Ultegra",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Pastillas al 65%."
+      },
+      {
+        "nombre": "Juego de dirección integrado Acros",
+        "ultimaRevisionKm": 1850,
+        "observaciones": "Eliminada holgura frontal y rodamientos reengrasados."
+      },
+      {
+        "nombre": "Tija de sillín Canyon S15 VCLS 2.0",
+        "ultimaRevisionKm": 1850,
+        "observaciones": "Par de apriete a 5 Nm verificado con pasta de carbono."
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "clienteNombre": "Julia Carmona",
+    "marca": "Scott",
+    "modelo": "Patron eRIDE",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble",
+    "mecanico": "Carlos",
+    "kmTotales": 3400,
+    "observaciones": "Cambio de sensor de velocidad.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-10",
+        "km": 3400,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución de sensor de velocidad Bosch en la llanta y diagnóstico de batería."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena KMC e12 Turbo",
+        "ultimaRevisionKm": 1550,
+        "observaciones": "Desgaste al 0.4%."
+      },
+      {
+        "nombre": "Frenos Shimano XT 4 pistones",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Pastillas metálicas con 65% de vida restante."
+      },
+      {
+        "nombre": "Horquilla Fox 38 Float Performance",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Guardapolvos SKF y aceite Fox Gold renovados."
+      },
+      {
+        "nombre": "Amortiguador Fox Nude T eRIDE integrado",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Sistema de amortiguador integrado en cuadro revisado."
+      },
+      {
+        "nombre": "Sensor de velocidad Bosch Smart System",
+        "ultimaRevisionKm": 1550,
+        "observaciones": "Sensor en llanta sustituido y emparejado con éxito."
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "clienteNombre": "Félix Soler",
+    "marca": "Giant",
+    "modelo": "Talon",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rígida",
+    "mecanico": "Mario",
+    "kmTotales": 2600,
+    "observaciones": "Sustitución de puños.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-12",
+        "km": 2600,
+        "mecanico": "Mario",
+        "descripcion": "Instalación de puños ergonómicos con doble fijación y ajuste de frenos Tektro."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena KMC X9",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Desgaste al 0.5%."
+      },
+      {
+        "nombre": "Frenos de disco hidráulicos Tektro",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Pastillas al 60%."
+      },
+      {
+        "nombre": "Puños de manillar Giant Sole-O",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Puños de silicona nuevos instalados con doble lock-on."
+      },
+      {
+        "nombre": "Horquilla SR Suntour XCT30 HLO",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Limpieza de barras y lubricante de teflón."
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "clienteNombre": "Cristina Moya",
+    "marca": "Merida",
+    "modelo": "Reacto",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "Carlos",
+    "kmTotales": 5800,
+    "observaciones": "Cambio de rodamientos de rueda trasera.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-25",
+        "km": 5800,
+        "mecanico": "Carlos",
+        "descripcion": "Sustitución de rodamientos de buje trasero Vision SC55 y ajuste de pastillas."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Ultegra 12v",
+        "ultimaRevisionKm": 2600,
+        "observaciones": "Desgaste al 0.5%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano L05A",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Pastillas al 60%."
+      },
+      {
+        "nombre": "Rueda trasera Vision SC55",
+        "ultimaRevisionKm": 2600,
+        "observaciones": "Rodamientos sellados sustituidos por holgura lateral."
+      },
+      {
+        "nombre": "Neumáticos Continental Grand Prix 5000 S TR",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Presión ajustada a 6.5 bar."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "clienteNombre": "Mario Ibáñez",
+    "marca": "BH",
+    "modelo": "GravelX",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "Elena",
+    "kmTotales": 3650,
+    "observaciones": "Alineación de patilla de cambio.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-08",
+        "km": 3650,
+        "mecanico": "Elena",
+        "descripcion": "Enderezado de patilla de cambio y sincronización de cambios Shimano GRX."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano GRX HG701",
+        "ultimaRevisionKm": 1650,
+        "observaciones": "Desgaste al 0.35%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano GRX",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Pastillas al 70%."
+      },
+      {
+        "nombre": "Patilla de cambio trasero",
+        "ultimaRevisionKm": 1650,
+        "observaciones": "Enderezada y alineada con galga milimétrica."
+      },
+      {
+        "nombre": "Cubiertas Hutchinson Overide 700x38c",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Líquido sellante recargado con 40ml."
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "clienteNombre": "Alicia Parra",
+    "marca": "Megamo",
+    "modelo": "Factory",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "rígida",
+    "mecanico": "Carlos",
+    "kmTotales": 3100,
+    "observaciones": "Revisión de frenos.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-17",
+        "km": 3100,
+        "mecanico": "Carlos",
+        "descripcion": "Comprobación de frenos hidráulicos Shimano MT200 y centrado de rueda delantera."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM SX Eagle",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Desgaste al 0.45%."
+      },
+      {
+        "nombre": "Frenos hidráulicos Shimano MT200",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Revisión completa de frenos, mordida correcta y sin ruidos."
+      },
+      {
+        "nombre": "Horquilla RockShox Judy Silver TK",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Presión ajustada a 90 psi."
+      },
+      {
+        "nombre": "Ruedas Megamo Ready 25",
+        "ultimaRevisionKm": 1400,
+        "observaciones": "Centrado de rueda delantera."
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "clienteNombre": "Tomás Bravo",
+    "marca": "Trek",
+    "modelo": "Fuel EXe",
+    "tipo": "mtb",
+    "esElectrica": true,
+    "mtbTipo": "doble",
+    "mecanico": "Mario",
+    "kmTotales": 2750,
+    "observaciones": "Ajuste de motor TQ.",
+    "revisiones": [
+      {
+        "fecha": "2024-02-17",
+        "km": 2750,
+        "mecanico": "Mario",
+        "descripcion": "Ajuste fino de par en motor TQ-HPR50 y purgado de frenos XT."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano XT M8100",
+        "ultimaRevisionKm": 1250,
+        "observaciones": "Desgaste al 0.3%."
+      },
+      {
+        "nombre": "Frenos Shimano XT M8120 4 pistones",
+        "ultimaRevisionKm": 950,
+        "observaciones": "Pastillas ventiladas al 75%."
+      },
+      {
+        "nombre": "Horquilla Fox 36 Rhythm 150mm",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Mantenimiento preventivo de barras y retenes."
+      },
+      {
+        "nombre": "Amortiguador Fox Float X Performance",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Presión y rebote configurados a medida."
+      },
+      {
+        "nombre": "Motor silencioso TQ-HPR50",
+        "ultimaRevisionKm": 1250,
+        "observaciones": "Ajuste de respuesta de asistencia y actualización de firmware."
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "clienteNombre": "Lidia Gallardo",
+    "marca": "Orbea",
+    "modelo": "Avant",
+    "tipo": "carretera",
+    "esElectrica": false,
+    "mecanico": "pruebas",
+    "kmTotales": 3900,
+    "observaciones": "Cambio de sillín.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-11",
+        "km": 3900,
+        "mecanico": "pruebas",
+        "descripcion": "Instalación y nivelación de nuevo sillín Selle Royal Vivo."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano Claris 8v",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Desgaste al 0.4%."
+      },
+      {
+        "nombre": "Pastillas de freno Shimano Claris",
+        "ultimaRevisionKm": 1200,
+        "observaciones": "Pastillas al 65%."
+      },
+      {
+        "nombre": "Sillín Selle Royal Vivo",
+        "ultimaRevisionKm": 1700,
+        "observaciones": "Sillín nuevo montado y nivelado con nivel de burbuja."
+      },
+      {
+        "nombre": "Ruedas Orbea R19",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Presión de neumáticos ajustada."
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "clienteNombre": "Hugo Pardo",
+    "marca": "Specialized",
+    "modelo": "Crux",
+    "tipo": "gravel",
+    "esElectrica": false,
+    "suspension": "sin suspensión",
+    "mecanico": "pruebas",
+    "kmTotales": 4500,
+    "observaciones": "Limpieza de transmisión.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-19",
+        "km": 4500,
+        "mecanico": "pruebas",
+        "descripcion": "Desengrase por ultrasonidos de cassette y cadena SRAM Rival eTap y aplicación de cera."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena SRAM Rival XPLR Flattop",
+        "ultimaRevisionKm": 1950,
+        "observaciones": "Desgaste al 0.4%."
+      },
+      {
+        "nombre": "Transmisión 1x12 inalámbrica SRAM AXS",
+        "ultimaRevisionKm": 1950,
+        "observaciones": "Desengrase por ultrasonidos y cera de grafeno aplicada."
+      },
+      {
+        "nombre": "Frenos SRAM Rival eTap AXS",
+        "ultimaRevisionKm": 1300,
+        "observaciones": "Pastillas al 60%."
+      },
+      {
+        "nombre": "Cubiertas Specialized Pathfinder Pro 700x38c",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Presión ajustada a 2.5 bar."
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "clienteNombre": "Natalia Rojas",
+    "marca": "Canyon",
+    "modelo": "Lux",
+    "tipo": "mtb",
+    "esElectrica": false,
+    "mtbTipo": "doble",
+    "mecanico": "pruebas",
+    "kmTotales": 3300,
+    "observaciones": "Mantenimiento completo suspensión.",
+    "revisiones": [
+      {
+        "fecha": "2024-03-22",
+        "km": 3300,
+        "mecanico": "pruebas",
+        "descripcion": "Servicio de 100 horas Fox Factory completo: retenes SKF en horquilla y amortiguador."
+      }
+    ],
+    "componentes": [
+      {
+        "nombre": "Cadena Shimano XTR M9100",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Desgaste al 0.3%."
+      },
+      {
+        "nombre": "Frenos Shimano XTR Race",
+        "ultimaRevisionKm": 1100,
+        "observaciones": "Pastillas refrigeradas al 80%."
+      },
+      {
+        "nombre": "Horquilla Fox 32 Step-Cast Factory 100mm",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Mantenimiento completo de 100 horas con cambio de retenes SKF."
+      },
+      {
+        "nombre": "Amortiguador Fox Float DPS Factory Remote",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Revisión completa de cámara de aire y presurización."
+      },
+      {
+        "nombre": "Bloqueo remoto Fox Dual Remote",
+        "ultimaRevisionKm": 1500,
+        "observaciones": "Cables nuevos con tensión calibrada para bloqueo simultáneo."
+      }
+    ]
   }
 ]
